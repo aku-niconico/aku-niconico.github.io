@@ -997,22 +997,27 @@
     </div>
   </section>
 
-  <!-- BLOG -->
-  <section id="blog">
-    <div class="section-inner reveal">
-      <p class="section-label">Blog</p>
-      <h2 class="section-title">Blog</h2>
-      <div class="divider"></div>
-      <div class="blog-notice">
-        <strong>現在 livedoorブログ にて運営中。</strong><br>
-        今後このサイトへのブログ機能統合、または移行を検討しています。
-        移行後はこちらのページに最新記事が表示される予定です。
-      </div>
-      <a href="https://aku-go.blog.jp/" target="_blank" rel="noopener" class="blog-link">
-        現在のブログを読む →
-      </a>
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-inner reveal">
+    <p class="section-label">Blog</p>
+    <h2 class="section-title">Blog</h2>
+    <div class="divider"></div>
+    <div class="blog-notice">
+      <strong>現在 livedoorブログ にて運営中。</strong><br>
+      最新記事は以下からどうぞ。
     </div>
-  </section>
+
+    <!-- 記事リスト -->
+    <div id="blog-list" style="margin-bottom:2rem;">
+      <p style="font-family:'DM Mono',monospace; font-size:0.78rem; color:var(--gray-mid);">Loading...</p>
+    </div>
+
+    <a href="https://aku-go.blog.jp/" target="_blank" rel="noopener" class="blog-link">
+      すべての記事を読む →
+    </a>
+  </div>
+</section>
 
   <!-- BOOTH -->
   <section id="booth" style="background: var(--navy);">
@@ -1057,6 +1062,38 @@
     }, { threshold: 0.1 });
 
     reveals.forEach(el => observer.observe(el));
+
+  // ブログRSS取得（追加）
+  const RSS_URL = 'https://aku-go.blog.jp/index.rdf';
+  const API = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=10`;
+
+  fetch(API)
+    .then(r => r.json())
+    .then(data => {
+      const list = document.getElementById('blog-list');
+      if (!data.items || data.items.length === 0) {
+        list.innerHTML = '<p style="color:var(--gray-mid); font-size:0.85rem;">記事を取得できませんでした。</p>';
+        return;
+      }
+      list.innerHTML = data.items.map(item => {
+        const date = new Date(item.pubDate).toLocaleDateString('ja-JP', {year:'numeric', month:'long', day:'numeric'});
+        return `
+          <a href="${item.link}" target="_blank" rel="noopener"
+            style="display:flex; justify-content:space-between; align-items:center; gap:1rem;
+                   padding:1.25rem 0; border-bottom:1px solid var(--gray-light);
+                   text-decoration:none; transition:opacity 0.2s;"
+            onmouseover="this.style.opacity='0.6'"
+            onmouseout="this.style.opacity='1'">
+            <span style="font-size:0.92rem; color:var(--navy); font-weight:500; line-height:1.5;">${item.title}</span>
+            <span style="font-family:'DM Mono',monospace; font-size:0.68rem; color:var(--gray-mid); white-space:nowrap; flex-shrink:0;">${date}</span>
+          </a>`;
+      }).join('');
+    })
+    .catch(() => {
+      document.getElementById('blog-list').innerHTML =
+        '<p style="color:var(--gray-mid); font-size:0.85rem;">記事の取得に失敗しました。</p>';
+    });
+    
   </script>
 </body>
 </html>
