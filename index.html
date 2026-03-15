@@ -1019,30 +1019,34 @@
   </div>
 </section>
 
-  <!-- BOOTH -->
-  <section id="booth" style="background: var(--navy);">
-    <div class="section-inner reveal">
-      <p class="section-label" style="color: var(--accent);">Shop</p>
-      <h2 class="section-title" style="color: var(--white);">BOOTH</h2>
-      <div class="divider" style="background: var(--accent);"></div>
-      <a href="https://sakego.booth.pm/" target="_blank" rel="noopener"
-        style="display:flex; align-items:center; gap:1.5rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); padding:2rem; text-decoration:none; transition: all 0.25s ease; max-width:560px;"
-        onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(200,169,110,0.5)';"
-        onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.12)';">
-        <div style="width:52px; height:52px; background:var(--accent); border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="#0f1f3d">
-            <path d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm1 2v16h10V4H7zm2 3h6v2H9V7zm0 4h6v2H9v-2zm0 4h4v2H9v-2z"/>
-          </svg>
-        </div>
-        <div style="flex:1;">
-          <p style="font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:0.4rem;">SAKEGO / 毎食唐揚</p>
-          <p style="font-size:1rem; font-weight:500; color:var(--white); margin-bottom:0.3rem;">BOOTH ショップ</p>
-          <p style="font-size:0.82rem; color:rgba(248,247,244,0.5); line-height:1.7;">グッズ・デジタルコンテンツを販売しています。</p>
-        </div>
-        <span style="font-size:1rem; color:var(--accent);">→</span>
-      </a>
-    </div>
-  </section>
+<!-- BOOTH -->
+<section id="booth" style="background: var(--navy);">
+  <div class="section-inner reveal">
+    <p class="section-label" style="color: var(--accent);">Shop</p>
+    <h2 class="section-title" style="color: var(--white);">BOOTH</h2>
+    <div class="divider" style="background: var(--accent);"></div>
+    <p style="font-size:0.85rem; color:rgba(248,247,244,0.5); margin-bottom:2rem; line-height:1.8;">
+      SAKEGO / 毎食唐揚 にてグッズ・デジタルコンテンツを販売しています。
+    </p>
+
+    <div id="booth-grid" style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    "></div>
+
+    <a href="https://sakego.booth.pm/" target="_blank" rel="noopener"
+      style="display:inline-flex; align-items:center; gap:0.5rem;
+             font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.1em;
+             text-transform:uppercase; background:var(--accent); color:var(--navy);
+             padding:0.75rem 1.5rem; text-decoration:none; font-weight:500; transition:opacity 0.2s;"
+      onmouseover="this.style.opacity='0.85'"
+      onmouseout="this.style.opacity='1'">
+      ショップ全体を見る →
+    </a>
+  </div>
+</section>
 
   <!-- FOOTER -->
   <footer>
@@ -1063,6 +1067,81 @@
 
     reveals.forEach(el => observer.observe(el));
 
+// BOOTHアイテム一覧
+const items = [
+  {
+    title: "世界のサーキットからRd.1",
+    price: "¥100",
+    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/1145288/59cc3b75-b78e-484a-803c-3b702195d295_base_resized.jpg",
+    url: "https://sakego.booth.pm/items/1145288"
+  },
+  {
+    title: "世界のサーキットからRd.2",
+    price: "¥100",
+    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/1144039/6a214cbe-3289-4bb1-96fc-48524e9e7944_base_resized.jpg",
+    url: "https://sakego.booth.pm/items/1144039"
+  },
+  {
+    title: "世界のサーキットからRd.3",
+    price: "¥100",
+    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/1751474/758bca73-4155-44d7-a056-0991362f123b_base_resized.jpg",
+    url: "https://sakego.booth.pm/items/1751474"
+  },
+  {
+    title: "世界のサーキットからRd3.5",
+    price: "¥100",
+    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/2039401/971a0a0e-be87-4fb3-9455-bc8265edcf6e_base_resized.jpg",
+    url: "https://sakego.booth.pm/items/2039401"
+  },
+  {
+    title: "世界のサーキットからRd.4準備号",
+    price: "¥100",
+    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/2639238/93ec0f9f-30b3-42b2-88b4-30cf71f6015d_base_resized.jpg",
+    url: "https://sakego.booth.pm/items/2639238"
+  },
+  {
+    title: "世界のサーキットからRd.4",
+    price: "¥100",
+    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/3541930/0468ed3d-9ae5-47f0-aa90-7e148f0b2086_base_resized.jpg",
+    url: "https://sakego.booth.pm/items/3541930"
+  },
+  {
+    title: "エクリプスクロスライフ！",
+    price: "¥100",
+    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/3541734/df19101d-982d-4678-a108-526987a5163d_base_resized.jpg",
+    url: "https://sakego.booth.pm/items/3541734"
+  },
+  // 以下同様に繰り返す
+];
+
+const grid = document.getElementById('booth-grid');
+grid.innerHTML = items.map(item => `
+  <a href="${item.url}" target="_blank" rel="noopener"
+    style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+           text-decoration:none; transition:all 0.25s ease; display:block; border-radius:2px; overflow:hidden;"
+    onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(200,169,110,0.4)';"
+    onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.1)';">
+    <div style="aspect-ratio:1/1; overflow:hidden; background:#000;">
+      <img src="${item.image}" alt="${item.title}"
+        style="width:100%; height:100%; object-fit:cover; display:block;
+               transition:transform 0.3s ease;"
+        onmouseover="this.style.transform='scale(1.04)'"
+        onmouseout="this.style.transform='scale(1)'"
+        onerror="this.parentElement.style.background='rgba(255,255,255,0.05)'">
+    </div>
+    <div style="padding:1rem;">
+      <p style="font-size:0.85rem; color:rgba(248,247,244,0.9); font-weight:500;
+                line-height:1.4; margin-bottom:0.4rem;
+                display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+        ${item.title}
+      </p>
+      <p style="font-family:'DM Mono',monospace; font-size:0.78rem; color:var(--accent);">
+        ${item.price}
+      </p>
+    </div>
+  </a>
+`).join('');
+    
   // ブログRSS取得
   const RSS_URL = 'https://aku-go.blog.jp/index.rdf';
   const API = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=10`;
