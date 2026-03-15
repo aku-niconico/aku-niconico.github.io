@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aku — Creator's Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0f1f3d;
+      --navy-mid: #1a3260;
+      --navy-light: #2a4a8a;
+      --accent: #c8a96e;
+      --accent-light: #e8d5a8;
+      --white: #f8f7f4;
+      --gray-light: #edecea;
+      --gray-mid: #b8b5ae;
+      --gray-dark: #6b6860;
+      --text: #1a1a1a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+      font-family: 'Noto Sans JP', 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(248, 247, 244, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(15, 31, 61, 0.08);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      color: var(--navy);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--navy);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(42, 74, 138, 0.5) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      left: -5%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(200, 169, 110, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+
+    .hero-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.35s forwards;
+    }
+
+    .hero-handle {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.45s forwards;
+    }
+
+    .hero-desc {
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      color: rgba(248, 247, 244, 0.65);
+      max-width: 540px;
+      line-height: 1.9;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.55s forwards;
+    }
+
+    .hero-line {
+      width: 48px;
+      height: 2px;
+      background: var(--accent);
+      margin: 2.5rem 0;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.5s forwards;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.2s forwards;
+    }
+
+    .hero-scroll span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(248,247,244,0.35);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(200,169,110,0.6), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.2); }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 300;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+    }
+
+    .divider {
+      width: 36px;
+      height: 2px;
+      background: var(--navy-light);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── PROFILE ── */
+    #profile {
+      background: var(--white);
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .profile-text p {
+      font-size: 0.95rem;
+      color: var(--gray-dark);
+      line-height: 2;
+      margin-bottom: 1.2rem;
+    }
+
+    .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid rgba(15, 31, 61, 0.2);
+      color: var(--navy-mid);
+      border-radius: 2px;
+    }
+
+    .profile-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .stat-item {
+      padding: 1.5rem;
+      border: 1px solid var(--gray-light);
+      border-left: 3px solid var(--navy);
+    }
+
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-value {
+      font-size: 0.95rem;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    /* ── LINKS ── */
+    #links {
+      background: var(--gray-light);
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .link-card {
+      background: var(--white);
+      border: 1px solid transparent;
+      padding: 1.5rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--navy);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+
+    .link-card:hover {
+      border-color: rgba(15, 31, 61, 0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(15,31,61,0.08);
+    }
+
+    .link-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .link-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--navy);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+
+    .link-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .link-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 0.15rem;
+    }
+
+    .link-desc {
+      font-size: 0.72rem;
+      color: var(--gray-mid);
+      letter-spacing: 0.02em;
+    }
+
+    .link-arrow {
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    .link-card:hover .link-arrow {
+      transform: translateX(3px);
+      color: var(--navy);
+    }
+
+    /* ── VIDEO ── */
+    #videos {
+      background: var(--navy);
+    }
+
+    #videos .section-title {
+      color: var(--white);
+    }
+
+    #videos .section-label {
+      color: var(--accent);
+    }
+
+    #videos .divider {
+      background: var(--accent);
+    }
+
+    .video-note {
+      font-size: 0.82rem;
+      color: rgba(248,247,244,0.45);
+      margin-bottom: 2rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .video-placeholder {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: rgba(248,247,244,0.35);
+      font-size: 0.78rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.1em;
+    }
+
+    .video-placeholder-icon {
+      font-size: 2rem;
+      opacity: 0.4;
+    }
+
+    .video-embed {
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: #000;
+    }
+
+    .video-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ── NOVELS ── */
+    #novels {
+      background: var(--white);
+    }
+
+    .novel-intro {
+      font-size: 0.9rem;
+      color: var(--gray-dark);
+      line-height: 2;
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+    }
+
+    .novel-card {
+      border: 1px solid var(--gray-light);
+      padding: 2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      transition: all 0.2s ease;
+    }
+
+    .novel-card:hover {
+      border-color: var(--navy);
+      box-shadow: 4px 4px 0 var(--navy);
+      transform: translate(-2px, -2px);
+    }
+
+    .novel-meta {
+      flex: 1;
+    }
+
+    .novel-genre {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .novel-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .novel-desc {
+      font-size: 0.85rem;
+      color: var(--gray-dark);
+      line-height: 1.8;
+    }
+
+    .novel-link {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+      border: 1px solid var(--navy);
+      padding: 0.6rem 1rem;
+      transition: all 0.2s;
+    }
+
+    .novel-link:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .kakuyomu-banner {
+      margin-top: 2rem;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .kakuyomu-text {
+      color: rgba(248,247,244,0.7);
+      font-size: 0.85rem;
+    }
+
+    .kakuyomu-text strong {
+      color: var(--white);
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .kakuyomu-btn {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent);
+      color: var(--navy);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.75rem 1.25rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    .kakuyomu-btn:hover {
+      opacity: 0.85;
+    }
+
+    /* ── BLOG ── */
+    #blog {
+      background: var(--gray-light);
+    }
+
+    .blog-notice {
+      padding: 1.5rem 2rem;
+      border-left: 3px solid var(--accent);
+      background: var(--white);
+      font-size: 0.85rem;
+      color: var(--gray-dark);
+      line-height: 1.9;
+      margin-bottom: 2rem;
+    }
+
+    .blog-notice strong {
+      color: var(--navy);
+    }
+
+    .blog-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 1px solid var(--navy);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .blog-link:hover {
+      opacity: 0.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: rgba(248,247,244,0.4);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(248,247,244,0.25);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      nav { padding: 0 1.25rem; }
+
+      .nav-links {
+        gap: 1.2rem;
+      }
+
+      .nav-links a {
+        font-size: 0.7rem;
+      }
+
+      section {
+        padding: 4rem 1.25rem;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .novel-card {
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      .kakuyomu-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero {
+        padding: 7rem 1.25rem 5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">Aku</span>
+    <ul class="nav-links">
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#links">Links</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#novels">Novels</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#booth">Shop</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <p class="hero-label">Creator's Page</p>
+      <h1 class="hero-name">Aku</h1>
+      <p class="hero-handle">@aku_niconico</p>
+      <div class="hero-line"></div>
+      <p class="hero-desc">
+        ニコニコ動画での動画投稿、X（旧Twitter）での発信、そしてカクヨムでの小説執筆。<br>
+        さまざまな場所で、さまざまな形で活動しています。
+      </p>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profile">
+    <div class="section-inner reveal">
+      <p class="section-label">About</p>
+      <h2 class="section-title">Profile</h2>
+      <div class="divider"></div>
+      <div class="profile-grid">
+        <div class="profile-text">
+          <p>
+            ニコニコ動画で動画を投稿するクリエイター。日頃はX（旧Twitter）で思ったことを発信しつつ、
+            ブクログで読んだ本を記録しています。
+          </p>
+          <p>
+            現在はカクヨムでの小説執筆にも取り組んでおり、
+            自分なりのペースで創作活動を続けています。
+          </p>
+          <p>
+            ペンネームは現在準備中。小説の著者名が決まったらこちらでもお知らせします。
+          </p>
+          <div class="profile-tags">
+            <span class="tag">動画投稿</span>
+            <span class="tag">小説執筆</span>
+            <span class="tag">読書</span>
+            <span class="tag">ニコニコ動画</span>
+            <span class="tag">カクヨム</span>
+          </div>
+        </div>
+        <div class="profile-stats">
+          <div class="stat-item">
+            <p class="stat-label">Main Activity</p>
+            <p class="stat-value">ニコニコ動画 / X（旧Twitter）</p>
+          </div>
+          <div class="stat-item">
+            <p class="stat-label">Writing</p>
+            <p class="stat-value">カクヨム（小説投稿・準備中）</p>
+          </div>
+          <div class="stat-item">
+            <p class="stat-label">Reading</p>
+            <p class="stat-value">ブクログで読書記録</p>
+          </div>
+          <div class="stat-item">
+            <p class="stat-label">Blog</p>
+            <p class="stat-value">aku-go.blog.jp（livedoor）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINKS -->
+  <section id="links">
+    <div class="section-inner reveal">
+      <p class="section-label">Connect</p>
+      <h2 class="section-title">Links</h2>
+      <div class="divider"></div>
+      <div class="links-grid">
+
+        <a href="https://x.com/aku_niconico" target="_blank" rel="noopener" class="link-card">
+          <div class="link-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </div>
+          <div class="link-info">
+            <p class="link-name">X (Twitter)</p>
+            <p class="link-desc">@aku_niconico</p>
+          </div>
+          <span class="link-arrow">→</span>
+        </a>
+
+        <a href="https://www.nicovideo.jp/user/95850852" target="_blank" rel="noopener" class="link-card">
+          <div class="link-icon" style="background:#111;">
+            <svg width="20" height="20" viewBox="0 0 100 100" fill="white">
+              <rect x="10" y="25" width="80" height="50" rx="8"/>
+              <polygon points="42,38 42,62 65,50" fill="#111"/>
+            </svg>
+          </div>
+          <div class="link-info">
+            <p class="link-name">ニコニコ動画</p>
+            <p class="link-desc">動画投稿チャンネル</p>
+          </div>
+          <span class="link-arrow">→</span>
+        </a>
+
+        <a href="https://booklog.jp/users/akuniconico" target="_blank" rel="noopener" class="link-card">
+          <div class="link-icon" style="background:#2c5f2e;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+              <path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H14a1 1 0 0 1-1-1V3.5zM8 13h8v1.5H8V13zm0 3h5v1.5H8V16z"/>
+            </svg>
+          </div>
+          <div class="link-info">
+            <p class="link-name">ブクログ</p>
+            <p class="link-desc">読書記録・本棚</p>
+          </div>
+          <span class="link-arrow">→</span>
+        </a>
+
+        <a href="https://aku-go.blog.jp/" target="_blank" rel="noopener" class="link-card">
+          <div class="link-icon" style="background:#4a4a4a;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+              <path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5zm3 2v2h12V7H6zm0 4v2h12v-2H6zm0 4v2h8v-2H6z"/>
+            </svg>
+          </div>
+          <div class="link-info">
+            <p class="link-name">ブログ</p>
+            <p class="link-desc">aku-go.blog.jp</p>
+          </div>
+          <span class="link-arrow">→</span>
+        </a>
+
+        <!-- カクヨムは開設後に追加 -->
+        <div class="link-card" style="opacity:0.4; cursor:default; pointer-events:none;">
+          <div class="link-icon" style="background:#8b6914;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <div class="link-info">
+            <p class="link-name">カクヨム</p>
+            <p class="link-desc">小説投稿（近日公開）</p>
+          </div>
+          <span class="link-arrow">→</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section id="videos">
+    <div class="section-inner reveal">
+      <p class="section-label">Nicovideo</p>
+      <h2 class="section-title">Videos</h2>
+      <div class="divider"></div>
+      <p class="video-note">// 埋め込みたい動画のURLをここに入れてください</p>
+      <div class="video-grid">
+        <!-- 動画1：video_idをニコニコの動画IDに差し替えてください (例: sm12345678) -->
+        <div class="video-embed">
+          <iframe
+            src="https://embed.nicovideo.jp/watch/sm0000001?jsapi=1&noRelatedVideo=0&autoplay=0&allowProgrammaticFullScreen=1"
+            allowfullscreen
+            allow="autoplay; fullscreen"
+          ></iframe>
+        </div>
+        <!-- 動画2 -->
+        <div class="video-embed">
+          <iframe
+            src="https://embed.nicovideo.jp/watch/sm0000002?jsapi=1&noRelatedVideo=0&autoplay=0&allowProgrammaticFullScreen=1"
+            allowfullscreen
+            allow="autoplay; fullscreen"
+          ></iframe>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.08em; color:rgba(248,247,244,0.3);">
+        ※ sm0000001 / sm0000002 の部分をご自身の動画IDに書き換えてください
+      </p>
+    </div>
+  </section>
+
+  <!-- NOVELS -->
+  <section id="novels">
+    <div class="section-inner reveal">
+      <p class="section-label">Writing</p>
+      <h2 class="section-title">Novels</h2>
+      <div class="divider"></div>
+      <p class="novel-intro">
+        カクヨムにて小説を執筆・投稿予定です。ペンネームは現在準備中。
+        公開次第こちらに掲載します。
+      </p>
+
+      <!-- 小説カード（公開後に記入） -->
+      <div class="novel-card" style="opacity:0.5;">
+        <div class="novel-meta">
+          <p class="novel-genre">Coming Soon</p>
+          <p class="novel-title">タイトル未定</p>
+          <p class="novel-desc">小説投稿の準備中です。カクヨムで公開次第こちらにご案内します。</p>
+        </div>
+        <a href="#" class="novel-link" style="pointer-events:none;">
+          Read →
+        </a>
+      </div>
+
+      <div class="kakuyomu-banner">
+        <div class="kakuyomu-text">
+          <strong>カクヨム作家ページ</strong>
+          著者ページは近日公開予定です。
+        </div>
+        <a href="https://kakuyomu.jp" target="_blank" rel="noopener" class="kakuyomu-btn">
+          カクヨムへ →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog">
+    <div class="section-inner reveal">
+      <p class="section-label">Blog</p>
+      <h2 class="section-title">Blog</h2>
+      <div class="divider"></div>
+      <div class="blog-notice">
+        <strong>現在 livedoorブログ にて運営中。</strong><br>
+        今後このサイトへのブログ機能統合、または移行を検討しています。
+        移行後はこちらのページに最新記事が表示される予定です。
+      </div>
+      <a href="https://aku-go.blog.jp/" target="_blank" rel="noopener" class="blog-link">
+        現在のブログを読む →
+      </a>
+    </div>
+  </section>
+
+  <!-- BOOTH -->
+  <section id="booth" style="background: var(--navy);">
+    <div class="section-inner reveal">
+      <p class="section-label" style="color: var(--accent);">Shop</p>
+      <h2 class="section-title" style="color: var(--white);">BOOTH</h2>
+      <div class="divider" style="background: var(--accent);"></div>
+      <a href="https://sakego.booth.pm/" target="_blank" rel="noopener"
+        style="display:flex; align-items:center; gap:1.5rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); padding:2rem; text-decoration:none; transition: all 0.25s ease; max-width:560px;"
+        onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(200,169,110,0.5)';"
+        onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.12)';">
+        <div style="width:52px; height:52px; background:var(--accent); border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#0f1f3d">
+            <path d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm1 2v16h10V4H7zm2 3h6v2H9V7zm0 4h6v2H9v-2zm0 4h4v2H9v-2z"/>
+          </svg>
+        </div>
+        <div style="flex:1;">
+          <p style="font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:0.4rem;">SAKEGO / 毎食唐揚</p>
+          <p style="font-size:1rem; font-weight:500; color:var(--white); margin-bottom:0.3rem;">BOOTH ショップ</p>
+          <p style="font-size:0.82rem; color:rgba(248,247,244,0.5); line-height:1.7;">グッズ・デジタルコンテンツを販売しています。</p>
+        </div>
+        <span style="font-size:1rem; color:var(--accent);">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-name">Aku / @aku_niconico</p>
+    <p class="footer-copy">&copy; 2025 Aku. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // スクロールアニメーション
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
