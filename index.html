@@ -1243,21 +1243,22 @@
       <div class="work-card">
         <div class="work-header">
           <div>
-            <p class="work-title">ニコニコ週間ランキング</p>
-            <p class="work-subtitle">フォロワー補正つき動画ランキング</p>
+            <p class="work-title">ニコニコ週間ランキング <span style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.1em;">v2</span></p>
+            <p class="work-subtitle">独自アルゴリズムによる動画ランキング</p>
           </div>
           <span class="work-status">Live</span>
         </div>
         <p class="work-desc">
-          フォロワー数に依存しない「動画コンテンツの本当の面白さ」でランキングするWebサービス。
-          毎週土曜0:00に自動更新され、埋もれた良質コンテンツを発掘できる。
+          再生数だけに頼らない独自スコアリングで、埋もれた良質コンテンツを発掘するWebサービス。
+          毎週土曜0:00に自動更新。v2では7タグ対応・シリーズ検出・ダークモードを追加。
         </p>
         <div class="work-features">
-          <p class="work-feature">マイリスト数補正で新規投稿者も公平に評価</p>
-          <p class="work-feature">初投稿者ボーナス（+20%）・複数投稿ペナルティで公平性確保</p>
-          <p class="work-feature">タグ関連度フィルタでカテゴリ外動画を自動排除</p>
-          <p class="work-feature">Gemini AIが各動画に魅力的な見出し・コメントを生成</p>
-          <p class="work-feature">投稿者単位ミュート機能（最大1,000人）</p>
+          <p class="work-feature">独自スコアリングで実力ベースの公平なランキングを実現</p>
+          <p class="work-feature">複数の補正・ボーナス・ペナルティを組み合わせた独自アルゴリズム</p>
+          <p class="work-feature">タグ別フィルタリングで関連動画のみを厳選表示</p>
+          <p class="work-feature">Gemini AIが各動画に魅力的な見出し・コメントを自動生成</p>
+          <p class="work-feature">シリーズ動画を自動検出しHOT・失踪バッジで状態を表示【v2】</p>
+          <p class="work-feature">7タグ対応・ライト/ダークモード自動切替・投稿者ミュート機能【v2】</p>
         </div>
         <div>
           <p style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray-mid); margin-bottom:0.5rem;">Tech Stack</p>
@@ -1270,8 +1271,48 @@
           </div>
         </div>
         <div class="work-meta">
-          <p class="work-episode">Claude AIとの対話型開発で約3〜4時間で完成。</p>
+          <p class="work-episode">v1：約3〜4時間、v2：追加約2〜3時間で開発。Claude AIとの対話型開発。</p>
           <a href="https://nicoranking-7dbf8.web.app" target="_blank" rel="noopener" class="work-link">
+            Visit →
+          </a>
+        </div>
+      </div>
+
+
+
+      <!-- CircuitDrive -->
+      <div class="work-card">
+        <div class="work-header">
+          <div>
+            <p class="work-title">CircuitDrive</p>
+            <p class="work-subtitle">ADAS論文トラッカー・AI分析サービス</p>
+          </div>
+          <span class="work-status">Live</span>
+        </div>
+        <p class="work-desc">
+          arXivから毎日ADAS・自動運転関連論文を自動収集し、Gemini AIが電気設計エンジニア視点で
+          分析・ランキングするWebサービス。毎朝6:00 JSTに自動更新。
+        </p>
+        <div class="work-features">
+          <p class="work-feature">arXiv（cs.AR / eess.SP / eess.SY）から200件/カテゴリを自動取得・絞り込み</p>
+          <p class="work-feature">Gemini AIが要約・新規性・応用先・経済影響・専門家コメントを生成</p>
+          <p class="work-feature">デイリー/週間/月間/ミュートの4タブで論文を管理</p>
+          <p class="work-feature">センサAFE・SoC・電源管理・通信・機能安全の5カテゴリフィルタ</p>
+          <p class="work-feature">日本・欧州・中韓メーカー別の経済的インパクトをAIが分析</p>
+        </div>
+        <div>
+          <p style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray-mid); margin-bottom:0.5rem;">Tech Stack</p>
+          <div class="work-stack">
+            <span class="work-tech">Python</span>
+            <span class="work-tech">Gemini 2.5 Flash</span>
+            <span class="work-tech">arXiv API</span>
+            <span class="work-tech">GitHub Actions</span>
+            <span class="work-tech">Firebase Hosting</span>
+          </div>
+        </div>
+        <div class="work-meta">
+          <p class="work-episode">Claude AIとの対話型開発で約4〜5時間で完成。</p>
+          <a href="https://circuitdrive-29344.web.app" target="_blank" rel="noopener" class="work-link">
             Visit →
           </a>
         </div>
