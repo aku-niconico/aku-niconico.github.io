@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aku — Creator's Page</title>
@@ -622,6 +617,172 @@
       opacity: 0.6;
     }
 
+
+    /* ── WORKS ── */
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .work-card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--navy);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .work-card:hover {
+      box-shadow: 0 8px 32px rgba(15,31,61,0.1);
+      transform: translateY(-2px);
+    }
+
+    .work-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .work-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .work-status {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      background: rgba(15,31,61,0.06);
+      color: var(--navy-mid);
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .work-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .work-subtitle {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-top: 0.2rem;
+    }
+
+    .work-desc {
+      font-size: 0.88rem;
+      color: var(--gray-dark);
+      line-height: 1.9;
+    }
+
+    .work-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .work-feature {
+      font-size: 0.82rem;
+      color: var(--gray-dark);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .work-feature::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+    }
+
+    .work-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .work-tech {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(15,31,61,0.15);
+      color: var(--navy-mid);
+      border-radius: 2px;
+    }
+
+    .work-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--gray-light);
+      flex-wrap: wrap;
+    }
+
+    .work-episode {
+      font-size: 0.78rem;
+      color: var(--gray-mid);
+      font-style: italic;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .work-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+      border: 1px solid var(--navy);
+      padding: 0.5rem 0.9rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .work-link:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    @media (max-width: 680px) {
+      .works-grid { grid-template-columns: 1fr; }
+      .work-meta { flex-direction: column; align-items: flex-start; }
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--navy);
@@ -713,6 +874,7 @@
       <li><a href="#videos">Videos</a></li>
       <li><a href="#novels">Novels</a></li>
       <li><a href="#blog">Blog</a></li>
+      <li><a href="#works">Works</a></li>
       <li><a href="#booth">Shop</a></li>
     </ul>
   </nav>
@@ -1021,6 +1183,98 @@
     <a href="https://aku-go.blog.jp/" target="_blank" rel="noopener" class="blog-link">
       すべての記事を読む →
     </a>
+  </div>
+</section>
+
+
+<!-- WORKS -->
+<section id="works">
+  <div class="section-inner reveal">
+    <p class="section-label">Dev Works</p>
+    <h2 class="section-title">Works</h2>
+    <div class="divider"></div>
+    <div class="works-grid">
+
+      <!-- MyNews -->
+      <div class="work-card">
+        <div class="work-header">
+          <div>
+            <p class="work-title">MyNews</p>
+            <p class="work-subtitle">パーソナルニュースダイジェスト</p>
+          </div>
+          <span class="work-status">Live</span>
+        </div>
+        <p class="work-desc">
+          毎朝6:00 JSTに自動更新される個人向けニュースダイジェスト。
+          世界・日本・茨城・IT・AI・自動車の6カテゴリをAIが自動収集・要約し、
+          スポーツ・芸能などの不要情報を自動除外して配信する。
+        </p>
+        <div class="work-features">
+          <p class="work-feature">Gemini AIによる5W1H要約・新規性・影響・展望を自動生成</p>
+          <p class="work-feature">重要度フィルタで低品質記事を自動除外</p>
+          <p class="work-feature">発信元ミュート機能（最大10,000件）</p>
+          <p class="work-feature">天気・服装提案をOpen-Meteo APIで毎日更新</p>
+          <p class="work-feature">SNS共有ボタン・PWA対応（Androidホーム画面に追加可）</p>
+        </div>
+        <div>
+          <p style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray-mid); margin-bottom:0.5rem;">Tech Stack</p>
+          <div class="work-stack">
+            <span class="work-tech">Python</span>
+            <span class="work-tech">Gemini 2.5 Flash</span>
+            <span class="work-tech">NewsAPI</span>
+            <span class="work-tech">NHK RSS</span>
+            <span class="work-tech">GitHub Actions</span>
+            <span class="work-tech">Firebase Hosting</span>
+            <span class="work-tech">Open-Meteo API</span>
+          </div>
+        </div>
+        <div class="work-meta">
+          <p class="work-episode">Claude AIとの対話型開発で約4〜5時間で完成。</p>
+          <a href="https://mynews-7bf80.web.app" target="_blank" rel="noopener" class="work-link">
+            Visit →
+          </a>
+        </div>
+      </div>
+
+      <!-- ニコニコランキング -->
+      <div class="work-card">
+        <div class="work-header">
+          <div>
+            <p class="work-title">ニコニコ週間ランキング</p>
+            <p class="work-subtitle">フォロワー補正つき動画ランキング</p>
+          </div>
+          <span class="work-status">Live</span>
+        </div>
+        <p class="work-desc">
+          フォロワー数に依存しない「動画コンテンツの本当の面白さ」でランキングするWebサービス。
+          毎週土曜0:00に自動更新され、埋もれた良質コンテンツを発掘できる。
+        </p>
+        <div class="work-features">
+          <p class="work-feature">マイリスト数補正で新規投稿者も公平に評価</p>
+          <p class="work-feature">初投稿者ボーナス（+20%）・複数投稿ペナルティで公平性確保</p>
+          <p class="work-feature">タグ関連度フィルタでカテゴリ外動画を自動排除</p>
+          <p class="work-feature">Gemini AIが各動画に魅力的な見出し・コメントを生成</p>
+          <p class="work-feature">投稿者単位ミュート機能（最大1,000人）</p>
+        </div>
+        <div>
+          <p style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray-mid); margin-bottom:0.5rem;">Tech Stack</p>
+          <div class="work-stack">
+            <span class="work-tech">Python</span>
+            <span class="work-tech">Gemini 2.5 Flash</span>
+            <span class="work-tech">ニコニコAPI v2</span>
+            <span class="work-tech">GitHub Actions</span>
+            <span class="work-tech">Firebase Hosting</span>
+          </div>
+        </div>
+        <div class="work-meta">
+          <p class="work-episode">Claude AIとの対話型開発で約3〜4時間で完成。</p>
+          <a href="https://nicoranking-7dbf8.web.app" target="_blank" rel="noopener" class="work-link">
+            Visit →
+          </a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
