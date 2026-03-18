@@ -1202,7 +1202,7 @@
       <div class="work-card">
         <div class="work-header">
           <div>
-            <p class="work-title">MyNews</p>
+            <p class="work-title">MyNews <span style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.1em;">v2</span></p>
             <p class="work-subtitle">パーソナルニュースダイジェスト</p>
           </div>
           <span class="work-status">Live</span>
@@ -1214,10 +1214,12 @@
         </p>
         <div class="work-features">
           <p class="work-feature">Gemini AIによる5W1H要約・新規性・影響・展望を自動生成</p>
-          <p class="work-feature">重要度フィルタで低品質記事を自動除外</p>
+          <p class="work-feature">重要度×新規性フィルタで低品質・プロモ記事を自動除外</p>
           <p class="work-feature">発信元ミュート機能（最大10,000件）</p>
           <p class="work-feature">天気・服装提案をOpen-Meteo APIで毎日更新</p>
           <p class="work-feature">SNS共有ボタン・PWA対応（Androidホーム画面に追加可）</p>
+          <p class="work-feature">Geminiフォールバック機能で予備キーに自動切替【v2】</p>
+          <p class="work-feature">Cache-Control設定・?v=Date.now()でキャッシュ問題を解消【v2】</p>
         </div>
         <div>
           <p style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray-mid); margin-bottom:0.5rem;">Tech Stack</p>
@@ -1232,7 +1234,7 @@
           </div>
         </div>
         <div class="work-meta">
-          <p class="work-episode">Claude AIとの対話型開発で約4〜5時間で完成。</p>
+          <p class="work-episode">Claude AIとの対話型開発で約4〜5時間で完成。v2でキャッシュ対策・フォールバック機能を追加。</p>
           <a href="https://mynews-7bf80.web.app" target="_blank" rel="noopener" class="work-link">
             Visit →
           </a>
@@ -1243,22 +1245,23 @@
       <div class="work-card">
         <div class="work-header">
           <div>
-            <p class="work-title">ニコニコ週間ランキング <span style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.1em;">v2</span></p>
-            <p class="work-subtitle">独自アルゴリズムによる動画ランキング</p>
+            <p class="work-title">ニコニコ週間ランキング <span style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.1em;">v3</span></p>
+            <p class="work-subtitle">独自アルゴリズムによる動画ランキング＋投稿祭告知</p>
           </div>
           <span class="work-status">Live</span>
         </div>
         <p class="work-desc">
           再生数だけに頼らない独自スコアリングで、埋もれた良質コンテンツを発掘するWebサービス。
-          毎週土曜0:00に自動更新。v2では7タグ対応・シリーズ検出・ダークモードを追加。
+          毎週土曜0:00に自動更新。v3では投稿祭告知機能・APIキーローテーション・キャッシュ対策を追加。
         </p>
         <div class="work-features">
           <p class="work-feature">独自スコアリングで実力ベースの公平なランキングを実現</p>
           <p class="work-feature">複数の補正・ボーナス・ペナルティを組み合わせた独自アルゴリズム</p>
-          <p class="work-feature">タグ別フィルタリングで関連動画のみを厳選表示</p>
-          <p class="work-feature">Gemini AIが各動画に魅力的な見出し・コメントを自動生成</p>
-          <p class="work-feature">シリーズ動画を自動検出しHOT・失踪バッジで状態を表示【v2】</p>
-          <p class="work-feature">7タグ対応・ライト/ダークモード自動切替・投稿者ミュート機能【v2】</p>
+          <p class="work-feature">7タグ対応・ライト/ダークモード自動切替・投稿者ミュート機能</p>
+          <p class="work-feature">シリーズ動画を自動検出しHOT・失踪バッジで状態を表示</p>
+          <p class="work-feature">投稿祭告知を毎日自動収集・AIが開催期間・参加タグを抽出【v3】</p>
+          <p class="work-feature">開催中/間近/予定/日程不明を自動判定・HOT/注目バッジで表示【v3】</p>
+          <p class="work-feature">APIキーローテーション（最大3キー自動切替）【v3】</p>
         </div>
         <div>
           <p style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray-mid); margin-bottom:0.5rem;">Tech Stack</p>
@@ -1271,7 +1274,7 @@
           </div>
         </div>
         <div class="work-meta">
-          <p class="work-episode">v1：約3〜4時間、v2：追加約2〜3時間で開発。Claude AIとの対話型開発。</p>
+          <p class="work-episode">v1〜v3まで段階的に開発。v3では投稿祭告知機能を約1日で追加。Claude AIとの対話型開発。</p>
           <a href="https://nicoranking-7dbf8.web.app" target="_blank" rel="noopener" class="work-link">
             Visit →
           </a>
