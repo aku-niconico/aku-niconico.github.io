@@ -1202,7 +1202,7 @@
       <div class="work-card">
         <div class="work-header">
           <div>
-            <p class="work-title">MyNews <span style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.1em;">v2</span></p>
+            <p class="work-title">MyNews <span style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.1em;">v7</span></p>
             <p class="work-subtitle">パーソナルニュースダイジェスト</p>
           </div>
           <span class="work-status">Live</span>
@@ -1218,8 +1218,10 @@
           <p class="work-feature">発信元ミュート機能（最大10,000件）</p>
           <p class="work-feature">天気・服装提案をOpen-Meteo APIで毎日更新</p>
           <p class="work-feature">SNS共有ボタン・PWA対応（Androidホーム画面に追加可）</p>
-          <p class="work-feature">Geminiフォールバック機能で予備キーに自動切替【v2】</p>
-          <p class="work-feature">Cache-Control設定・?v=Date.now()でキャッシュ問題を解消【v2】</p>
+          <p class="work-feature">ダーク/ライトモード切替（ボタン切替＋OS設定連動）【v5】</p>
+          <p class="work-feature">503 ServerError対応・30秒待機後バックアップキーへ自動切替【v7】</p>
+          <p class="work-feature">resolve_model()でGeminiモデルを動的選択・廃止に自動対応【v7】</p>
+          <p class="work-feature">FILE_VERSION管理＋check_versions.pyで上書き漏れを自動検出【v7】</p>
         </div>
         <div>
           <p style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray-mid); margin-bottom:0.5rem;">Tech Stack</p>
@@ -1228,13 +1230,14 @@
             <span class="work-tech">Gemini 2.5 Flash</span>
             <span class="work-tech">NewsAPI</span>
             <span class="work-tech">NHK RSS</span>
+            <span class="work-tech">Google News RSS</span>
             <span class="work-tech">GitHub Actions</span>
             <span class="work-tech">Firebase Hosting</span>
             <span class="work-tech">Open-Meteo API</span>
           </div>
         </div>
         <div class="work-meta">
-          <p class="work-episode">Claude AIとの対話型開発で約4〜5時間で完成。v2でキャッシュ対策・フォールバック機能を追加。</p>
+          <p class="work-episode">v1〜v7まで段階的に機能拡張。v7でGeminiの堅牢化（503対応・モデル動的選択・バージョン管理）を統合管理マスター資料に基づき横展開適用。Claude AIとの対話型開発。</p>
           <a href="https://mynews-7bf80.web.app" target="_blank" rel="noopener" class="work-link">
             Visit →
           </a>
@@ -1245,23 +1248,24 @@
       <div class="work-card">
         <div class="work-header">
           <div>
-            <p class="work-title">ニコニコ週間ランキング <span style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.1em;">v3</span></p>
+            <p class="work-title">ニコニコ週間ランキング <span style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.1em;">v9</span></p>
             <p class="work-subtitle">独自アルゴリズムによる動画ランキング＋投稿祭告知</p>
           </div>
           <span class="work-status">Live</span>
         </div>
         <p class="work-desc">
           再生数だけに頼らない独自スコアリングで、埋もれた良質コンテンツを発掘するWebサービス。
-          毎週土曜0:00に自動更新。v3では投稿祭告知機能・APIキーローテーション・キャッシュ対策を追加。
+          月〜金は曜日分散で対象タグを毎日更新、毎週土曜0:00に全タグを集計。v9ではプッシュ通知・タグ曜日分散・AIコメント翌日補完を実装。
         </p>
         <div class="work-features">
           <p class="work-feature">独自スコアリングで実力ベースの公平なランキングを実現</p>
-          <p class="work-feature">複数の補正・ボーナス・ペナルティを組み合わせた独自アルゴリズム</p>
-          <p class="work-feature">7タグ対応・ライト/ダークモード自動切替・投稿者ミュート機能</p>
-          <p class="work-feature">シリーズ動画を自動検出しHOT・失踪バッジで状態を表示</p>
-          <p class="work-feature">投稿祭告知を毎日自動収集・AIが開催期間・参加タグを抽出【v3】</p>
-          <p class="work-feature">開催中/間近/予定/日程不明を自動判定・HOT/注目バッジで表示【v3】</p>
-          <p class="work-feature">APIキーローテーション（最大3キー自動切替）【v3】</p>
+          <p class="work-feature">7タグ対応（自転車・料理・ニコニコ技術部・旅行・車載動画・VOCALOID・ソフトウェアトーク）</p>
+          <p class="work-feature">月〜金の曜日分散更新でAPI負荷を分散・タグ別更新日時を鮮度カラーで表示【v9】</p>
+          <p class="work-feature">プッシュ通知（FCM）：タグ別・投稿祭別にON/OFF設定可能【v9】</p>
+          <p class="work-feature">AIコメント翌日自動補完（土曜9:00 JSTにretry.yml再実行）【v9】</p>
+          <p class="work-feature">投稿祭告知を毎日自動収集・🔴開催中/🟠間近/🔵予定/⬜不明でセクション分け表示</p>
+          <p class="work-feature">HOT・注目・初投稿・完結バッジ / 投稿者ミュート機能（最大1,000人）</p>
+          <p class="work-feature">ダーク/ライトモード自動切替（OS設定連動）・PWA対応</p>
         </div>
         <div>
           <p style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray-mid); margin-bottom:0.5rem;">Tech Stack</p>
@@ -1269,12 +1273,13 @@
             <span class="work-tech">Python</span>
             <span class="work-tech">Gemini 2.5 Flash</span>
             <span class="work-tech">ニコニコAPI v2</span>
+            <span class="work-tech">Firebase Cloud Messaging</span>
             <span class="work-tech">GitHub Actions</span>
             <span class="work-tech">Firebase Hosting</span>
           </div>
         </div>
         <div class="work-meta">
-          <p class="work-episode">v1〜v3まで段階的に開発。v3では投稿祭告知機能を約1日で追加。Claude AIとの対話型開発。</p>
+          <p class="work-episode">v1〜v9まで段階的に開発。weekly_batch v14まで到達。プッシュ通知・曜日分散・AIコメント翌日補完をClaude AIとの対話型開発で実現。</p>
           <a href="https://nicoranking-7dbf8.web.app" target="_blank" rel="noopener" class="work-link">
             Visit →
           </a>
@@ -1287,21 +1292,23 @@
       <div class="work-card">
         <div class="work-header">
           <div>
-            <p class="work-title">CircuitDrive</p>
-            <p class="work-subtitle">ADAS論文トラッカー・AI分析サービス</p>
+            <p class="work-title">CircuitDrive <span style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.1em;">v6.1</span></p>
+            <p class="work-subtitle">ADAS/EV 論文トラッカー・AI分析サービス</p>
           </div>
           <span class="work-status">Live</span>
         </div>
         <p class="work-desc">
-          arXivから毎日ADAS・自動運転関連論文を自動収集し、Gemini AIが電気設計エンジニア視点で
-          分析・ランキングするWebサービス。毎朝6:00 JSTに自動更新。
+          arXivからADAS・自動運転・車載電気設計関連論文を自動収集し、Gemini AIが電気設計エンジニア視点で
+          分析・ランキングするWebサービス。毎週土曜6:00 JSTに週次自動更新。
         </p>
         <div class="work-features">
-          <p class="work-feature">arXiv（cs.AR / eess.SP / eess.SY）から200件/カテゴリを自動取得・絞り込み</p>
+          <p class="work-feature">arXiv（cs.AR / eess.SP / eess.SY）から自動取得・電気設計視点でフィルタリング</p>
           <p class="work-feature">Gemini AIが要約・新規性・応用先・経済影響・専門家コメントを生成</p>
-          <p class="work-feature">デイリー/週間/月間/ミュートの4タブで論文を管理</p>
-          <p class="work-feature">センサAFE・SoC・電源管理・通信・機能安全の5カテゴリフィルタ</p>
+          <p class="work-feature">週間/月間/年間の3層タブ構造（月間は週次データ蓄積→月末完成方式）【v6】</p>
+          <p class="work-feature">年間タブ：重要度4以上の論文を自動蓄積・年次再評価【v6】</p>
+          <p class="work-feature">センサAFE・SoC/デジタル・電源管理・通信・機能安全の5カテゴリフィルタ</p>
           <p class="work-feature">日本・欧州・中韓メーカー別の経済的インパクトをAIが分析</p>
+          <p class="work-feature">FCMプッシュ通知・PWA対応・ダーク/ライトモード切替</p>
         </div>
         <div>
           <p style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray-mid); margin-bottom:0.5rem;">Tech Stack</p>
@@ -1309,12 +1316,13 @@
             <span class="work-tech">Python</span>
             <span class="work-tech">Gemini 2.5 Flash</span>
             <span class="work-tech">arXiv API</span>
+            <span class="work-tech">Firebase Cloud Messaging</span>
             <span class="work-tech">GitHub Actions</span>
             <span class="work-tech">Firebase Hosting</span>
           </div>
         </div>
         <div class="work-meta">
-          <p class="work-episode">Claude AIとの対話型開発で約4〜5時間で完成。</p>
+          <p class="work-episode">Claude AIとの対話型開発で初版完成後、v6で週次更新・週間/月間/年間タブ・データ蓄積方式に刷新。横展開の起点となった堅牢化パターン（503対応・resolve_model等）を最初に実装したサービス。</p>
           <a href="https://circuitdrive-29344.web.app" target="_blank" rel="noopener" class="work-link">
             Visit →
           </a>
