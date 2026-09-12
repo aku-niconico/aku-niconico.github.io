@@ -7,6 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aku — Creator's Page</title>
+  <meta name="description" content="Aku（@aku_niconico）の制作ページ。Androidカメラアプリ AK CAMERA、MyNews、ニコニコ週間ランキング、CircuitDrive の個人開発と、ニコニコ動画への投稿・ブログ・同人誌をまとめています。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -24,15 +25,8 @@
       --text: #1a1a1a;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 64px; }
 
     body {
       background: var(--white);
@@ -43,1289 +37,482 @@
       overflow-x: hidden;
     }
 
+    img { display: block; max-width: 100%; }
+    a { color: var(--navy-mid); }
+
     /* ── NAV ── */
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(248, 247, 244, 0.92);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(248, 247, 244, 0.94);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(15, 31, 61, 0.08);
-      padding: 0 2rem;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 0 1.25rem; height: 56px;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
     }
-
     .nav-logo {
-      font-family: 'DM Mono', monospace;
-      font-size: 1rem;
-      letter-spacing: 0.12em;
-      color: var(--navy);
-      font-weight: 400;
+      font-family: 'DM Mono', monospace; font-size: 1rem;
+      letter-spacing: .12em; color: var(--navy); text-decoration: none; flex-shrink: 0;
     }
-
     .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
+      display: flex; gap: 1.35rem; list-style: none;
+      overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
     }
-
+    .nav-links::-webkit-scrollbar { display: none; }
     .nav-links a {
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gray-dark);
-      text-decoration: none;
-      transition: color 0.2s;
+      font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--gray-dark); text-decoration: none; white-space: nowrap; transition: color .2s;
     }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-links a.kofi { color: #8a6d33; }
 
-    .nav-links a:hover {
-      color: var(--navy);
-    }
-
-    /* ── HERO ── */
+    /* ── HERO（100vh をやめて、1画面ぶんのスクロールを削った） ── */
     .hero {
-      min-height: 100vh;
-      background: var(--navy);
-      display: flex;
-      align-items: center;
-      padding: 8rem 2rem 4rem;
-      position: relative;
-      overflow: hidden;
+      background: var(--navy); color: var(--white);
+      padding: 3.4rem 1.5rem 3rem; position: relative; overflow: hidden;
     }
-
     .hero::before {
-      content: '';
-      position: absolute;
-      top: -30%;
-      right: -10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(42, 74, 138, 0.5) 0%, transparent 70%);
+      content: ''; position: absolute; top: -50%; right: -8%;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(42,74,138,.5) 0%, transparent 70%);
       pointer-events: none;
     }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -10%;
-      left: -5%;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(200, 169, 110, 0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
+    .hero-inner { max-width: 940px; margin: 0 auto; position: relative; z-index: 1; }
     .hero-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.2s forwards;
+      font-family: 'DM Mono', monospace; font-size: .68rem;
+      letter-spacing: .25em; text-transform: uppercase; color: var(--accent);
     }
-
     .hero-name {
-      font-family: 'DM Sans', sans-serif;
-      font-size: clamp(3.5rem, 10vw, 7rem);
-      font-weight: 300;
-      color: var(--white);
-      letter-spacing: -0.02em;
-      line-height: 1.0;
-      margin-bottom: 0.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.35s forwards;
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      font-size: clamp(2.4rem, 9vw, 3.6rem); letter-spacing: .04em; margin-top: .3rem;
     }
-
     .hero-handle {
-      font-family: 'DM Mono', monospace;
-      font-size: clamp(0.85rem, 2vw, 1rem);
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      margin-bottom: 2.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.45s forwards;
+      font-family: 'DM Mono', monospace; font-size: .82rem;
+      color: var(--gray-mid); letter-spacing: .08em;
     }
-
     .hero-desc {
-      font-size: clamp(0.9rem, 2vw, 1.05rem);
-      color: rgba(248, 247, 244, 0.65);
-      max-width: 540px;
-      line-height: 1.9;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.55s forwards;
+      margin-top: 1.15rem; max-width: 46rem;
+      font-size: .93rem; color: rgba(248,247,244,.82); line-height: 1.85;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.5rem; }
+    .chip {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .42rem .85rem; border-radius: 999px;
+      border: 1px solid rgba(248,247,244,.22);
+      color: rgba(248,247,244,.9); text-decoration: none;
+      font-size: .78rem; letter-spacing: .02em;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .chip:hover { background: rgba(248,247,244,.1); border-color: rgba(248,247,244,.45); }
+    .chip.gold { border-color: var(--accent); color: var(--accent-light); }
+    .chip.gold:hover { background: var(--accent); color: var(--navy); border-color: var(--accent); }
+
+    /* ── SECTION ── */
+    section { padding: 3.2rem 1.5rem; }
+    .inner { max-width: 1040px; margin: 0 auto; }
+    .label {
+      font-family: 'DM Mono', monospace; font-size: .66rem;
+      letter-spacing: .22em; text-transform: uppercase; color: var(--accent);
+    }
+    h2 {
+      font-weight: 400; font-size: clamp(1.35rem, 4.2vw, 1.75rem);
+      color: var(--navy); margin-top: .25rem; letter-spacing: .03em;
+    }
+    .rule { width: 48px; height: 2px; background: var(--accent); margin: .9rem 0 1.6rem; }
+    .lead { font-size: .88rem; color: var(--gray-dark); margin-bottom: 1.6rem; max-width: 52rem; }
+    .alt { background: var(--gray-light); }
+    .dark { background: var(--navy); }
+    .dark h2 { color: var(--white); }
+    .dark .lead { color: rgba(248,247,244,.6); }
+
+    /* ── WORKS: 目玉（AK CAMERA） ── */
+    .feature {
+      background: #fff; border: 1px solid rgba(15,31,61,.1); border-radius: 6px;
+      overflow: hidden; box-shadow: 0 10px 30px rgba(15,31,61,.07);
+    }
+    .feature-top { display: grid; grid-template-columns: 1.05fr 1fr; }
+    @media (max-width: 760px) { .feature-top { grid-template-columns: 1fr; } }
+    .feature-body { padding: 1.7rem 1.6rem 1.5rem; }
+    .feature-eyebrow {
+      display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin-bottom: .7rem;
+    }
+    .feature-icon { width: 44px; height: 44px; border-radius: 11px; flex-shrink: 0; }
+    .feature-title {
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      font-size: 1.5rem; color: var(--navy); letter-spacing: .04em; line-height: 1.2;
+    }
+    .pill {
+      font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .12em;
+      text-transform: uppercase; padding: .22rem .55rem; border-radius: 999px;
+      border: 1px solid var(--accent); color: #8a6d33;
+    }
+    .pill.solid { background: var(--accent); color: var(--navy); border-color: var(--accent); }
+    .feature-sub { font-size: .82rem; color: var(--gray-dark); margin-top: .1rem; }
+    .feature-desc { font-size: .9rem; margin: .9rem 0 1rem; line-height: 1.85; }
+    .feature-points { list-style: none; margin-bottom: 1.2rem; }
+    .feature-points li {
+      position: relative; padding-left: 1.05rem; font-size: .84rem;
+      color: var(--gray-dark); margin-bottom: .3rem;
+    }
+    .feature-points li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+    .feature-shot { background: var(--navy); position: relative; overflow: hidden; min-height: 260px; }
+    .feature-shot > img:first-child { width: 100%; height: 100%; object-fit: cover; min-height: 260px; }
+    .feature-shot .phone {
+      position: absolute; right: 1.1rem; bottom: -1px; width: 34%; max-width: 148px;
+      border-radius: 10px 10px 0 0; border: 3px solid rgba(248,247,244,.9); border-bottom: 0;
+      box-shadow: 0 10px 28px rgba(0,0,0,.45);
+    }
+    .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: rgba(15,31,61,.1); }
+    .strip img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+
+    .btnrow { display: flex; flex-wrap: wrap; gap: .55rem; }
+    .btn {
+      display: inline-block; padding: .55rem 1.05rem; border-radius: 3px;
+      border: 1px solid rgba(15,31,61,.22); color: var(--navy); background: #fff;
+      text-decoration: none; font-size: .83rem; letter-spacing: .02em;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .btn:hover { background: var(--navy); border-color: var(--navy); color: var(--white); }
+    .btn-solid { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .btn-solid:hover { background: var(--navy-mid); border-color: var(--navy-mid); }
+    .btn-accent { border-color: var(--accent); color: #8a6d33; }
+    .btn-accent:hover { background: var(--accent); border-color: var(--accent); color: var(--navy); }
+
+    /* ── WORKS: そのほか ── */
+    .work-grid {
+      display: grid; gap: 1.1rem; margin-top: 1.4rem;
+      grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    }
+    .work {
+      background: #fff; border: 1px solid rgba(15,31,61,.1); border-radius: 5px;
+      overflow: hidden; display: flex; flex-direction: column;
+    }
+    .work-shot { aspect-ratio: 16/10; overflow: hidden; background: var(--navy); }
+    .work-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .work-body { padding: 1.05rem 1.1rem 1.15rem; display: flex; flex-direction: column; flex: 1; }
+    .work-name {
+      font-size: 1rem; font-weight: 500; color: var(--navy);
+      display: flex; align-items: baseline; gap: .45rem; flex-wrap: wrap;
+    }
+    .work-ver { font-family: 'DM Mono', monospace; font-size: .64rem; color: var(--accent); letter-spacing: .1em; }
+    .work-sub { font-size: .76rem; color: var(--gray-dark); margin-top: .1rem; }
+    .work-desc { font-size: .83rem; color: var(--gray-dark); margin: .7rem 0 .8rem; line-height: 1.75; flex: 1; }
+    details.more { margin-bottom: .9rem; }
+    details.more summary {
+      cursor: pointer; list-style: none;
+      font-family: 'DM Mono', monospace; font-size: .66rem;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--gray-dark);
+      padding: .35rem 0; border-top: 1px solid var(--gray-light);
+    }
+    details.more summary::-webkit-details-marker { display: none; }
+    details.more summary::after { content: ' ＋'; color: var(--accent); }
+    details.more[open] summary::after { content: ' －'; }
+    details.more summary:hover { color: var(--navy); }
+    .feat { list-style: none; margin: .5rem 0 .7rem; }
+    .feat li {
+      position: relative; padding-left: .95rem; font-size: .78rem;
+      color: var(--gray-dark); margin-bottom: .25rem; line-height: 1.65;
+    }
+    .feat li::before { content: '·'; position: absolute; left: .2rem; color: var(--accent); }
+    .stack { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: .5rem; }
+    .tech {
+      font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .04em;
+      background: var(--gray-light); color: var(--gray-dark); padding: .18rem .45rem; border-radius: 2px;
     }
 
-    .hero-line {
-      width: 48px;
-      height: 2px;
-      background: var(--accent);
-      margin: 2.5rem 0;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.5s forwards;
+    /* ── 横スクロールの列（動画・ショップ） ── */
+    .rail {
+      display: grid; grid-auto-flow: column; grid-auto-columns: minmax(292px, 1fr);
+      gap: .8rem; overflow-x: auto; padding-bottom: .9rem;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
     }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      opacity: 0;
-      animation: fadeIn 1s ease 1.2s forwards;
-    }
-
-    .hero-scroll span {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(248,247,244,0.35);
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, rgba(200,169,110,0.6), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.4; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.2); }
-    }
-
-    /* ── SECTIONS ── */
-    section {
-      padding: 6rem 2rem;
-    }
-
-    .section-inner {
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title {
-      font-family: 'DM Sans', sans-serif;
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 300;
-      color: var(--navy);
-      letter-spacing: -0.02em;
-      margin-bottom: 2.5rem;
-    }
-
-    .divider {
-      width: 36px;
-      height: 2px;
-      background: var(--navy-light);
-      margin-bottom: 2.5rem;
-    }
-
-    /* ── PROFILE ── */
-    #profile {
-      background: var(--white);
-    }
-
-    .profile-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .profile-text p {
-      font-size: 0.95rem;
-      color: var(--gray-dark);
-      line-height: 2;
-      margin-bottom: 1.2rem;
-    }
-
-    .profile-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      padding: 0.3rem 0.75rem;
-      border: 1px solid rgba(15, 31, 61, 0.2);
-      color: var(--navy-mid);
-      border-radius: 2px;
-    }
-
-    .profile-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .stat-item {
-      padding: 1.5rem;
-      border: 1px solid var(--gray-light);
-      border-left: 3px solid var(--navy);
-    }
-
-    .stat-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gray-mid);
-      margin-bottom: 0.4rem;
-    }
-
-    .stat-value {
-      font-size: 0.95rem;
-      color: var(--navy);
-      font-weight: 500;
-    }
-
-    /* ── LINKS ── */
-    #links {
-      background: var(--gray-light);
-    }
-
-    .links-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-
-    .link-card {
-      background: var(--white);
-      border: 1px solid transparent;
-      padding: 1.5rem;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      transition: all 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .link-card::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--navy);
-      transform: scaleX(0);
-      transition: transform 0.25s ease;
-    }
-
-    .link-card:hover {
-      border-color: rgba(15, 31, 61, 0.12);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(15,31,61,0.08);
-    }
-
-    .link-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .link-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--navy);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1.1rem;
-    }
-
-    .link-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .link-name {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--navy);
-      margin-bottom: 0.15rem;
-    }
-
-    .link-desc {
-      font-size: 0.72rem;
-      color: var(--gray-mid);
-      letter-spacing: 0.02em;
-    }
-
-    .link-arrow {
-      font-size: 0.8rem;
-      color: var(--gray-mid);
-      transition: transform 0.2s, color 0.2s;
-    }
-
-    .link-card:hover .link-arrow {
-      transform: translateX(3px);
-      color: var(--navy);
-    }
-
-    /* ── VIDEO ── */
-    #videos {
-      background: var(--navy);
-    }
-
-    #videos .section-title {
-      color: var(--white);
-    }
-
-    #videos .section-label {
-      color: var(--accent);
-    }
-
-    #videos .divider {
-      background: var(--accent);
-    }
-
-    .video-note {
-      font-size: 0.82rem;
-      color: rgba(248,247,244,0.45);
-      margin-bottom: 2rem;
-      font-family: 'DM Mono', monospace;
-      letter-spacing: 0.05em;
-    }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .video-placeholder {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 4px;
-      aspect-ratio: 16/9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      color: rgba(248,247,244,0.35);
-      font-size: 0.78rem;
-      font-family: 'DM Mono', monospace;
-      letter-spacing: 0.1em;
-    }
-
-    .video-placeholder-icon {
-      font-size: 2rem;
-      opacity: 0.4;
-    }
-
-    .video-embed {
-      border-radius: 4px;
-      overflow: hidden;
-      aspect-ratio: 16/9;
-      background: #000;
-    }
-
-    .video-embed iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-
-    /* ── NOVELS ── */
-    #novels {
-      background: var(--white);
-    }
-
-    .novel-intro {
-      font-size: 0.9rem;
-      color: var(--gray-dark);
-      line-height: 2;
-      max-width: 600px;
-      margin-bottom: 2.5rem;
-    }
-
-    .novel-card {
-      border: 1px solid var(--gray-light);
-      padding: 2rem;
-      margin-bottom: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 2rem;
-      transition: all 0.2s ease;
-    }
-
-    .novel-card:hover {
-      border-color: var(--navy);
-      box-shadow: 4px 4px 0 var(--navy);
-      transform: translate(-2px, -2px);
-    }
-
-    .novel-meta {
-      flex: 1;
-    }
-
-    .novel-genre {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .novel-title {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--navy);
-      margin-bottom: 0.5rem;
-    }
-
-    .novel-desc {
-      font-size: 0.85rem;
-      color: var(--gray-dark);
-      line-height: 1.8;
-    }
-
-    .novel-link {
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--navy);
-      text-decoration: none;
-      border: 1px solid var(--navy);
-      padding: 0.6rem 1rem;
-      transition: all 0.2s;
-    }
-
-    .novel-link:hover {
-      background: var(--navy);
-      color: var(--white);
-    }
-
-    .kakuyomu-banner {
-      margin-top: 2rem;
-      padding: 1.5rem 2rem;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .kakuyomu-text {
-      color: rgba(248,247,244,0.7);
-      font-size: 0.85rem;
-    }
-
-    .kakuyomu-text strong {
-      color: var(--white);
-      display: block;
-      font-size: 0.95rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .kakuyomu-btn {
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--accent);
-      color: var(--navy);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 0.75rem 1.25rem;
-      font-weight: 500;
-      transition: opacity 0.2s;
-    }
-
-    .kakuyomu-btn:hover {
-      opacity: 0.85;
+    .rail > * { scroll-snap-align: start; }
+    .rail::-webkit-scrollbar { height: 6px; }
+    .rail::-webkit-scrollbar-thumb { background: rgba(200,169,110,.5); border-radius: 3px; }
+    .rail::-webkit-scrollbar-track { background: rgba(15,31,61,.06); }
+    .dark .rail::-webkit-scrollbar-track { background: rgba(248,247,244,.08); }
+    .embed { aspect-ratio: 16/9; background: #000; border-radius: 3px; overflow: hidden; }
+    .embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .hint {
+      font-family: 'DM Mono', monospace; font-size: .64rem;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--gray-mid); margin-top: .5rem;
     }
 
     /* ── BLOG ── */
-    #blog {
+    .post {
+      display: flex; align-items: center; gap: 1rem; padding: .85rem 0;
+      border-bottom: 1px solid var(--gray-light); text-decoration: none; transition: opacity .2s;
+    }
+    .post:hover { opacity: .62; }
+    .post img, .post .ph {
+      width: 64px; height: 64px; flex-shrink: 0; object-fit: cover; border-radius: 2px;
       background: var(--gray-light);
     }
+    .post-title {
+      font-size: .89rem; color: var(--navy); font-weight: 500; line-height: 1.5;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .post-date { font-family: 'DM Mono', monospace; font-size: .66rem; color: var(--gray-mid); }
 
-    .blog-notice {
-      padding: 1.5rem 2rem;
-      border-left: 3px solid var(--accent);
-      background: var(--white);
-      font-size: 0.85rem;
-      color: var(--gray-dark);
-      line-height: 1.9;
-      margin-bottom: 2rem;
+    /* ── SHOP ── */
+    .goods {
+      display: block; text-decoration: none; border-radius: 3px; overflow: hidden;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      transition: background .25s, border-color .25s;
+    }
+    .goods:hover { background: rgba(255,255,255,.1); border-color: rgba(200,169,110,.4); }
+    .goods .thumb { aspect-ratio: 1/1; overflow: hidden; background: #000; }
+    .goods img { width: 100%; height: 100%; object-fit: cover; }
+    .goods-name {
+      font-size: .78rem; color: rgba(248,247,244,.9); line-height: 1.45; padding: .6rem .7rem .1rem;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .goods-price {
+      font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--accent); padding: 0 .7rem .7rem;
     }
 
-    .blog-notice strong {
-      color: var(--navy);
+    /* ── ABOUT ── */
+    .about-grid { display: grid; gap: 2rem; grid-template-columns: 1.35fr 1fr; }
+    @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-text p + p { margin-top: .75rem; }
+    .about-text p { font-size: .9rem; line-height: 1.9; }
+    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.1rem; }
+    .tag {
+      font-size: .72rem; letter-spacing: .03em; color: var(--gray-dark);
+      border: 1px solid rgba(15,31,61,.14); padding: .22rem .6rem; border-radius: 999px;
+    }
+    .facts { display: grid; gap: .8rem; align-content: start; }
+    .fact { border-left: 2px solid var(--accent); padding-left: .85rem; }
+    .fact-k {
+      font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gray-mid);
+    }
+    .fact-v { font-size: .85rem; color: var(--navy); }
+
+    .link-grid { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); margin-top: 1.3rem; }
+    .link {
+      display: flex; align-items: center; gap: .65rem; padding: .65rem .8rem;
+      background: #fff; border: 1px solid rgba(15,31,61,.1); border-radius: 4px;
+      text-decoration: none; transition: border-color .2s, transform .2s;
+    }
+    .link:hover { border-color: var(--accent); transform: translateX(2px); }
+    .link-ico {
+      width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; background: var(--navy);
+    }
+    .link-n { font-size: .85rem; color: var(--navy); font-weight: 500; line-height: 1.3; }
+    .link-d { font-size: .72rem; color: var(--gray-mid); }
+    .link-ar { margin-left: auto; color: var(--accent); font-size: .85rem; }
+    @media (max-width: 430px) { .link-d { display: none; } .link-ar { display: none; } }
+
+    .support {
+      margin-top: 1.6rem; background: #fff; border: 1px solid rgba(200,169,110,.5);
+      border-left: 3px solid var(--accent); border-radius: 4px; padding: 1.15rem 1.25rem;
+    }
+    .support h3 { font-size: .95rem; font-weight: 500; color: var(--navy); margin-bottom: .4rem; }
+    .support p { font-size: .83rem; color: var(--gray-dark); line-height: 1.8; }
+
+    /* ── NOVELS ── */
+    .soon {
+      background: #fff; border: 1px dashed rgba(15,31,61,.2); border-radius: 4px;
+      padding: 1.3rem 1.35rem; display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap;
+    }
+    .soon-k {
+      font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gray-mid);
     }
 
-    .blog-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--navy);
-      text-decoration: none;
-      border-bottom: 1px solid var(--navy);
-      padding-bottom: 2px;
-      transition: opacity 0.2s;
-    }
-
-    .blog-link:hover {
-      opacity: 0.6;
-    }
-
-
-    /* ── WORKS ── */
-    .works-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .work-card {
-      background: var(--white);
-      border: 1px solid var(--gray-light);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      transition: all 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .work-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--navy);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-
-    .work-card:hover {
-      box-shadow: 0 8px 32px rgba(15,31,61,0.1);
-      transform: translateY(-2px);
-    }
-
-    .work-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .work-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .work-status {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.6rem;
-      background: rgba(15,31,61,0.06);
-      color: var(--navy-mid);
-      border-radius: 2px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .work-title {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: var(--navy);
-      letter-spacing: -0.01em;
-      line-height: 1.3;
-    }
-
-    .work-subtitle {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      margin-top: 0.2rem;
-    }
-
-    .work-desc {
-      font-size: 0.88rem;
-      color: var(--gray-dark);
-      line-height: 1.9;
-    }
-
-    .work-features {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .work-feature {
-      font-size: 0.82rem;
-      color: var(--gray-dark);
-      padding-left: 1rem;
-      position: relative;
-      line-height: 1.6;
-    }
-
-    .work-feature::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-    }
-
-    .work-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .work-tech {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.06em;
-      padding: 0.2rem 0.6rem;
-      border: 1px solid rgba(15,31,61,0.15);
-      color: var(--navy-mid);
-      border-radius: 2px;
-    }
-
-    .work-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--gray-light);
-      flex-wrap: wrap;
-    }
-
-    .work-episode {
-      font-size: 0.78rem;
-      color: var(--gray-mid);
-      font-style: italic;
-      line-height: 1.6;
-      flex: 1;
-    }
-
-    .work-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--navy);
-      text-decoration: none;
-      border: 1px solid var(--navy);
-      padding: 0.5rem 0.9rem;
-      transition: all 0.2s;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .work-link:hover {
-      background: var(--navy);
-      color: var(--white);
-    }
-
-    @media (max-width: 680px) {
-      .works-grid { grid-template-columns: 1fr; }
-      .work-meta { flex-direction: column; align-items: flex-start; }
-    }
-
-    /* ── FOOTER ── */
     footer {
-      background: var(--navy);
-      padding: 3rem 2rem;
-      text-align: center;
+      background: var(--navy); color: var(--gray-mid);
+      padding: 2.4rem 1.5rem; text-align: center; font-size: .78rem;
     }
+    footer a { color: var(--accent-light); text-decoration: none; }
+    .footer-name { font-family: 'DM Mono', monospace; letter-spacing: .1em; color: rgba(248,247,244,.75); }
 
-    .footer-name {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      color: rgba(248,247,244,0.4);
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-copy {
-      font-size: 0.72rem;
-      color: rgba(248,247,244,0.25);
-      letter-spacing: 0.05em;
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 680px) {
-      nav { padding: 0 1.25rem; }
-
-      .nav-links {
-        gap: 1.2rem;
-      }
-
-      .nav-links a {
-        font-size: 0.7rem;
-      }
-
-      section {
-        padding: 4rem 1.25rem;
-      }
-
-      .profile-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
-      .novel-card {
-        flex-direction: column;
-        gap: 1.25rem;
-      }
-
-      .kakuyomu-banner {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .hero {
-        padding: 7rem 1.25rem 5rem;
-      }
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <span class="nav-logo">Aku</span>
-    <ul class="nav-links">
-      <li><a href="#profile">Profile</a></li>
-      <li><a href="#links">Links</a></li>
-      <li><a href="#videos">Videos</a></li>
-      <li><a href="#novels">Novels</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#works">Works</a></li>
-      <li><a href="#booth">Shop</a></li>
-    </ul>
-  </nav>
+<nav>
+  <a class="nav-logo" href="#top">Aku</a>
+  <ul class="nav-links">
+    <li><a href="#works">Works</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#novels">Novels</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a class="kofi" href="https://ko-fi.com/akuniconico" target="_blank" rel="noopener">Ko-fi</a></li>
+  </ul>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="hero-inner">
-      <p class="hero-label">Creator's Page</p>
-      <h1 class="hero-name">Aku</h1>
-      <p class="hero-handle">@aku_niconico</p>
-      <div class="hero-line"></div>
-      <p class="hero-desc">
-        ニコニコ動画での動画投稿、X（旧Twitter）での発信、そしてカクヨムでの小説執筆。<br>
-        さまざまな場所で、さまざまな形で活動しています。
-      </p>
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <p class="hero-label">Creator's Page</p>
+    <h1 class="hero-name">Aku</h1>
+    <p class="hero-handle">@aku_niconico</p>
+    <p class="hero-desc">
+      ニコニコ動画に動画を投稿しつつ、自分がほしかったものを個人で作っています。
+      Android用カメラアプリ <strong style="color:var(--accent-light);font-weight:500">AK CAMERA</strong> と、
+      毎日動くWebサービスが3本。読んだ本はブクログ、日々のことはブログ、同人誌はBOOTHで。
+    </p>
+    <div class="chips">
+      <a class="chip" href="#works">制作物を見る</a>
+      <a class="chip" href="https://x.com/aku_niconico" target="_blank" rel="noopener">X ＠aku_niconico</a>
+      <a class="chip" href="https://www.nicovideo.jp/user/95850852" target="_blank" rel="noopener">ニコニコ動画</a>
+      <a class="chip" href="https://aku-go.blog.jp/" target="_blank" rel="noopener">ブログ</a>
+      <a class="chip" href="https://sakego.booth.pm/" target="_blank" rel="noopener">BOOTH</a>
+      <a class="chip gold" href="https://ko-fi.com/akuniconico" target="_blank" rel="noopener">Ko-fi で支援する</a>
     </div>
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-  </section>
-
-  <!-- PROFILE -->
-  <section id="profile">
-    <div class="section-inner reveal">
-      <p class="section-label">About</p>
-      <h2 class="section-title">Profile</h2>
-      <div class="divider"></div>
-      <div class="profile-grid">
-        <div class="profile-text">
-          <p>
-            ニコニコ動画で動画を投稿するクリエイター。日頃はX（旧Twitter）で思ったことを発信しつつ、
-            ブクログで読んだ本を記録しています。
-          </p>
-          <p>
-            現在はカクヨムでの小説執筆にも取り組んでおり、
-            自分なりのペースで創作活動を続けています。
-          </p>
-          <p>
-            ペンネームは現在準備中。小説の著者名が決まったらこちらでもお知らせします。
-          </p>
-          <div class="profile-tags">
-            <span class="tag">動画投稿</span>
-            <span class="tag">小説執筆</span>
-            <span class="tag">読書</span>
-            <span class="tag">ニコニコ動画</span>
-            <span class="tag">カクヨム</span>
-          </div>
-        </div>
-        <div class="profile-stats">
-          <div class="stat-item">
-            <p class="stat-label">Main Activity</p>
-            <p class="stat-value">ニコニコ動画 / X（旧Twitter）</p>
-          </div>
-          <div class="stat-item">
-            <p class="stat-label">Writing</p>
-            <p class="stat-value">カクヨム（小説投稿・準備中）</p>
-          </div>
-          <div class="stat-item">
-            <p class="stat-label">Reading</p>
-            <p class="stat-value">ブクログで読書記録</p>
-          </div>
-          <div class="stat-item">
-            <p class="stat-label">Blog</p>
-            <p class="stat-value">aku-go.blog.jp（livedoor）</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LINKS -->
-  <section id="links">
-    <div class="section-inner reveal">
-      <p class="section-label">Connect</p>
-      <h2 class="section-title">Links</h2>
-      <div class="divider"></div>
-      <div class="links-grid">
-
-        <a href="https://x.com/aku_niconico" target="_blank" rel="noopener" class="link-card">
-          <div class="link-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-          </div>
-          <div class="link-info">
-            <p class="link-name">X (Twitter)</p>
-            <p class="link-desc">@aku_niconico</p>
-          </div>
-          <span class="link-arrow">→</span>
-        </a>
-
-        <a href="https://www.nicovideo.jp/user/95850852" target="_blank" rel="noopener" class="link-card">
-          <div class="link-icon" style="background:#111;">
-            <svg width="20" height="20" viewBox="0 0 100 100" fill="white">
-              <rect x="10" y="25" width="80" height="50" rx="8"/>
-              <polygon points="42,38 42,62 65,50" fill="#111"/>
-            </svg>
-          </div>
-          <div class="link-info">
-            <p class="link-name">ニコニコ動画</p>
-            <p class="link-desc">動画投稿チャンネル</p>
-          </div>
-          <span class="link-arrow">→</span>
-        </a>
-
-        <a href="https://booklog.jp/users/akuniconico" target="_blank" rel="noopener" class="link-card">
-          <div class="link-icon" style="background:#2c5f2e;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-              <path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H14a1 1 0 0 1-1-1V3.5zM8 13h8v1.5H8V13zm0 3h5v1.5H8V16z"/>
-            </svg>
-          </div>
-          <div class="link-info">
-            <p class="link-name">ブクログ</p>
-            <p class="link-desc">読書記録・本棚</p>
-          </div>
-          <span class="link-arrow">→</span>
-        </a>
-
-        <a href="https://aku-go.blog.jp/" target="_blank" rel="noopener" class="link-card">
-          <div class="link-icon" style="background:#4a4a4a;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-              <path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5zm3 2v2h12V7H6zm0 4v2h12v-2H6zm0 4v2h8v-2H6z"/>
-            </svg>
-          </div>
-          <div class="link-info">
-            <p class="link-name">ブログ</p>
-            <p class="link-desc">aku-go.blog.jp</p>
-          </div>
-          <span class="link-arrow">→</span>
-        </a>
-
-        <!-- カクヨムは開設後に追加 -->
-        <div class="link-card" style="opacity:0.4; cursor:default; pointer-events:none;">
-          <div class="link-icon" style="background:#8b6914;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-          </div>
-          <div class="link-info">
-            <p class="link-name">カクヨム</p>
-            <p class="link-desc">小説投稿（近日公開）</p>
-          </div>
-          <span class="link-arrow">→</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- VIDEOS -->
-  <section id="videos">
-    <div class="section-inner reveal">
-      <p class="section-label">Nicovideo</p>
-      <h2 class="section-title">Videos</h2>
-      <div class="divider"></div>
-      <p class="video-note">ニコニコ動画に投稿した動画の代表作となります。</p>
-      <div class="video-grid">
-        <!-- 動画1：video_idをニコニコの動画IDに差し替えてください (例: sm12345678) -->
-        <div class="video-embed">
-          <iframe
-            src="https://embed.nicovideo.jp/watch/sm37787904?jsapi=1&noRelatedVideo=0&autoplay=0&allowProgrammaticFullScreen=1"
-            allowfullscreen
-            allow="autoplay; fullscreen"
-          ></iframe>
-        </div>
-        <!-- 動画2 -->
-        <div class="video-embed">
-          <iframe
-            src="https://embed.nicovideo.jp/watch/sm37258062?jsapi=1&noRelatedVideo=0&autoplay=0&allowProgrammaticFullScreen=1"
-            allowfullscreen
-            allow="autoplay; fullscreen"
-          ></iframe>
-        </div>
-
-        <!-- 動画3 -->
-        <div class="video-embed">
-          <iframe
-            src="https://embed.nicovideo.jp/watch/sm37289726?jsapi=1&noRelatedVideo=0&autoplay=0&allowProgrammaticFullScreen=1"
-            allowfullscreen
-            allow="autoplay; fullscreen"
-          ></iframe>
-        </div>
-
-        <!-- 動画4 -->
-        <div class="video-embed">
-          <iframe
-            src="https://embed.nicovideo.jp/watch/sm40038697?jsapi=1&noRelatedVideo=0&autoplay=0&allowProgrammaticFullScreen=1"
-            allowfullscreen
-            allow="autoplay; fullscreen"
-          ></iframe>
-        </div>
-
-        <!-- 動画5 -->
-        <div class="video-embed">
-          <iframe
-            src="https://embed.nicovideo.jp/watch/sm43572157?jsapi=1&noRelatedVideo=0&autoplay=0&allowProgrammaticFullScreen=1"
-            allowfullscreen
-            allow="autoplay; fullscreen"
-          ></iframe>
-        </div>
-
-        <!-- 動画6 -->
-        <div class="video-embed">
-          <iframe
-            src="https://embed.nicovideo.jp/watch/sm43449670?jsapi=1&noRelatedVideo=0&autoplay=0&allowProgrammaticFullScreen=1"
-            allowfullscreen
-            allow="autoplay; fullscreen"
-          ></iframe>
-        </div>
-
-        <!-- 動画7 -->
-        <div class="video-embed">
-          <iframe
-            src="https://embed.nicovideo.jp/watch/sm43633464?jsapi=1&noRelatedVideo=0&autoplay=0&allowProgrammaticFullScreen=1"
-            allowfullscreen
-            allow="autoplay; fullscreen"
-          ></iframe>
-        </div>
-
-        <!-- 動画8 -->
-        <div class="video-embed">
-          <iframe
-            src="https://embed.nicovideo.jp/watch/sm45197504?jsapi=1&noRelatedVideo=0&autoplay=0&allowProgrammaticFullScreen=1"
-            allowfullscreen
-            allow="autoplay; fullscreen"
-          ></iframe>
-        </div>
-
-        <!-- 動画9 -->
-        <div class="video-embed">
-          <iframe
-            src="https://embed.nicovideo.jp/watch/sm41589501?jsapi=1&noRelatedVideo=0&autoplay=0&allowProgrammaticFullScreen=1"
-            allowfullscreen
-            allow="autoplay; fullscreen"
-          ></iframe>
-        </div>
-
-        <!-- 動画10 -->
-        <div class="video-embed">
-          <iframe
-            src="https://embed.nicovideo.jp/watch/sm41411522?jsapi=1&noRelatedVideo=0&autoplay=0&allowProgrammaticFullScreen=1"
-            allowfullscreen
-            allow="autoplay; fullscreen"
-          ></iframe>
-        </div>
-        
-      </div>
-      <!--<p style="margin-top:1.5rem; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.08em; color:rgba(248,247,244,0.3);">
-        ※ sm0000001 / sm0000002 の部分をご自身の動画IDに書き換えてください
-      </p>-->
-    </div>
-  </section>
-
-  <!-- NOVELS -->
-  <section id="novels">
-    <div class="section-inner reveal">
-      <p class="section-label">Writing</p>
-      <h2 class="section-title">Novels</h2>
-      <div class="divider"></div>
-      <p class="novel-intro">
-        カクヨムにて小説を執筆・投稿予定です。ペンネームは現在準備中。
-        公開次第こちらに掲載します。
-      </p>
-
-      <!-- 小説カード（公開後に記入） -->
-      <div class="novel-card" style="opacity:0.5;">
-        <div class="novel-meta">
-          <p class="novel-genre">Coming Soon</p>
-          <p class="novel-title">タイトル未定</p>
-          <p class="novel-desc">小説投稿の準備中です。カクヨムで公開次第こちらにご案内します。</p>
-        </div>
-        <a href="#" class="novel-link" style="pointer-events:none;">
-          Read →
-        </a>
-      </div>
-
-      <div class="kakuyomu-banner">
-        <div class="kakuyomu-text">
-          <strong>カクヨム作家ページ</strong>
-          著者ページは近日公開予定です。
-        </div>
-        <a href="https://kakuyomu.jp" target="_blank" rel="noopener" class="kakuyomu-btn">
-          カクヨムへ →
-        </a>
-      </div>
-    </div>
-  </section>
-
-<!-- BLOG -->
-<section id="blog">
-  <div class="section-inner reveal">
-    <p class="section-label">Blog</p>
-    <h2 class="section-title">Blog</h2>
-    <div class="divider"></div>
-    <div class="blog-notice">
-      <strong>現在 livedoorブログ にて運営中。</strong><br>
-      最新記事は以下からどうぞ。
-    </div>
-
-    <!-- 記事リスト -->
-    <div id="blog-list" style="margin-bottom:2rem;">
-      <p style="font-family:'DM Mono',monospace; font-size:0.78rem; color:var(--gray-mid);">Loading...</p>
-    </div>
-
-    <a href="https://aku-go.blog.jp/" target="_blank" rel="noopener" class="blog-link">
-      すべての記事を読む →
-    </a>
   </div>
-</section>
-
+</header>
 
 <!-- WORKS -->
 <section id="works">
-  <div class="section-inner reveal">
-    <p class="section-label">Dev Works</p>
-    <h2 class="section-title">Works</h2>
-    <div class="divider"></div>
-    <div class="works-grid">
+  <div class="inner reveal">
+    <p class="label">Works</p>
+    <h2>作っているもの</h2>
+    <div class="rule"></div>
 
-      <!-- MyNews -->
-      <div class="work-card">
-        <div class="work-header">
-          <div>
-            <p class="work-title">MyNews <span style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.1em;">v7</span></p>
-            <p class="work-subtitle">パーソナルニュースダイジェスト</p>
+    <!-- 目玉: AK CAMERA -->
+    <div class="feature">
+      <div class="feature-top">
+        <div class="feature-body">
+          <div class="feature-eyebrow">
+            <img class="feature-icon" src="akcam/img/icon.png" alt="AK CAMERA アイコン">
+            <div>
+              <p class="feature-title">AK CAMERA</p>
+              <p class="feature-sub">Android用カメラアプリ</p>
+            </div>
+            <span class="pill solid">Android</span>
+            <span class="pill">クローズドテスト準備中</span>
           </div>
-          <span class="work-status">Live</span>
-        </div>
-        <p class="work-desc">
-          毎朝6:00 JSTに自動更新される個人向けニュースダイジェスト。
-          世界・日本・茨城・IT・AI・自動車の6カテゴリをAIが自動収集・要約し、
-          スポーツ・芸能などの不要情報を自動除外して配信する。
-        </p>
-        <div class="work-features">
-          <p class="work-feature">Gemini AIによる5W1H要約・新規性・影響・展望を自動生成</p>
-          <p class="work-feature">重要度×新規性フィルタで低品質・プロモ記事を自動除外</p>
-          <p class="work-feature">発信元ミュート機能（最大10,000件）</p>
-          <p class="work-feature">天気・服装提案をOpen-Meteo APIで毎日更新</p>
-          <p class="work-feature">SNS共有ボタン・PWA対応（Androidホーム画面に追加可）</p>
-          <p class="work-feature">ダーク/ライトモード切替（ボタン切替＋OS設定連動）【v5】</p>
-          <p class="work-feature">503 ServerError対応・30秒待機後バックアップキーへ自動切替【v7】</p>
-          <p class="work-feature">resolve_model()でGeminiモデルを動的選択・廃止に自動対応【v7】</p>
-          <p class="work-feature">FILE_VERSION管理＋check_versions.pyで上書き漏れを自動検出【v7】</p>
-        </div>
-        <div>
-          <p style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray-mid); margin-bottom:0.5rem;">Tech Stack</p>
-          <div class="work-stack">
-            <span class="work-tech">Python</span>
-            <span class="work-tech">Gemini 2.5 Flash</span>
-            <span class="work-tech">NewsAPI</span>
-            <span class="work-tech">NHK RSS</span>
-            <span class="work-tech">Google News RSS</span>
-            <span class="work-tech">GitHub Actions</span>
-            <span class="work-tech">Firebase Hosting</span>
-            <span class="work-tech">Open-Meteo API</span>
+          <p class="feature-desc">
+            シャッターを押した先で「現像」まで終わらせてしまうカメラです。
+            露出を決めて、複数枚を重ねてノイズを減らして、色を作って、背景をぼかす——
+            そこまでを1回のシャッターの中でやります。出てくるのは、そのまま人に見せられる1枚です。
+          </p>
+          <ul class="feature-points">
+            <li>21種類のルック。選んだ瞬間からプレビューが変わります</li>
+            <li>奥行きを端末の中で推定して背景をぼかす／4枚・8枚の多枚合成</li>
+            <li>通信しません。インターネット権限そのものを宣言していません</li>
+          </ul>
+          <div class="btnrow">
+            <a class="btn btn-solid" href="akcam/">紹介ページを見る →</a>
+            <a class="btn" href="akcam/guide.html">操作説明</a>
+            <a class="btn" href="akcam/privacy.html">プライバシーポリシー</a>
           </div>
         </div>
-        <div class="work-meta">
-          <p class="work-episode">v1〜v7まで段階的に機能拡張。v7でGeminiの堅牢化（503対応・モデル動的選択・バージョン管理）を統合管理マスター資料に基づき横展開適用。Claude AIとの対話型開発。</p>
-          <a href="https://mynews-7bf80.web.app" target="_blank" rel="noopener" class="work-link">
-            Visit →
-          </a>
+        <div class="feature-shot">
+          <img src="akcam/img/hero.jpg" alt="AK CAMERA で撮影した写真" loading="lazy">
+          <img class="phone" src="akcam/img/shot_main.jpg" alt="AK CAMERA の撮影画面" loading="lazy">
+        </div>
+      </div>
+      <div class="strip">
+        <img src="akcam/img/shot_main.jpg" alt="撮影画面" loading="lazy">
+        <img src="akcam/img/sample_bokeh.jpg" alt="深度ボケの作例" loading="lazy">
+        <img src="akcam/img/sample_night.jpg" alt="夜の作例" loading="lazy">
+        <img src="akcam/img/sample_vivid.jpg" alt="VIVID+ の作例" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Webサービス -->
+    <div class="work-grid">
+
+      <div class="work">
+        <a class="work-shot" href="https://mynews-7bf80.web.app" target="_blank" rel="noopener">
+          <img src="img/works/mynews.jpg" alt="MyNews の画面" loading="lazy">
+        </a>
+        <div class="work-body">
+          <p class="work-name">MyNews <span class="work-ver">v7</span> <span class="pill">Live</span></p>
+          <p class="work-sub">パーソナルニュースダイジェスト</p>
+          <p class="work-desc">
+            毎朝6:00 JSTに自動更新される個人向けのニュースまとめ。世界・日本・茨城・IT・AI・自動車の6カテゴリを
+            AIが収集・要約し、いらない話題は自動で外します。
+          </p>
+          <details class="more">
+            <summary>もっと見る</summary>
+            <ul class="feat">
+              <li>Gemini AI が 5W1H・新規性・影響・展望を自動生成</li>
+              <li>重要度×新規性フィルタで低品質・プロモ記事を除外</li>
+              <li>発信元ミュート（最大10,000件）</li>
+              <li>天気・服装提案を Open-Meteo API で毎日更新</li>
+              <li>PWA対応・ダーク/ライト切替</li>
+              <li>v7: 503対応でバックアップキーへ自動切替／Geminiモデルを動的選択</li>
+            </ul>
+            <div class="stack">
+              <span class="tech">Python</span><span class="tech">Gemini 2.5 Flash</span>
+              <span class="tech">NewsAPI</span><span class="tech">GitHub Actions</span>
+              <span class="tech">Firebase Hosting</span><span class="tech">Open-Meteo</span>
+            </div>
+          </details>
+          <div class="btnrow"><a class="btn" href="https://mynews-7bf80.web.app" target="_blank" rel="noopener">開く →</a></div>
         </div>
       </div>
 
-      <!-- ニコニコランキング -->
-      <div class="work-card">
-        <div class="work-header">
-          <div>
-            <p class="work-title">ニコニコ週間ランキング <span style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.1em;">v9</span></p>
-            <p class="work-subtitle">独自アルゴリズムによる動画ランキング＋投稿祭告知</p>
-          </div>
-          <span class="work-status">Live</span>
-        </div>
-        <p class="work-desc">
-          再生数だけに頼らない独自スコアリングで、埋もれた良質コンテンツを発掘するWebサービス。
-          月〜金は曜日分散で対象タグを毎日更新、毎週土曜0:00に全タグを集計。v9ではプッシュ通知・タグ曜日分散・AIコメント翌日補完を実装。
-        </p>
-        <div class="work-features">
-          <p class="work-feature">独自スコアリングで実力ベースの公平なランキングを実現</p>
-          <p class="work-feature">7タグ対応（自転車・料理・ニコニコ技術部・旅行・車載動画・VOCALOID・ソフトウェアトーク）</p>
-          <p class="work-feature">月〜金の曜日分散更新でAPI負荷を分散・タグ別更新日時を鮮度カラーで表示【v9】</p>
-          <p class="work-feature">プッシュ通知（FCM）：タグ別・投稿祭別にON/OFF設定可能【v9】</p>
-          <p class="work-feature">AIコメント翌日自動補完（土曜9:00 JSTにretry.yml再実行）【v9】</p>
-          <p class="work-feature">投稿祭告知を毎日自動収集・🔴開催中/🟠間近/🔵予定/⬜不明でセクション分け表示</p>
-          <p class="work-feature">HOT・注目・初投稿・完結バッジ / 投稿者ミュート機能（最大1,000人）</p>
-          <p class="work-feature">ダーク/ライトモード自動切替（OS設定連動）・PWA対応</p>
-        </div>
-        <div>
-          <p style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray-mid); margin-bottom:0.5rem;">Tech Stack</p>
-          <div class="work-stack">
-            <span class="work-tech">Python</span>
-            <span class="work-tech">Gemini 2.5 Flash</span>
-            <span class="work-tech">ニコニコAPI v2</span>
-            <span class="work-tech">Firebase Cloud Messaging</span>
-            <span class="work-tech">GitHub Actions</span>
-            <span class="work-tech">Firebase Hosting</span>
-          </div>
-        </div>
-        <div class="work-meta">
-          <p class="work-episode">v1〜v9まで段階的に開発。weekly_batch v14まで到達。プッシュ通知・曜日分散・AIコメント翌日補完をClaude AIとの対話型開発で実現。</p>
-          <a href="https://nicoranking-7dbf8.web.app" target="_blank" rel="noopener" class="work-link">
-            Visit →
-          </a>
+      <div class="work">
+        <a class="work-shot" href="https://nicoranking-7dbf8.web.app" target="_blank" rel="noopener">
+          <img src="img/works/nicoranking.jpg" alt="ニコニコ週間ランキングの画面" loading="lazy">
+        </a>
+        <div class="work-body">
+          <p class="work-name">ニコニコ週間ランキング <span class="work-ver">v9</span> <span class="pill">Live</span></p>
+          <p class="work-sub">独自スコアの動画ランキング＋投稿祭告知</p>
+          <p class="work-desc">
+            再生数だけに頼らない独自のスコアで、埋もれた良い動画を拾い上げます。
+            月〜金は曜日ごとにタグを更新し、土曜0:00に全タグを集計。
+          </p>
+          <details class="more">
+            <summary>もっと見る</summary>
+            <ul class="feat">
+              <li>7タグ対応（自転車・料理・技術部・旅行・車載・VOCALOID・ソフトウェアトーク）</li>
+              <li>曜日分散更新でAPI負荷を分散、タグ別の鮮度を色で表示</li>
+              <li>プッシュ通知（FCM）をタグ別・投稿祭別にON/OFF</li>
+              <li>投稿祭告知を毎日自動収集して開催状況で色分け</li>
+              <li>HOT・注目・初投稿・完結バッジ／投稿者ミュート（最大1,000人）</li>
+            </ul>
+            <div class="stack">
+              <span class="tech">Python</span><span class="tech">Gemini 2.5 Flash</span>
+              <span class="tech">ニコニコAPI v2</span><span class="tech">FCM</span>
+              <span class="tech">GitHub Actions</span><span class="tech">Firebase Hosting</span>
+            </div>
+          </details>
+          <div class="btnrow"><a class="btn" href="https://nicoranking-7dbf8.web.app" target="_blank" rel="noopener">開く →</a></div>
         </div>
       </div>
 
-
-
-      <!-- CircuitDrive -->
-      <div class="work-card">
-        <div class="work-header">
-          <div>
-            <p class="work-title">CircuitDrive <span style="font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.1em;">v6.1</span></p>
-            <p class="work-subtitle">ADAS/EV 論文トラッカー・AI分析サービス</p>
-          </div>
-          <span class="work-status">Live</span>
-        </div>
-        <p class="work-desc">
-          arXivからADAS・自動運転・車載電気設計関連論文を自動収集し、Gemini AIが電気設計エンジニア視点で
-          分析・ランキングするWebサービス。毎週土曜6:00 JSTに週次自動更新。
-        </p>
-        <div class="work-features">
-          <p class="work-feature">arXiv（cs.AR / eess.SP / eess.SY）から自動取得・電気設計視点でフィルタリング</p>
-          <p class="work-feature">Gemini AIが要約・新規性・応用先・経済影響・専門家コメントを生成</p>
-          <p class="work-feature">週間/月間/年間の3層タブ構造（月間は週次データ蓄積→月末完成方式）【v6】</p>
-          <p class="work-feature">年間タブ：重要度4以上の論文を自動蓄積・年次再評価【v6】</p>
-          <p class="work-feature">センサAFE・SoC/デジタル・電源管理・通信・機能安全の5カテゴリフィルタ</p>
-          <p class="work-feature">日本・欧州・中韓メーカー別の経済的インパクトをAIが分析</p>
-          <p class="work-feature">FCMプッシュ通知・PWA対応・ダーク/ライトモード切替</p>
-        </div>
-        <div>
-          <p style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray-mid); margin-bottom:0.5rem;">Tech Stack</p>
-          <div class="work-stack">
-            <span class="work-tech">Python</span>
-            <span class="work-tech">Gemini 2.5 Flash</span>
-            <span class="work-tech">arXiv API</span>
-            <span class="work-tech">Firebase Cloud Messaging</span>
-            <span class="work-tech">GitHub Actions</span>
-            <span class="work-tech">Firebase Hosting</span>
-          </div>
-        </div>
-        <div class="work-meta">
-          <p class="work-episode">Claude AIとの対話型開発で初版完成後、v6で週次更新・週間/月間/年間タブ・データ蓄積方式に刷新。横展開の起点となった堅牢化パターン（503対応・resolve_model等）を最初に実装したサービス。</p>
-          <a href="https://circuitdrive-29344.web.app" target="_blank" rel="noopener" class="work-link">
-            Visit →
-          </a>
+      <div class="work">
+        <a class="work-shot" href="https://circuitdrive-29344.web.app" target="_blank" rel="noopener">
+          <img src="img/works/circuitdrive.jpg" alt="CircuitDrive の画面" loading="lazy">
+        </a>
+        <div class="work-body">
+          <p class="work-name">CircuitDrive <span class="work-ver">v6.1</span> <span class="pill">Live</span></p>
+          <p class="work-sub">ADAS / EV 論文トラッカー</p>
+          <p class="work-desc">
+            arXiv から自動運転・車載電気設計まわりの論文を集めて、Gemini AI が電気設計エンジニアの目線で
+            並べ替えます。毎週土曜6:00 JSTに更新。
+          </p>
+          <details class="more">
+            <summary>もっと見る</summary>
+            <ul class="feat">
+              <li>cs.AR / eess.SP / eess.SY から取得し電気設計視点でフィルタ</li>
+              <li>要約・新規性・応用先・経済影響・専門家コメントをAIが生成</li>
+              <li>週間／月間／年間の3層タブ（月間は週次データを積んで月末に完成）</li>
+              <li>センサAFE・SoC・電源管理・通信・機能安全の5カテゴリ</li>
+              <li>日本・欧州・中韓メーカー別の経済インパクト分析</li>
+            </ul>
+            <div class="stack">
+              <span class="tech">Python</span><span class="tech">Gemini 2.5 Flash</span>
+              <span class="tech">arXiv API</span><span class="tech">FCM</span>
+              <span class="tech">GitHub Actions</span><span class="tech">Firebase Hosting</span>
+            </div>
+          </details>
+          <div class="btnrow"><a class="btn" href="https://circuitdrive-29344.web.app" target="_blank" rel="noopener">開く →</a></div>
         </div>
       </div>
 
@@ -1333,185 +520,264 @@
   </div>
 </section>
 
-<!-- BOOTH -->
-<section id="booth" style="background: var(--navy);">
-  <div class="section-inner reveal">
-    <p class="section-label" style="color: var(--accent);">Shop</p>
-    <h2 class="section-title" style="color: var(--white);">BOOTH</h2>
-    <div class="divider" style="background: var(--accent);"></div>
-    <p style="font-size:0.85rem; color:rgba(248,247,244,0.5); margin-bottom:2rem; line-height:1.8;">
-      SAKEGO / 毎食唐揚 にてグッズ・デジタルコンテンツを販売しています。
-    </p>
-
-    <div id="booth-grid" style="
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2rem;
-    "></div>
-
-    <a href="https://sakego.booth.pm/" target="_blank" rel="noopener"
-      style="display:inline-flex; align-items:center; gap:0.5rem;
-             font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.1em;
-             text-transform:uppercase; background:var(--accent); color:var(--navy);
-             padding:0.75rem 1.5rem; text-decoration:none; font-weight:500; transition:opacity 0.2s;"
-      onmouseover="this.style.opacity='0.85'"
-      onmouseout="this.style.opacity='1'">
-      ショップ全体を見る →
-    </a>
+<!-- VIDEOS -->
+<section id="videos" class="dark">
+  <div class="inner reveal">
+    <p class="label">Nicovideo</p>
+    <h2 style="color:var(--white)">Videos</h2>
+    <div class="rule"></div>
+    <p class="lead">ニコニコ動画に投稿した代表作です。横にスクロールできます。</p>
+    <div class="rail">
+      <div class="embed"><iframe loading="lazy" src="https://embed.nicovideo.jp/watch/sm37787904?jsapi=1&amp;noRelatedVideo=0&amp;autoplay=0&amp;allowProgrammaticFullScreen=1" allowfullscreen allow="autoplay; fullscreen" title="ニコニコ動画 sm37787904"></iframe></div>
+      <div class="embed"><iframe loading="lazy" src="https://embed.nicovideo.jp/watch/sm37258062?jsapi=1&amp;noRelatedVideo=0&amp;autoplay=0&amp;allowProgrammaticFullScreen=1" allowfullscreen allow="autoplay; fullscreen" title="ニコニコ動画 sm37258062"></iframe></div>
+      <div class="embed"><iframe loading="lazy" src="https://embed.nicovideo.jp/watch/sm37289726?jsapi=1&amp;noRelatedVideo=0&amp;autoplay=0&amp;allowProgrammaticFullScreen=1" allowfullscreen allow="autoplay; fullscreen" title="ニコニコ動画 sm37289726"></iframe></div>
+      <div class="embed"><iframe loading="lazy" src="https://embed.nicovideo.jp/watch/sm40038697?jsapi=1&amp;noRelatedVideo=0&amp;autoplay=0&amp;allowProgrammaticFullScreen=1" allowfullscreen allow="autoplay; fullscreen" title="ニコニコ動画 sm40038697"></iframe></div>
+      <div class="embed"><iframe loading="lazy" src="https://embed.nicovideo.jp/watch/sm43572157?jsapi=1&amp;noRelatedVideo=0&amp;autoplay=0&amp;allowProgrammaticFullScreen=1" allowfullscreen allow="autoplay; fullscreen" title="ニコニコ動画 sm43572157"></iframe></div>
+      <div class="embed"><iframe loading="lazy" src="https://embed.nicovideo.jp/watch/sm43449670?jsapi=1&amp;noRelatedVideo=0&amp;autoplay=0&amp;allowProgrammaticFullScreen=1" allowfullscreen allow="autoplay; fullscreen" title="ニコニコ動画 sm43449670"></iframe></div>
+      <div class="embed"><iframe loading="lazy" src="https://embed.nicovideo.jp/watch/sm43633464?jsapi=1&amp;noRelatedVideo=0&amp;autoplay=0&amp;allowProgrammaticFullScreen=1" allowfullscreen allow="autoplay; fullscreen" title="ニコニコ動画 sm43633464"></iframe></div>
+      <div class="embed"><iframe loading="lazy" src="https://embed.nicovideo.jp/watch/sm45197504?jsapi=1&amp;noRelatedVideo=0&amp;autoplay=0&amp;allowProgrammaticFullScreen=1" allowfullscreen allow="autoplay; fullscreen" title="ニコニコ動画 sm45197504"></iframe></div>
+      <div class="embed"><iframe loading="lazy" src="https://embed.nicovideo.jp/watch/sm41589501?jsapi=1&amp;noRelatedVideo=0&amp;autoplay=0&amp;allowProgrammaticFullScreen=1" allowfullscreen allow="autoplay; fullscreen" title="ニコニコ動画 sm41589501"></iframe></div>
+      <div class="embed"><iframe loading="lazy" src="https://embed.nicovideo.jp/watch/sm41411522?jsapi=1&amp;noRelatedVideo=0&amp;autoplay=0&amp;allowProgrammaticFullScreen=1" allowfullscreen allow="autoplay; fullscreen" title="ニコニコ動画 sm41411522"></iframe></div>
+    </div>
+    <p class="hint">← swipe / scroll →</p>
+    <div class="btnrow" style="margin-top:1.2rem">
+      <a class="btn btn-accent" href="https://www.nicovideo.jp/user/95850852" target="_blank" rel="noopener">すべての動画を見る →</a>
+    </div>
   </div>
 </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p class="footer-name">Aku / @aku_niconico</p>
-    <p class="footer-copy">&copy; 2025 Aku. All rights reserved.</p>
-  </footer>
-
-  <script>
-    // スクロールアニメーション
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    reveals.forEach(el => observer.observe(el));
-
-// BOOTHアイテム一覧
-const items = [
-  {
-    title: "世界のサーキットからRd.1",
-    price: "¥100",
-    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/1145288/59cc3b75-b78e-484a-803c-3b702195d295_base_resized.jpg",
-    url: "https://sakego.booth.pm/items/1145288"
-  },
-  {
-    title: "世界のサーキットからRd.2",
-    price: "¥100",
-    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/1144039/6a214cbe-3289-4bb1-96fc-48524e9e7944_base_resized.jpg",
-    url: "https://sakego.booth.pm/items/1144039"
-  },
-  {
-    title: "世界のサーキットからRd.3",
-    price: "¥100",
-    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/1751474/758bca73-4155-44d7-a056-0991362f123b_base_resized.jpg",
-    url: "https://sakego.booth.pm/items/1751474"
-  },
-  {
-    title: "世界のサーキットからRd3.5",
-    price: "¥100",
-    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/2039401/971a0a0e-be87-4fb3-9455-bc8265edcf6e_base_resized.jpg",
-    url: "https://sakego.booth.pm/items/2039401"
-  },
-  {
-    title: "世界のサーキットからRd.4準備号",
-    price: "¥100",
-    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/2639238/93ec0f9f-30b3-42b2-88b4-30cf71f6015d_base_resized.jpg",
-    url: "https://sakego.booth.pm/items/2639238"
-  },
-  {
-    title: "世界のサーキットからRd.4",
-    price: "¥100",
-    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/3541930/0468ed3d-9ae5-47f0-aa90-7e148f0b2086_base_resized.jpg",
-    url: "https://sakego.booth.pm/items/3541930"
-  },
-  {
-    title: "エクリプスクロスライフ！",
-    price: "¥100",
-    image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/3541734/df19101d-982d-4678-a108-526987a5163d_base_resized.jpg",
-    url: "https://sakego.booth.pm/items/3541734"
-  },
-  // 以下同様に繰り返す
-];
-
-const grid = document.getElementById('booth-grid');
-grid.innerHTML = items.map(item => `
-  <a href="${item.url}" target="_blank" rel="noopener"
-    style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
-           text-decoration:none; transition:all 0.25s ease; display:block; border-radius:2px; overflow:hidden;"
-    onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(200,169,110,0.4)';"
-    onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.1)';">
-    <div style="aspect-ratio:1/1; overflow:hidden; background:#000;">
-      <img src="${item.image}" alt="${item.title}"
-        style="width:100%; height:100%; object-fit:cover; display:block;
-               transition:transform 0.3s ease;"
-        onmouseover="this.style.transform='scale(1.04)'"
-        onmouseout="this.style.transform='scale(1)'"
-        onerror="this.parentElement.style.background='rgba(255,255,255,0.05)'">
+<!-- BLOG -->
+<section id="blog" class="alt">
+  <div class="inner reveal">
+    <p class="label">Blog</p>
+    <h2>ブログ</h2>
+    <div class="rule"></div>
+    <p class="lead">livedoorブログで書いています。最新5件を自動で読み込みます。</p>
+    <div id="blog-list"><p class="hint">Loading…</p></div>
+    <div class="btnrow" style="margin-top:1.2rem">
+      <a class="btn" href="https://aku-go.blog.jp/" target="_blank" rel="noopener">すべての記事を読む →</a>
     </div>
-    <div style="padding:1rem;">
-      <p style="font-size:0.85rem; color:rgba(248,247,244,0.9); font-weight:500;
-                line-height:1.4; margin-bottom:0.4rem;
-                display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
-        ${item.title}
-      </p>
-      <p style="font-family:'DM Mono',monospace; font-size:0.78rem; color:var(--accent);">
-        ${item.price}
-      </p>
-    </div>
-  </a>
-`).join('');
-    
-  // ブログRSS取得
-  const RSS_URL = 'https://aku-go.blog.jp/index.rdf';
-  const API = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=10`;
+  </div>
+</section>
 
-  fetch(API)
+<!-- SHOP -->
+<section id="shop" class="dark">
+  <div class="inner reveal">
+    <p class="label">Shop</p>
+    <h2 style="color:var(--white)">BOOTH</h2>
+    <div class="rule"></div>
+    <p class="lead">SAKEGO / 毎食唐揚 にて同人誌・デジタルコンテンツを販売しています。</p>
+    <div class="rail" id="booth-grid" style="grid-auto-columns:minmax(156px,1fr)"></div>
+    <p class="hint">← swipe / scroll →</p>
+    <div class="btnrow" style="margin-top:1.2rem">
+      <a class="btn btn-accent" href="https://sakego.booth.pm/" target="_blank" rel="noopener">ショップ全体を見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- NOVELS -->
+<section id="novels">
+  <div class="inner reveal">
+    <p class="label">Writing</p>
+    <h2>小説</h2>
+    <div class="rule"></div>
+    <div class="soon">
+      <div style="flex:1; min-width:220px">
+        <p class="soon-k">Coming Soon</p>
+        <p style="font-size:.88rem; margin-top:.2rem">
+          カクヨムで書くつもりのまま止まっています。ペンネームもまだ決めていません。
+          書き始めたらここに出します。
+        </p>
+      </div>
+      <a class="btn" href="https://kakuyomu.jp" target="_blank" rel="noopener">カクヨム →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="alt">
+  <div class="inner reveal">
+    <p class="label">About</p>
+    <h2>Aku について</h2>
+    <div class="rule"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          ニコニコ動画に動画を投稿しています。車やサーキットの話が多めです。
+          同じ題材で同人誌も作っていて、BOOTH で頒布しています。
+        </p>
+        <p>
+          ここ最近は個人開発のほうに時間を使っていて、AI との対話で設計と実装を詰めながら、
+          ひとりで運用まで回しています。毎朝のニュースをまとめる <strong>MyNews</strong>、
+          埋もれた動画を拾う <strong>ニコニコ週間ランキング</strong>、
+          車載電気設計まわりの論文を追う <strong>CircuitDrive</strong>、
+          そして Android 用カメラアプリ <strong>AK CAMERA</strong>。
+          どれも「自分がほしかったのに無かったもの」です。
+        </p>
+        <p>
+          読んだ本はブクログに記録しています。小説はカクヨムで書く予定のまま止まっているので、
+          このページでも一番下に置いています。
+        </p>
+        <div class="tags">
+          <span class="tag">動画投稿</span>
+          <span class="tag">個人開発</span>
+          <span class="tag">Androidアプリ</span>
+          <span class="tag">Webサービス</span>
+          <span class="tag">同人誌</span>
+          <span class="tag">読書</span>
+        </div>
+      </div>
+      <div class="facts">
+        <div class="fact">
+          <p class="fact-k">Main Activity</p>
+          <p class="fact-v">ニコニコ動画 / X（旧Twitter）</p>
+        </div>
+        <div class="fact">
+          <p class="fact-k">Development</p>
+          <p class="fact-v">Webサービス3本 ＋ Androidアプリ1本</p>
+        </div>
+        <div class="fact">
+          <p class="fact-k">Blog / Reading</p>
+          <p class="fact-v">aku-go.blog.jp / ブクログ</p>
+        </div>
+        <div class="fact">
+          <p class="fact-k">Shop</p>
+          <p class="fact-v">BOOTH（SAKEGO / 毎食唐揚）</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="link-grid">
+      <a href="https://x.com/aku_niconico" target="_blank" rel="noopener" class="link">
+        <span class="link-ico" style="background:#111">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </span>
+        <span><span class="link-n">X (Twitter)</span><br><span class="link-d">@aku_niconico</span></span>
+        <span class="link-ar">→</span>
+      </a>
+      <a href="https://www.nicovideo.jp/user/95850852" target="_blank" rel="noopener" class="link">
+        <span class="link-ico" style="background:#111">
+          <svg width="18" height="18" viewBox="0 0 100 100" fill="white" aria-hidden="true"><rect x="10" y="25" width="80" height="50" rx="8"/><polygon points="42,38 42,62 65,50" fill="#111"/></svg>
+        </span>
+        <span><span class="link-n">ニコニコ動画</span><br><span class="link-d">動画投稿チャンネル</span></span>
+        <span class="link-ar">→</span>
+      </a>
+      <a href="https://aku-go.blog.jp/" target="_blank" rel="noopener" class="link">
+        <span class="link-ico" style="background:#4a4a4a">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5zm3 2v2h12V7H6zm0 4v2h12v-2H6zm0 4v2h8v-2H6z"/></svg>
+        </span>
+        <span><span class="link-n">ブログ</span><br><span class="link-d">aku-go.blog.jp</span></span>
+        <span class="link-ar">→</span>
+      </a>
+      <a href="https://booklog.jp/users/akuniconico" target="_blank" rel="noopener" class="link">
+        <span class="link-ico" style="background:#2c5f2e">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H14a1 1 0 0 1-1-1V3.5zM8 13h8v1.5H8V13zm0 3h5v1.5H8V16z"/></svg>
+        </span>
+        <span><span class="link-n">ブクログ</span><br><span class="link-d">読書記録・本棚</span></span>
+        <span class="link-ar">→</span>
+      </a>
+      <a href="https://sakego.booth.pm/" target="_blank" rel="noopener" class="link">
+        <span class="link-ico" style="background:#fc4d50">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M6 2h12l2 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7l2-5zm.6 2L5.5 6.5h13L17.4 4H6.6zM9 10a3 3 0 0 0 6 0h2a5 5 0 0 1-10 0h2z"/></svg>
+        </span>
+        <span><span class="link-n">BOOTH</span><br><span class="link-d">SAKEGO / 毎食唐揚</span></span>
+        <span class="link-ar">→</span>
+      </a>
+      <a href="akcam/" class="link">
+        <span class="link-ico" style="background:#0f1f3d; overflow:hidden">
+          <img src="akcam/img/icon.png" alt="" style="width:100%;height:100%;object-fit:cover">
+        </span>
+        <span><span class="link-n">AK CAMERA</span><br><span class="link-d">Androidカメラアプリ</span></span>
+        <span class="link-ar">→</span>
+      </a>
+    </div>
+
+    <div class="support">
+      <h3>作ったものは全部、無料で公開しています</h3>
+      <p>
+        Webサービスもカメラアプリも、広告なし・アプリ内課金なしで置いています。
+        「使っていて良かった」と思っていただけたら、Ko-fi から支援していただけると続けやすくなります。
+        いただいたぶんは検証用の端末や公開にかかる費用にあてます。<strong>支援しても機能は増えません</strong>——
+        全部の機能を最初から全員に開いています。
+      </p>
+      <div class="btnrow" style="margin-top:1rem">
+        <a class="btn btn-accent" href="https://ko-fi.com/akuniconico" target="_blank" rel="noopener">Ko-fi で支援する</a>
+        <a class="btn" href="https://x.com/aku_niconico" target="_blank" rel="noopener">X をフォローする</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-name">Aku / @aku_niconico</p>
+  <p style="margin-top:.7rem">
+    <a href="akcam/">AK CAMERA</a> ／
+    <a href="https://x.com/aku_niconico" target="_blank" rel="noopener">X</a> ／
+    <a href="https://ko-fi.com/akuniconico" target="_blank" rel="noopener">Ko-fi</a>
+  </p>
+  <p style="margin-top:.9rem; font-size:.72rem; color:rgba(184,181,174,.7)">&copy; 2025 Aku. All rights reserved.</p>
+</footer>
+
+<script>
+  // スクロールで section をふわっと出す
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0 });   // 背の高い section だと割合しきい値が発火しないことがあるので 0 にする
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // BOOTH の商品（手で足す）
+  const items = [
+    { title: "世界のサーキットからRd.1", price: "¥100", image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/1145288/59cc3b75-b78e-484a-803c-3b702195d295_base_resized.jpg", url: "https://sakego.booth.pm/items/1145288" },
+    { title: "世界のサーキットからRd.2", price: "¥100", image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/1144039/6a214cbe-3289-4bb1-96fc-48524e9e7944_base_resized.jpg", url: "https://sakego.booth.pm/items/1144039" },
+    { title: "世界のサーキットからRd.3", price: "¥100", image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/1751474/758bca73-4155-44d7-a056-0991362f123b_base_resized.jpg", url: "https://sakego.booth.pm/items/1751474" },
+    { title: "世界のサーキットからRd3.5", price: "¥100", image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/2039401/971a0a0e-be87-4fb3-9455-bc8265edcf6e_base_resized.jpg", url: "https://sakego.booth.pm/items/2039401" },
+    { title: "世界のサーキットからRd.4準備号", price: "¥100", image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/2639238/93ec0f9f-30b3-42b2-88b4-30cf71f6015d_base_resized.jpg", url: "https://sakego.booth.pm/items/2639238" },
+    { title: "世界のサーキットからRd.4", price: "¥100", image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/3541930/0468ed3d-9ae5-47f0-aa90-7e148f0b2086_base_resized.jpg", url: "https://sakego.booth.pm/items/3541930" },
+    { title: "エクリプスクロスライフ！", price: "¥100", image: "https://booth.pximg.net/b8308642-4503-4785-85f6-a31e3df6bb88/i/3541734/df19101d-982d-4678-a108-526987a5163d_base_resized.jpg", url: "https://sakego.booth.pm/items/3541734" }
+  ];
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  document.getElementById('booth-grid').innerHTML = items.map(i => `
+    <a class="goods" href="${esc(i.url)}" target="_blank" rel="noopener">
+      <div class="thumb"><img src="${esc(i.image)}" alt="${esc(i.title)}" loading="lazy"
+        onerror="this.parentElement.style.background='rgba(255,255,255,.06)';this.style.display='none'"></div>
+      <p class="goods-name">${esc(i.title)}</p>
+      <p class="goods-price">${esc(i.price)}</p>
+    </a>`).join('');
+
+  // ブログの最新記事（RSS→JSON）
+  const RSS = 'https://aku-go.blog.jp/index.rdf';
+  // count を付けると rss2json が API キーを要求して status:error を返す（旧ページはこれで落ちていた）。
+  // 既定で10件返るので、必要な5件はこちらで切る。
+  fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS)}`)
     .then(r => r.json())
     .then(data => {
       const list = document.getElementById('blog-list');
-      if (!data.items || data.items.length === 0) {
-        list.innerHTML = '<p style="color:var(--gray-mid); font-size:0.85rem;">記事を取得できませんでした。</p>';
+      if (!data.items || !data.items.length) {
+        list.innerHTML = '<p class="hint">記事を取得できませんでした。</p>';
         return;
       }
-      list.innerHTML = data.items.map(item => {
-        const date = new Date(item.pubDate).toLocaleDateString('ja-JP', {year:'numeric', month:'long', day:'numeric'});
-
-        // サムネイル：thumbnail → enclosure → 本文中の最初のimg → プレースホルダー の順で取得
+      list.innerHTML = data.items.slice(0, 5).map(item => {
+        const date = new Date(item.pubDate).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
         let thumb = item.thumbnail || (item.enclosure && item.enclosure.link) || '';
         if (!thumb && item.content) {
-          const match = item.content.match(/<img[^>]+src=["']([^"']+)["']/i);
-          if (match) thumb = match[1];
+          const m = item.content.match(/<img[^>]+src=["']([^"']+)["']/i);
+          if (m) thumb = m[1];
         }
-
-        const imgHtml = thumb
-          ? `<img src="${thumb}" alt=""
-               style="width:80px; height:80px; object-fit:cover; flex-shrink:0; border-radius:2px;"
-               onerror="this.style.display='none'">`
-          : `<div style="width:80px; height:80px; flex-shrink:0; background:var(--gray-light);
-               border-radius:2px; display:flex; align-items:center; justify-content:center;">
-               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-mid)" stroke-width="1.5">
-                 <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-                 <path d="M21 15l-5-5L5 21"/>
-               </svg>
-             </div>`;
-
-        return `
-          <a href="${item.link}" target="_blank" rel="noopener"
-            style="display:flex; align-items:center; gap:1.25rem;
-                   padding:1.25rem 0; border-bottom:1px solid var(--gray-light);
-                   text-decoration:none; transition:opacity 0.2s;"
-            onmouseover="this.style.opacity='0.6'"
-            onmouseout="this.style.opacity='1'">
-            ${imgHtml}
-            <div style="flex:1; min-width:0;">
-              <p style="font-size:0.92rem; color:var(--navy); font-weight:500;
-                        line-height:1.5; margin-bottom:0.3rem;
-                        white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${item.title}</p>
-              <p style="font-family:'DM Mono',monospace; font-size:0.68rem; color:var(--gray-mid);">${date}</p>
-            </div>
+        const img = thumb
+          ? `<img src="${esc(thumb)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`
+          : `<span class="ph"></span>`;
+        return `<a class="post" href="${esc(item.link)}" target="_blank" rel="noopener">
+            ${img}
+            <span style="flex:1; min-width:0">
+              <span class="post-title" style="display:block">${esc(item.title)}</span>
+              <span class="post-date">${date}</span>
+            </span>
           </a>`;
       }).join('');
     })
     .catch(() => {
-      document.getElementById('blog-list').innerHTML =
-        '<p style="color:var(--gray-mid); font-size:0.85rem;">記事の取得に失敗しました。</p>';
+      document.getElementById('blog-list').innerHTML = '<p class="hint">記事の取得に失敗しました。</p>';
     });
-    
-  </script>
+</script>
 </body>
 </html>
