@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ライセンスと免責事項 — AK CAMERA | Aku</title>
+<meta name="description" content="AK CAMERA が利用しているオープンソースソフトウェアの第三者通知と、免責事項。">
+<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">← AK CAMERA</a>
+  <ul class="nav-links">
+    <li><a href="index.html">アプリ紹介</a></li>
+    <li><a href="guide.html">操作説明</a></li>
+    <li><a href="privacy.html">プライバシー</a></li>
+    <li><a href="licenses.html" class="on">ライセンス</a></li>
+  </ul>
+</nav>
+
+<section>
+  <div class="inner">
+    <p class="label">Licenses &amp; Disclaimer</p>
+    <h2>ライセンスと免責事項</h2>
+    <div class="rule"></div>
+    <p class="muted">最終更新日: 2026年9月12日 ／ 対象: AK CAMERA v1.0.1</p>
+
+    <h3 style="margin-top:2rem">免責事項</h3>
+
+    <p>
+      AK CAMERA（以下「本アプリ」）は現状有姿で提供されます。
+      本アプリが特定の目的に適合すること、撮影や保存が常に成功すること、
+      すべての端末で同じ結果になることを保証するものではありません。
+    </p>
+    <p>
+      本アプリの利用または利用できなかったことにより生じた損害
+      （撮影機会の逸失、写真・動画の破損や消失、端末の不具合、その他の直接・間接の損害を含みます）について、
+      開発者は責任を負いません。ただし、開発者の故意または重大な過失による場合はこの限りではありません。
+    </p>
+    <p>
+      大切な撮影では、事前に動作を確認し、保存された写真をその場で確認してください。
+      また、撮影した写真・動画のバックアップは利用者ご自身でお願いします。
+    </p>
+    <p class="muted">
+      撮影した写真・動画の権利は撮影者に帰属します。撮影にあたっては、撮影場所の規則や被写体の権利を尊重してください。
+    </p>
+
+    <h3 style="margin-top:2.4rem">オープンソースソフトウェアについて</h3>
+
+    <p>
+      本アプリは以下のオープンソースソフトウェアを利用しています。
+      いずれも Apache License 2.0 / MIT License / BSD License のもとで提供されており、
+      コピーレフト（GPL 等）や非商用限定のライセンスのものは含まれていません。
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>ソフトウェア</th><th>ライセンス</th><th>用途</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>AndroidX / Jetpack（CameraX ほか）</td><td>Apache License 2.0</td><td>カメラ制御・UI 基盤</td></tr>
+        <tr><td>Kotlin / kotlinx.coroutines</td><td>Apache License 2.0</td><td>言語ランタイム</td></tr>
+        <tr><td>ONNX Runtime (Microsoft)</td><td>MIT License</td><td>端末内での深度推定</td></tr>
+        <tr><td>Depth Anything V2 Small</td><td>Apache License 2.0</td><td>深度推定モデル</td></tr>
+        <tr><td>libyuv（CameraX が利用）</td><td>BSD License</td><td>画像フォーマット変換</td></tr>
+        <tr><td>Guava ListenableFuture / AutoValue Annotations / JSpecify</td><td>Apache License 2.0</td><td>ライブラリ内部で利用</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:2.4rem">Apache License 2.0</h3>
+
+    <p class="muted">
+      AndroidX / Jetpack（The Android Open Source Project）、
+      Kotlin / kotlinx（JetBrains s.r.o. and Kotlin Programming Language contributors）、
+      Guava ListenableFuture・AutoValue Annotations（Google LLC）、
+      JSpecify（The JSpecify Authors）、
+      Depth Anything V2 Small（DepthAnything）に適用されます。
+    </p>
+    <blockquote>
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+      <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">https://www.apache.org/licenses/LICENSE-2.0</a><br><br>
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+    </blockquote>
+    <p class="muted">本アプリはこれらのライブラリのソースコードを改変せずに利用しています。</p>
+
+    <h3 style="margin-top:2.4rem">MIT License — ONNX Runtime</h3>
+
+    <p class="muted">Copyright (c) Microsoft Corporation</p>
+    <blockquote>
+      Permission is hereby granted, free of charge, to any person obtaining a copy
+      of this software and associated documentation files (the "Software"), to deal
+      in the Software without restriction, including without limitation the rights
+      to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+      copies of the Software, and to permit persons to whom the Software is
+      furnished to do so, subject to the following conditions:<br><br>
+      The above copyright notice and this permission notice shall be included in all
+      copies or substantial portions of the Software.<br><br>
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+      SOFTWARE.
+    </blockquote>
+
+    <h3 style="margin-top:2.4rem">BSD License — libyuv</h3>
+
+    <p class="muted">Copyright (c) 2011 The LibYuv Project Authors. All rights reserved.</p>
+    <blockquote>
+      Redistribution and use in source and binary forms, with or without
+      modification, are permitted provided that the following conditions are met:<br><br>
+      * Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.<br>
+      * Redistributions in binary form must reproduce the above copyright notice,
+      this list of conditions and the following disclaimer in the documentation
+      and/or other materials provided with the distribution.<br>
+      * Neither the name of Google nor the names of its contributors may be
+      used to endorse or promote products derived from this software without
+      specific prior written permission.<br><br>
+      THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+      AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+      IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+      ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+      LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+      CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+      EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    </blockquote>
+
+    <h3 style="margin-top:2.4rem">本アプリの著作権</h3>
+    <p class="muted">AK CAMERA — Copyright © 2026 Aku. All rights reserved.</p>
+
+  </div>
+</section>
+
+<footer>
+  <div>AK CAMERA — ライセンスと免責事項</div>
+  <div class="rule"></div>
+  <div><a href="index.html">アプリ紹介</a> ／ <a href="guide.html">操作説明</a> ／ <a href="privacy.html">プライバシー</a> ／ <a href="../">プロフィールページ</a></div>
+  <div style="margin-top:.45rem"><a href="https://x.com/aku_niconico" target="_blank" rel="noopener">X ＠aku_niconico</a> ／ <a href="https://ko-fi.com/akuniconico" target="_blank" rel="noopener">Ko-fi で支援する</a></div>
+</footer>
+
+</body>
+</html>

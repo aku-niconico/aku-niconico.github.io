@@ -169,3 +169,15 @@ footer {
 }
 footer a { color: var(--accent-light); text-decoration: none; }
 footer .rule { margin: 1.2rem auto; }
+
+/* ライセンス全文（licenses.html）。地が明るいので枠線は navy 側で引く */
+blockquote {
+  margin: .9rem 0 1.4rem;
+  padding: .9rem 1.1rem;
+  background: #fff;
+  border-left: 2px solid rgba(15,31,61,.14);
+  color: var(--gray-dark);
+  font-size: .8rem;
+  line-height: 1.8;
+  word-break: break-word;
+}
