@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aku — Creator's Page</title>
-  <meta name="description" content="Aku（@aku_niconico）の制作ページ。Androidカメラアプリ AK CAMERA、MyNews、ニコニコ週間ランキング、CircuitDrive の個人開発と、ニコニコ動画への投稿・ブログ・同人誌をまとめています。">
+  <meta name="description" content="Aku（@aku_niconico）の制作ページ。Androidカメラアプリ AK CAMERA、MyNews、ニコニコ週間ランキング、CircuitDrive、AINews の個人開発と、ニコニコ動画への投稿・ブログ・同人誌をまとめています。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -178,9 +178,13 @@
     .btn-accent:hover { background: var(--accent); border-color: var(--accent); color: var(--navy); }
 
     /* ── WORKS: そのほか ── */
-    .work-grid {
-      display: grid; gap: 1.1rem; margin-top: 1.4rem;
-      grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    .work-grid { display: grid; gap: 1.1rem; margin-top: 1.4rem; grid-template-columns: 1fr; }
+    @media (min-width: 620px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
+    /* まだ有効化していない機能につける注記 */
+    .yet { font-size: .72rem; color: var(--gray-mid); letter-spacing: .01em; }
+    .note-yet {
+      margin-top: 1.1rem; font-size: .78rem; color: var(--gray-dark);
+      border-left: 2px solid var(--gray-mid); padding-left: .8rem; line-height: 1.7;
     }
     .work {
       background: #fff; border: 1px solid rgba(15,31,61,.1); border-radius: 5px;
@@ -237,21 +241,26 @@
       letter-spacing: .12em; text-transform: uppercase; color: var(--gray-mid); margin-top: .5rem;
     }
 
-    /* ── BLOG ── */
+    /* ── BLOG（動画・BOOTH と同じ横スクロール） ── */
     .post {
-      display: flex; align-items: center; gap: 1rem; padding: .85rem 0;
-      border-bottom: 1px solid var(--gray-light); text-decoration: none; transition: opacity .2s;
+      display: block; background: #fff; border: 1px solid rgba(15,31,61,.1);
+      border-radius: 4px; overflow: hidden; text-decoration: none;
+      transition: border-color .2s, transform .2s;
     }
-    .post:hover { opacity: .62; }
-    .post img, .post .ph {
-      width: 64px; height: 64px; flex-shrink: 0; object-fit: cover; border-radius: 2px;
-      background: var(--gray-light);
-    }
+    .post:hover { border-color: var(--accent); transform: translateY(-2px); }
+    /* span なので display:block が要る（inline のままだと aspect-ratio が効かず、
+       画像が原寸で伸びてレールが縦に伸びる） */
+    .post .thumb { display: block; aspect-ratio: 16/10; background: var(--gray-light); overflow: hidden; }
+    .post .thumb img { width: 100%; height: 100%; object-fit: cover; }
     .post-title {
-      font-size: .89rem; color: var(--navy); font-weight: 500; line-height: 1.5;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      font-size: .84rem; color: var(--navy); font-weight: 500; line-height: 1.55;
+      padding: .65rem .75rem .2rem; min-height: 3.2em;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     }
-    .post-date { font-family: 'DM Mono', monospace; font-size: .66rem; color: var(--gray-mid); }
+    .post-date {
+      font-family: 'DM Mono', monospace; font-size: .66rem;
+      color: var(--gray-mid); padding: 0 .75rem .75rem; display: block;
+    }
 
     /* ── SHOP ── */
     .goods {
@@ -360,7 +369,7 @@
     <p class="hero-desc">
       ニコニコ動画に動画を投稿しつつ、自分がほしかったものを個人で作っています。
       Android用カメラアプリ <strong style="color:var(--accent-light);font-weight:500">AK CAMERA</strong> と、
-      毎日動くWebサービスが3本。読んだ本はブクログ、日々のことはブログ、同人誌はBOOTHで。
+      毎日動くWebサービスが4本。読んだ本はブクログ、日々のことはブログ、同人誌はBOOTHで。
     </p>
     <div class="chips">
       <a class="chip" href="#works">制作物を見る</a>
@@ -472,7 +481,7 @@
             <ul class="feat">
               <li>7タグ対応（自転車・料理・技術部・旅行・車載・VOCALOID・ソフトウェアトーク）</li>
               <li>曜日分散更新でAPI負荷を分散、タグ別の鮮度を色で表示</li>
-              <li>プッシュ通知（FCM）をタグ別・投稿祭別にON/OFF</li>
+              <li>プッシュ通知（FCM）をタグ別・投稿祭別にON/OFF <span class="yet">※未実装</span></li>
               <li>投稿祭告知を毎日自動収集して開催状況で色分け</li>
               <li>HOT・注目・初投稿・完結バッジ／投稿者ミュート（最大1,000人）</li>
             </ul>
@@ -505,6 +514,8 @@
               <li>週間／月間／年間の3層タブ（月間は週次データを積んで月末に完成）</li>
               <li>センサAFE・SoC・電源管理・通信・機能安全の5カテゴリ</li>
               <li>日本・欧州・中韓メーカー別の経済インパクト分析</li>
+              <li>PWA対応・ダーク/ライトモード切替</li>
+              <li>プッシュ通知（FCM） <span class="yet">※未実装</span></li>
             </ul>
             <div class="stack">
               <span class="tech">Python</span><span class="tech">Gemini 2.5 Flash</span>
@@ -516,7 +527,42 @@
         </div>
       </div>
 
+      <div class="work">
+        <a class="work-shot" href="https://ainews-f1bc7.web.app/" target="_blank" rel="noopener">
+          <img src="img/works/ainews.jpg" alt="AINews の画面" loading="lazy">
+        </a>
+        <div class="work-body">
+          <p class="work-name">AINews <span class="pill">Live</span></p>
+          <p class="work-sub">AI技術ホットトピック</p>
+          <p class="work-desc">
+            OpenAI・Google・Anthropic などの発表と、Zenn / Qiita / 企業ブログ / YouTube の話題を集めます。
+            記事ごとに「何が新しいか」と「次に何をすればいいか」まで AI が書き出します。
+          </p>
+          <details class="more">
+            <summary>もっと見る</summary>
+            <ul class="feat">
+              <li>今日 / ホット / 今週 / 今月 / 今年 の5タブ＋ベンダー比較タブ</li>
+              <li>AI別フィルタ（OpenAI・Google・Anthropic・Meta・Microsoft・AWS・DeepSeek・OSS・学術）</li>
+              <li>話題別フィルタ（LLM・エージェント・RAG・MCP・ローカルLLM・コード生成 ほか）</li>
+              <li>記事ごとに「新技術」と「アクション（次にやること）」をAIが生成</li>
+              <li>HOTバッジ・出典表示・発信元ミュート・ダーク/ライト切替</li>
+              <li>プッシュ通知（FCM） <span class="yet">※未実装</span></li>
+            </ul>
+            <div class="stack">
+              <span class="tech">Python</span><span class="tech">Gemini</span>
+              <span class="tech">GitHub Actions</span><span class="tech">Firebase Hosting</span>
+            </div>
+          </details>
+          <div class="btnrow"><a class="btn" href="https://ainews-f1bc7.web.app/" target="_blank" rel="noopener">開く →</a></div>
+        </div>
+      </div>
+
     </div>
+
+    <p class="note-yet">
+      ※ 各Webサービスの<strong>プッシュ通知はまだ未実装</strong>です。仕組みは入れてありますが有効化していないので、
+      いまのところ通知は届きません。
+    </p>
   </div>
 </section>
 
@@ -552,8 +598,9 @@
     <p class="label">Blog</p>
     <h2>ブログ</h2>
     <div class="rule"></div>
-    <p class="lead">livedoorブログで書いています。最新5件を自動で読み込みます。</p>
-    <div id="blog-list"><p class="hint">Loading…</p></div>
+    <p class="lead">livedoorブログで書いています。最新8件を自動で読み込みます。横にスクロールできます。</p>
+    <div class="rail" id="blog-list" style="grid-auto-columns:minmax(228px,1fr)"><p class="hint">Loading…</p></div>
+    <p class="hint">← swipe / scroll →</p>
     <div class="btnrow" style="margin-top:1.2rem">
       <a class="btn" href="https://aku-go.blog.jp/" target="_blank" rel="noopener">すべての記事を読む →</a>
     </div>
@@ -611,6 +658,7 @@
           ひとりで運用まで回しています。毎朝のニュースをまとめる <strong>MyNews</strong>、
           埋もれた動画を拾う <strong>ニコニコ週間ランキング</strong>、
           車載電気設計まわりの論文を追う <strong>CircuitDrive</strong>、
+          AI の動きを毎日まとめる <strong>AINews</strong>、
           そして Android 用カメラアプリ <strong>AK CAMERA</strong>。
           どれも「自分がほしかったのに無かったもの」です。
         </p>
@@ -634,7 +682,7 @@
         </div>
         <div class="fact">
           <p class="fact-k">Development</p>
-          <p class="fact-v">Webサービス3本 ＋ Androidアプリ1本</p>
+          <p class="fact-v">Webサービス4本 ＋ Androidアプリ1本</p>
         </div>
         <div class="fact">
           <p class="fact-k">Blog / Reading</p>
@@ -747,7 +795,7 @@
   // ブログの最新記事（RSS→JSON）
   const RSS = 'https://aku-go.blog.jp/index.rdf';
   // count を付けると rss2json が API キーを要求して status:error を返す（旧ページはこれで落ちていた）。
-  // 既定で10件返るので、必要な5件はこちらで切る。
+  // 既定で10件返るので、必要な8件はこちらで切る。
   fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS)}`)
     .then(r => r.json())
     .then(data => {
@@ -756,7 +804,7 @@
         list.innerHTML = '<p class="hint">記事を取得できませんでした。</p>';
         return;
       }
-      list.innerHTML = data.items.slice(0, 5).map(item => {
+      list.innerHTML = data.items.slice(0, 8).map(item => {
         const date = new Date(item.pubDate).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
         let thumb = item.thumbnail || (item.enclosure && item.enclosure.link) || '';
         if (!thumb && item.content) {
@@ -764,14 +812,12 @@
           if (m) thumb = m[1];
         }
         const img = thumb
-          ? `<img src="${esc(thumb)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`
-          : `<span class="ph"></span>`;
+          ? `<img src="${esc(thumb)}" alt="" loading="lazy" onerror="this.closest('.thumb').style.background='var(--gray-light)';this.remove()">`
+          : '';
         return `<a class="post" href="${esc(item.link)}" target="_blank" rel="noopener">
-            ${img}
-            <span style="flex:1; min-width:0">
-              <span class="post-title" style="display:block">${esc(item.title)}</span>
-              <span class="post-date">${date}</span>
-            </span>
+            <span class="thumb">${img}</span>
+            <span class="post-title">${esc(item.title)}</span>
+            <span class="post-date">${date}</span>
           </a>`;
       }).join('');
     })
