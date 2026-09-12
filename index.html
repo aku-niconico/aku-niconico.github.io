@@ -297,7 +297,9 @@
     }
     .fact-v { font-size: .85rem; color: var(--navy); }
 
-    .link-grid { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); margin-top: 1.3rem; }
+    /* auto-fit だと 1040px で6列 158px になり「ニコニコ動画」が2行に折れる。列数を決め打ちにする */
+    .link-grid { display: grid; gap: .6rem; grid-template-columns: repeat(2, 1fr); margin-top: 1.3rem; }
+    @media (min-width: 720px) { .link-grid { grid-template-columns: repeat(3, 1fr); } }
     .link {
       display: flex; align-items: center; gap: .65rem; padding: .65rem .8rem;
       background: #fff; border: 1px solid rgba(15,31,61,.1); border-radius: 4px;
@@ -367,9 +369,9 @@
     <h1 class="hero-name">Aku</h1>
     <p class="hero-handle">@aku_niconico</p>
     <p class="hero-desc">
-      ニコニコ動画に動画を投稿しつつ、自分がほしかったものを個人で作っています。
-      Android用カメラアプリ <strong style="color:var(--accent-light);font-weight:500">AK CAMERA</strong> と、
-      毎日動くWebサービスが4本。読んだ本はブクログ、日々のことはブログ、同人誌はBOOTHで。
+      ニコニコ動画に動画を投稿したり、AIを活用して自分好みのアプリやサービスを個人で作っています。
+      Android用カメラアプリ <strong style="color:var(--accent-light);font-weight:500">AK CAMERA</strong> をリリース予定です。
+      読んだ本はブクログ、日々のことはXとブログ、同人誌はBOOTHで公開しています。
     </p>
     <div class="chips">
       <a class="chip" href="#works">制作物を見る</a>
@@ -403,14 +405,16 @@
             <span class="pill">クローズドテスト準備中</span>
           </div>
           <p class="feature-desc">
-            シャッターを押した先で「現像」まで終わらせてしまうカメラです。
-            露出を決めて、複数枚を重ねてノイズを減らして、色を作って、背景をぼかす——
-            そこまでを1回のシャッターの中でやります。出てくるのは、そのまま人に見せられる1枚です。
+            スマートフォンで一眼レフ／ミラーレスカメラのような、写真の画作りに特化したカメラアプリです。
+            デフォルトのカメラアプリや加工アプリの写真ともまた違う、1枚の写真をしっかり作りこむ体験をしませんか？
+            アプリ内のルック、撮影設定、それぞれで持っているスマートフォンのカメラ（ハードウェア）の組み合わせで、
+            自分だけにしか撮れない1枚をお試しください。
           </p>
           <ul class="feature-points">
-            <li>21種類のルック。選んだ瞬間からプレビューが変わります</li>
-            <li>奥行きを端末の中で推定して背景をぼかす／4枚・8枚の多枚合成</li>
-            <li>通信しません。インターネット権限そのものを宣言していません</li>
+            <li>21種類のルック</li>
+            <li>奥行きをご自身の端末内で推定して背景をぼかす</li>
+            <li>4枚・8枚の多枚合成による高画質</li>
+            <li>通信の必要はありません</li>
           </ul>
           <div class="btnrow">
             <a class="btn btn-solid" href="akcam/">紹介ページを見る →</a>
@@ -572,7 +576,7 @@
     <p class="label">Nicovideo</p>
     <h2 style="color:var(--white)">Videos</h2>
     <div class="rule"></div>
-    <p class="lead">ニコニコ動画に投稿した代表作です。横にスクロールできます。</p>
+    <p class="lead">ニコニコ動画に投稿した代表作です。</p>
     <div class="rail">
       <div class="embed"><iframe loading="lazy" src="https://embed.nicovideo.jp/watch/sm37787904?jsapi=1&amp;noRelatedVideo=0&amp;autoplay=0&amp;allowProgrammaticFullScreen=1" allowfullscreen allow="autoplay; fullscreen" title="ニコニコ動画 sm37787904"></iframe></div>
       <div class="embed"><iframe loading="lazy" src="https://embed.nicovideo.jp/watch/sm37258062?jsapi=1&amp;noRelatedVideo=0&amp;autoplay=0&amp;allowProgrammaticFullScreen=1" allowfullscreen allow="autoplay; fullscreen" title="ニコニコ動画 sm37258062"></iframe></div>
@@ -598,7 +602,7 @@
     <p class="label">Blog</p>
     <h2>ブログ</h2>
     <div class="rule"></div>
-    <p class="lead">livedoorブログで書いています。最新8件を自動で読み込みます。横にスクロールできます。</p>
+    <p class="lead">livedoorブログで書いています。最新8件を自動で読み込みます。</p>
     <div class="rail" id="blog-list" style="grid-auto-columns:minmax(228px,1fr)"><p class="hint">Loading…</p></div>
     <p class="hint">← swipe / scroll →</p>
     <div class="btnrow" style="margin-top:1.2rem">
@@ -743,10 +747,14 @@
     <div class="support">
       <h3>作ったものは全部、無料で公開しています</h3>
       <p>
-        Webサービスもカメラアプリも、広告なし・アプリ内課金なしで置いています。
-        「使っていて良かった」と思っていただけたら、Ko-fi から支援していただけると続けやすくなります。
-        いただいたぶんは検証用の端末や公開にかかる費用にあてます。<strong>支援しても機能は増えません</strong>——
-        全部の機能を最初から全員に開いています。
+        Webサービスもカメラアプリも、広告なし・アプリ内課金なしで公開します。
+        「使っていて良かった」と思っていただけたら、Ko-fi から支援していただけるとモチベーションに繋がります。
+        支援いただいた分は開発にかかるAIサブスク費用、検証用の端末や公開・維持にかかる費用にあてさせていただきます。
+      </p>
+      <p style="margin-top:.8rem">
+        <strong>支援いただいても機能追加には繋がりません</strong>が、開発意欲は向上します。
+        世の中をよくするアイディアは無料で全機能を公開することを前提に、今後も邁進します。
+        ご意見やバグ等あればお気軽にご連絡ください。
       </p>
       <div class="btnrow" style="margin-top:1rem">
         <a class="btn btn-accent" href="https://ko-fi.com/akuniconico" target="_blank" rel="noopener">Ko-fi で支援する</a>
