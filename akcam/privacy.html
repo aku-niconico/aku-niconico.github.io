@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー — AK CAMERA | Aku</title>
+<meta name="description" content="AK CAMERA のプライバシーポリシー。本アプリはインターネット権限を持たず、撮影データや診断データを開発者のサーバーへ自動送信しません。">
+<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">← AK CAMERA</a>
+  <ul class="nav-links">
+    <li><a href="index.html">アプリ紹介</a></li>
+    <li><a href="guide.html">操作説明</a></li>
+    <li><a href="privacy.html" class="on">プライバシー</a></li>
+  </ul>
+</nav>
+
+<section>
+  <div class="inner">
+    <p class="label">Privacy Policy</p>
+    <h2>AK CAMERA プライバシーポリシー</h2>
+    <div class="rule"></div>
+    <p class="muted">最終更新日: 2026年9月11日</p>
+
+    <p style="margin-top:1.4rem">
+      AK CAMERA（以下「本アプリ」）は、写真・動画の撮影と端末内での画像処理を行うカメラアプリです。
+      本アプリはインターネット権限を宣言しておらず、撮影データや診断データを開発者のサーバーへ自動送信しません。
+    </p>
+
+    <h3>1. 端末上で扱うデータ</h3>
+    <ul class="plain">
+      <li><strong>カメラ映像</strong>: 写真・動画の撮影、プレビュー、AF/AE、端末内の画像処理に使用します。</li>
+      <li><strong>写真・動画・音声</strong>: 現像済みJPEG、任意の元JPEG、任意のRAW（DNG）、動画（マイク権限がある場合は音声を含む）を、Androidの共有メディア領域へ保存します。</li>
+      <li><strong>位置情報（任意）</strong>: 設定「位置情報を写真に記録」をユーザーが有効にし、OS権限を許可した場合だけ、端末から取得できた位置情報を現像済みJPEGのEXIFへ保存します。現行実装はOSが保持する直近位置を使うため、撮影時点とずれる場合があります。</li>
+      <li><strong>設定・診断情報</strong>: アプリ設定、撮影条件、処理時間、失敗理由、クラッシュ時のアプリログを端末内へ保存します。診断レポートには撮影画像そのものを入れませんが、生成ファイル名やアプリ内部のパスがアプリログに含まれる場合があります。</li>
+      <li><strong>署名証明書のハッシュ</strong>: APK改変検知のため端末内で算出・照合します。外部送信しません。</li>
+    </ul>
+
+    <h3>2. 利用目的</h3>
+    <p>
+      上記データは、撮影・保存、端末内の画像処理、設定の復元、障害の切り分け、
+      ユーザーが選択した場合の写真への位置情報記録にのみ使用します。
+      広告、行動追跡、データ販売には使用しません。
+    </p>
+
+    <h3>3. 外部送信と第三者共有</h3>
+    <p>
+      本アプリ自身は、データを外部サーバーへ自動送信しません。
+      ユーザーがAndroidの共有画面、設定の書き出し、診断レポートの共有を明示的に操作した場合は、
+      ユーザーが選んだ送信先アプリまたは保存先へデータが渡ります。
+      送信後のデータは、その送信先の規約とプライバシーポリシーに従います。
+    </p>
+
+    <h3>4. 保存期間と削除</h3>
+    <ul class="plain">
+      <li>アプリ内部の設定・ログは、ユーザーがアプリデータを消去するか、本アプリをアンインストールするまで端末内に残ります。</li>
+      <li>共有メディア領域へ保存したJPEG、DNG、動画、およびユーザーが書き出した設定JSON・診断ファイルは、アプリをアンインストールしても残る場合があります。削除はAndroidの写真・ファイル管理機能から行ってください。</li>
+      <li><code>android:allowBackup="false"</code> によりクラウドバックアップを無効にしています。ただしAndroid 12以降の端末間移行はメーカー実装により挙動が異なる場合があります。</li>
+    </ul>
+
+    <h3>5. 権限</h3>
+    <table>
+      <tr><th>カメラ</th><td>写真・動画の撮影</td></tr>
+      <tr><th>マイク</th><td>音声付き動画の撮影時のみ</td></tr>
+      <tr><th>正確またはおおよその位置情報</th><td>任意の写真ジオタグ機能を有効にした場合のみ</td></tr>
+    </table>
+    <p style="margin-top:1rem">
+      位置情報機能は拒否でき、拒否しても写真・動画を撮影できます。
+      位置情報のOS権限を要求する前に、保存先・利用目的・外部へ自動送信しないことをアプリ内で開示します。
+    </p>
+
+    <h3>6. お問い合わせ</h3>
+    <table>
+      <tr><th>運営主体</th><td>Aku（個人）</td></tr>
+      <tr><th>連絡先</th><td><a href="mailto:sakego.syasai@gmail.com">sakego.syasai@gmail.com</a></td></tr>
+      <tr><th>X</th><td><a href="https://x.com/aku_niconico" target="_blank" rel="noopener">@aku_niconico</a></td></tr>
+      <tr><th>公開URL</th><td>https://aku-niconico.github.io/akcam/privacy.html</td></tr>
+    </table>
+
+    <h3>7. 変更</h3>
+    <p>
+      本ポリシーを変更する場合は、最終更新日と変更内容を公開ページおよびアプリ内の案内へ反映します。
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div>AK CAMERA — プライバシーポリシー</div>
+  <div class="rule"></div>
+  <div><a href="index.html">アプリ紹介</a> ／ <a href="guide.html">操作説明</a> ／ <a href="../">プロフィールページ</a></div>
+  <div style="margin-top:.45rem"><a href="https://x.com/aku_niconico" target="_blank" rel="noopener">X ＠aku_niconico</a> ／ <a href="https://ko-fi.com/akuniconico" target="_blank" rel="noopener">Ko-fi で支援する</a></div>
+</footer>
+
+</body>
+</html>

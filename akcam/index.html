@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AK CAMERA — Android用カメラアプリ | Aku</title>
+<meta name="description" content="AK CAMERA は、撮った瞬間に端末の中だけで現像まで終えるAndroid用カメラアプリです。深度ボケ・多枚合成・21種類のルック。撮影データは外部へ自動送信しません。">
+<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../">← Aku</a>
+  <ul class="nav-links">
+    <li><a href="#about">概要</a></li>
+    <li><a href="#gallery">作例</a></li>
+    <li><a href="guide.html">操作説明</a></li>
+    <li><a href="privacy.html">プライバシー</a></li>
+  </ul>
+</nav>
+
+<header class="hero" style="background-image:url('img/hero.jpg')">
+  <img class="hero-icon" src="img/icon.png" alt="AK CAMERA アイコン">
+  <h1>AK CAMERA</h1>
+  <p class="hero-tag">撮るだけで、空気感のある一枚に。</p>
+  <p class="hero-desc">Android用カメラアプリ ／ 現像までぜんぶ端末の中で</p>
+  <span class="badge">クローズドテスト準備中</span>
+</header>
+
+<section id="about">
+  <div class="inner">
+    <p class="label">About</p>
+    <h2>撮ったあとの「もうひと手間」を、アプリの中で</h2>
+    <div class="rule"></div>
+    <p>
+      スマートフォンで撮った写真を、あとからアプリで整えている人は多いと思います。
+      AK CAMERA は、その工程をシャッターを押した先でまとめて済ませてしまうカメラです。
+      露出を決めて、複数枚を重ねてノイズを減らして、色を作って、ボケを作る——
+      そこまでを<strong>1回のシャッター</strong>の中でやります。
+    </p>
+    <p>
+      処理はすべて端末の中で完結します。本アプリはインターネット権限そのものを持っていないので、
+      撮った写真や設定が開発者のサーバーへ送られることはありません。
+    </p>
+
+    <div class="cards" style="margin-top:2.2rem">
+      <div class="card">
+        <h3>端末の中で完結</h3>
+        <p>通信しません。撮影・現像・ボケの推論まで、電波の無いところでも同じように動きます。</p>
+      </div>
+      <div class="card">
+        <h3>21種類のルック</h3>
+        <p>スタンダード / 風景 / ポートレート / フィルム / モノクロ など。選んだ瞬間からプレビューが変わります。</p>
+      </div>
+      <div class="card">
+        <h3>深度ボケと多枚合成</h3>
+        <p>奥行きを推定して背景をぼかし、4枚・8枚を重ねて暗いところのノイズを減らします。</p>
+      </div>
+      <div class="card">
+        <h3>かんたん / 標準 / プロ</h3>
+        <p>画面に出す情報量を3段階で切り替え。操作を減らすのではなく、見えるものを整理します。</p>
+      </div>
+      <div class="card">
+        <h3>撮ったままも残せる</h3>
+        <p>現像前のJPEG、対応端末ならRAW(DNG)も同時に保存できます。</p>
+      </div>
+      <div class="card">
+        <h3>透かし</h3>
+        <p>日付・端末名・署名を入れた帯を写真の下に付けられます（切ることもできます）。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="alt">
+  <div class="inner">
+    <p class="label">Gallery</p>
+    <h2>作例</h2>
+    <div class="rule"></div>
+    <p class="muted">
+      いずれも AK CAMERA で撮影して、そのまま保存された写真です（リサイズ以外の加工はしていません）。
+      ルック名は、写真のEXIFに残っている撮影時の記録から取っています。
+    </p>
+    <div class="gallery" style="margin-top:1.6rem">
+      <figure><img src="img/sample_sky.jpg" alt="夏空と木立"><figcaption>スタンダード / 夏の午後</figcaption></figure>
+      <figure><img src="img/sample_vivid.jpg" alt="壁画と赤いベンチ"><figcaption><strong>VIVID+</strong> / 色を強く出したいとき</figcaption></figure>
+      <figure><img src="img/sample_depth.jpg" alt="芝生と建物"><figcaption><strong>VIVID+</strong> ＋ 多枚合成 / 奥行きの出かた</figcaption></figure>
+      <figure><img src="img/sample_bokeh.jpg" alt="グラスと、ぼけた背景"><figcaption><strong>深度ボケ 30</strong> / 奥行きを推定して背景だけぼかす</figcaption></figure>
+      <figure><img src="img/sample_food.jpg" alt="サンドイッチのプレート"><figcaption><strong>フード</strong> / 料理向けのルック</figcaption></figure>
+      <figure><img src="img/sample_dark.jpg" alt="深夜のサービスエリア"><figcaption><strong>SCENERY</strong> / 深夜・ISO 2692。暗い場面でも色は残る</figcaption></figure>
+      <figure><img src="img/sample_night.jpg" alt="夜の駐車場"><figcaption>夜・ISO 1105 / 街灯だけの明るさ</figcaption></figure>
+      <figure><img src="img/sample_city.jpg" alt="夜の街"><figcaption><strong>TEAL</strong> / 夜の街を、明るくしすぎずに</figcaption></figure>
+      <figure><img src="img/sample_rain_af.jpg" alt="雨粒越しの店"><figcaption>HDR / <strong>雨粒ではなく、奥の店にピントが合っています</strong></figcaption></figure>
+      <figure><img src="img/sample_watermark.jpg" alt="透かしを入れた作例"><figcaption><strong>透かしを入れた例。</strong>下の帯に 端末名・日付・時刻・署名（OFFにもできます）</figcaption></figure>
+    </div>
+
+    <h3 style="margin-top:2.4rem">21:9 でも撮れます</h3>
+    <figure style="margin:0">
+      <img src="img/sample_wide.jpg" alt="21:9 の作例">
+      <figcaption class="muted" style="margin-top:.45rem">VIVID+ / 21:9。アスペクト比は設定から変えられます</figcaption>
+    </figure>
+
+    <h3 style="margin-top:2.4rem">拡大しても残ります</h3>
+    <div class="side" style="margin-top:.8rem">
+      <img src="img/sample_detail.jpg" alt="ウミガメの壁画（全体）">
+      <div>
+        <p class="muted" style="margin-bottom:.6rem">上が全体、下が<strong>同じ写真の等倍切り出し</strong>（縮小していません）。細い文字までそのまま残ります。</p>
+        <img src="img/sample_detail_crop.jpg" alt="同じ写真の等倍切り出し">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="screens">
+  <div class="inner">
+    <p class="label">Screens</p>
+    <h2>画面</h2>
+    <div class="rule"></div>
+    <div class="shots">
+      <figure>
+        <img src="img/shot_main.jpg" alt="撮影画面">
+        <figcaption>撮影画面。上の帯に、いまの設定がひと目で出ます</figcaption>
+      </figure>
+      <figure>
+        <img src="img/shot_look.jpg" alt="ルック選択">
+        <figcaption>ルックは一覧から選びます。効きの強さも変えられます</figcaption>
+      </figure>
+      <figure>
+        <img src="img/shot_tools.jpg" alt="撮影補助">
+        <figcaption>合成・HDR・タイマー・グリッド・水準器・動画</figcaption>
+      </figure>
+    </div>
+    <p style="margin-top:1.6rem"><a href="guide.html">→ 操作説明を見る</a></p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="inner">
+    <p class="label">Spec</p>
+    <h2>できること</h2>
+    <div class="rule"></div>
+    <table>
+      <tr><th>撮影</th><td>露出 オート / 絞り優先 / シャッター優先 / マニュアル、露出補正、ホワイトバランス、タップAF、AFロック、セルフタイマー、音量ボタンでシャッター</td></tr>
+      <tr><th>画づくり</th><td>21種類のルック、効きの強さ、彩度・明瞭度・シャープの微調整、HDR、4枚 / 8枚の合成</td></tr>
+      <tr><th>ボケ</th><td>奥行き推定による背景ぼかし（端末内推論）。強さを段階で調整</td></tr>
+      <tr><th>保存</th><td>現像済みJPEG、元画像JPEG（任意）、RAW/DNG（対応端末のみ・任意）、動画</td></tr>
+      <tr><th>表示</th><td>かんたん / 標準 / プロ の3段階、構図グリッド、水準器、ピーキング、縦横の自動追従</td></tr>
+      <tr><th>その他</th><td>透かし（ロゴ・署名・日付・端末名）、写真へのGPS記録（任意）、診断レポートの書き出し</td></tr>
+      <tr><th>動作環境</th><td>Android 11（API 30）以上。ボケや夜景など一部の機能は端末の対応状況によります</td></tr>
+      <tr><th>通信</th><td>なし（インターネット権限を宣言していません）</td></tr>
+    </table>
+    <div class="note">
+      端末によって使える機能が変わります。たとえば RAW(DNG) や 夜景モード、最大解像度での撮影は、
+      その端末のカメラが対応している場合だけ有効になります。対応していない端末では、
+      同じ操作でも通常の撮影として保存されます。
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="inner">
+    <p class="label">Contact</p>
+    <h2>配布とお問い合わせ</h2>
+    <div class="rule"></div>
+    <p>
+      現在はクローズドテストの準備中です。Google Play での配信が始まりましたら、このページにリンクを出します。
+    </p>
+    <p class="muted">
+      不具合の報告は、できれば<strong>端末名・版数・操作手順</strong>を添えていただけると助かります。
+      アプリの <strong>設定 &gt; アプリ &gt; メールで連絡する</strong> から送ると、版数と端末名が自動で入ります。
+    </p>
+    <div class="btnrow">
+      <a class="btn" href="mailto:sakego.syasai@gmail.com">メールで連絡する</a>
+      <a class="btn" href="https://x.com/aku_niconico" target="_blank" rel="noopener">X ＠aku_niconico</a>
+      <a class="btn btn-accent" href="https://ko-fi.com/akuniconico" target="_blank" rel="noopener">Ko-fi で支援する</a>
+    </div>
+    <ul class="plain" style="margin-top:1.4rem">
+      <li><a href="guide.html">操作説明</a></li>
+      <li><a href="privacy.html">プライバシーポリシー</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="alt" id="support">
+  <div class="inner">
+    <p class="label">Support</p>
+    <h2>このアプリは無料です</h2>
+    <div class="rule"></div>
+    <p>
+      広告は入れていません。アプリ内購入もありません。利用状況の収集や解析も行っていません。
+      機能を使うのにお金を払う必要は、これからもありません。
+    </p>
+    <p>
+      それでも「使っていて良かった」と思っていただけたら、Ko-fi から開発を支援できます。
+      いただいたぶんは、検証用の端末と公開にかかる費用にあてます。
+      <strong>支援しても機能は増えません</strong>——すべての機能を最初から全員に開いています。
+    </p>
+    <div class="btnrow">
+      <a class="btn btn-accent" href="https://ko-fi.com/akuniconico" target="_blank" rel="noopener">Ko-fi で支援する</a>
+      <a class="btn" href="https://x.com/aku_niconico" target="_blank" rel="noopener">X をフォローする</a>
+    </div>
+    <div class="note">
+      アプリからも開けます：<strong>設定 &gt; アプリ &gt; 開発を支援する</strong>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>AK CAMERA</div>
+  <div class="rule"></div>
+  <div><a href="https://x.com/aku_niconico" target="_blank" rel="noopener">X ＠aku_niconico</a> ／ <a href="https://ko-fi.com/akuniconico" target="_blank" rel="noopener">Ko-fi で支援する</a></div>
+  <div style="margin-top:.45rem">制作 Aku ／ <a href="../">プロフィールページ</a></div>
+</footer>
+
+</body>
+</html>
