@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>よくある質問 — AK CAMERA | Aku</title>
+<meta name="description" content="AK CAMERA のよくある質問。対応機種、インストールのしかた、料金と広告、撮影後に待たされる理由、写真の保存先、透かしの設定、困ったときの連絡先まで。">
+<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .faq-list { margin-top: 1.2rem; }
+  .faq-list details {
+    border-bottom: 1px solid rgba(15,31,61,.1);
+    padding: .85rem 0;
+  }
+  .faq-list details:first-of-type { border-top: 1px solid rgba(15,31,61,.1); }
+  .faq-list summary {
+    cursor: pointer; font-weight: 500; color: var(--navy);
+    font-size: .96rem; list-style: none; position: relative; padding-right: 1.8rem;
+  }
+  .faq-list summary::-webkit-details-marker { display: none; }
+  .faq-list summary::after {
+    content: '+'; position: absolute; right: 0; top: 0;
+    color: var(--accent); font-family: 'DM Mono', monospace; font-size: 1rem;
+  }
+  .faq-list details[open] summary::after { content: '−'; }
+  .faq-list .a { margin-top: .6rem; font-size: .88rem; color: var(--text); }
+  .faq-list .a p + p { margin-top: .55rem; }
+  .faq-jump { font-size: .78rem; margin-top: .5rem; }
+  .cat-lead { margin-bottom: -.4rem; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">← AK CAMERA</a>
+  <ul class="nav-links">
+    <li><a href="#toc">目次</a></li>
+    <li><a href="#cat-install">インストール・料金</a></li>
+    <li><a href="#cat-shoot">撮影</a></li>
+    <li><a href="#cat-save">写真と保存</a></li>
+    <li><a href="#cat-settings">設定</a></li>
+    <li><a href="#cat-trouble">困ったとき</a></li>
+  </ul>
+</nav>
+
+<section id="toc">
+  <div class="inner">
+    <p class="label">FAQ</p>
+    <h2>よくある質問</h2>
+    <div class="rule"></div>
+    <p>
+      使っていて気になったことをカテゴリ別にまとめました。答えが短いものが多いので、
+      困ったときはまずここで探してみてください。もっと詳しく知りたいところは、
+      <a href="guide.html">操作説明</a> の該当箇所にもリンクしています。
+    </p>
+
+    <div class="toc">
+      <p class="toc-title">目次</p>
+      <ol>
+        <li><a href="#cat-install">インストール・料金</a></li>
+        <li><a href="#cat-shoot">撮影</a></li>
+        <li><a href="#cat-save">写真と保存</a></li>
+        <li><a href="#cat-settings">設定</a></li>
+        <li><a href="#cat-trouble">困ったとき</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="cat-install" class="alt">
+  <div class="inner">
+    <p class="label">01</p>
+    <h2>インストール・料金</h2>
+    <div class="rule"></div>
+
+    <div class="faq-list">
+      <details id="q-devices">
+        <summary>対応している機種はありますか？</summary>
+        <div class="a">
+          <p>Android 11（API 30）以降が対象です。写真を撮ること自体はどの対応端末でもできますが、
+            深度ボケの推定やナイトモードのような機能は、その端末のカメラやセンサーが対応していないと使えないことがあります。</p>
+        </div>
+      </details>
+
+      <details id="q-howto-install">
+        <summary>どこからインストールできますか？</summary>
+        <div class="a">
+          <p><a href="https://play.google.com/store/apps/details?id=com.akuniconico.akcam" target="_blank" rel="noopener">Google Play</a> からインストールできます。
+            クローズドテストに参加していた方は、そのまま Play ストアから更新できます。</p>
+        </div>
+      </details>
+
+      <details id="q-account-switch">
+        <summary>参加用のリンクを開くと「アクセス権がありません」と出ます</summary>
+        <div class="a">
+          <p>多くの場合、端末の Google Play が招待を受けたのと違う Google アカウントでログインしています。
+            Play ストアアプリを開き、右上のアカウントアイコンをタップしてアカウントの一覧を出し、
+            招待メールが届いたアカウントに切り替えてから、もう一度招待リンクを開いてみてください。</p>
+          <p>切り替えた直後は反映まで数分かかることがあります。それでも入れないときは、
+            使っているアカウントのメールアドレスを添えて連絡してもらえると確認できます。</p>
+        </div>
+      </details>
+
+      <details id="q-price">
+        <summary>料金はかかりますか？</summary>
+        <div class="a">
+          <p>無料です。買い切りもサブスクもありません。</p>
+        </div>
+      </details>
+
+      <details id="q-ads">
+        <summary>広告は出ますか？</summary>
+        <div class="a">
+          <p>出ません。開発者に写真や利用状況が送られることもありません。</p>
+        </div>
+      </details>
+
+      <details id="q-support-kofi">
+        <summary>Ko-fi で支援すると、使える機能が増えますか？</summary>
+        <div class="a">
+          <p>増えません。支援してもしなくても、使える機能は同じです。いただいた支援は、開発にかかるAIサブスク費用や
+            検証用の端末代など、続けるための費用に充てさせてもらっています。</p>
+        </div>
+      </details>
+
+      <details id="q-network">
+        <summary>このアプリは通信しますか？</summary>
+        <div class="a">
+          <p>しません。撮った写真や設定がどこかに送られることはなく、電波の無い場所でも同じように使えます。</p>
+          <p class="faq-jump muted">→ <a href="privacy.html">プライバシーポリシー</a></p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="cat-shoot">
+  <div class="inner">
+    <p class="label">02</p>
+    <h2>撮影</h2>
+    <div class="rule"></div>
+
+    <div class="faq-list">
+      <details id="q-wait-after-shutter">
+        <summary>シャッターを押したあと、少し待たされるのはなぜですか？</summary>
+        <div class="a">
+          <p>暗いところでは自動で何枚か続けて撮って重ねています。重ねる・ぼかす・色を整えるといった処理を
+            すべて端末の中でその場で行っているので、保存まで数秒かかることがあります。
+            押したあとは、そのまま構えたままにしておいてください。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#shoot">操作説明「撮る」</a></p>
+        </div>
+      </details>
+
+      <details id="q-maxres-m">
+        <summary>「最大解像度」で撮ると「Mが効きません」のような表示が出ます</summary>
+        <div class="a">
+          <p>最大解像度で撮るときは、露出を端末におまかせする仕組みになっています。
+            マニュアル（M）や「合焦したときだけ撮る」を選んでいると、その1枚だけ通常の画質に切り替えて撮ります。
+            この1枚もマニュアルで決めた露出で撮ります。最大解像度で撮りたいときは、露出を S や P、おまかせに戻してください。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#set-shoot">操作説明「撮影」タブ</a></p>
+        </div>
+      </details>
+
+      <details id="q-quality-pick">
+        <summary>画質はどれを選べばいいですか？</summary>
+        <div class="a">
+          <p>迷ったら「自動」のままで大丈夫です。細部をもっと残したいときは「高」や「特高」を、
+            対応端末でとことん解像感がほしいときは「最大解像度」を試してください。数字が大きいほどファイルも重くなります。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#set-shoot">操作説明「撮影」タブ</a></p>
+        </div>
+      </details>
+
+      <details id="q-shutter-sound">
+        <summary>シャッター音を消せますか？</summary>
+        <div class="a">
+          <p>消せます。設定 &gt; 音 &gt; シャッター音の種類 で「無音」を選んでください。
+            ただし法令で撮影音が決められている端末では、端末側の音が別に鳴ることがあります。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#set-sound">操作説明「音」タブ</a></p>
+        </div>
+      </details>
+
+      <details id="q-heavy-hot">
+        <summary>動作が重い・端末が熱くなります</summary>
+        <div class="a">
+          <p>撮影補助の合成を「使わない」にし、HDRをOFF、設定 &gt; ボケ の「ボケをプレビューに反映」をOFFにすると軽くなります。
+            画質を「標準」まで下げるのも効果があります。端末が熱くなっているときは、アプリ側でも重ねる枚数を減らしたり
+            HDRを止めたりして、写真が確実に残るようにしています。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#recipes">操作説明「場面別のおすすめ」</a></p>
+        </div>
+      </details>
+
+      <details id="q-color-diff">
+        <summary>純正のカメラアプリと色が違うのはなぜですか？</summary>
+        <div class="a">
+          <p>このアプリは「ルック」という色の方向性を掛けて仕上げているためです。一覧から好みの傾向を選べるほか、
+            「ルックの効き」で強さを、設定 &gt; 画作り の「色の濃さ」で彩度そのものも調整できます。
+            色が濃すぎると感じたら、まずこのあたりを下げてみてください。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#look">操作説明「色を決める」</a></p>
+        </div>
+      </details>
+
+      <details id="q-raw-dng">
+        <summary>RAW(DNG)で撮れますか？</summary>
+        <div class="a">
+          <p>対応している端末では、設定 &gt; 保存 &gt; RAW(DNG)も保存 をONにすると、JPEGと一緒にDNGも保存されます。
+            DNGを残す回だけ、合成とHDRは使いません。最大解像度とは一緒に使えません。</p>
+          <p>2.0 から、DNG を書き終えた後でアプリが終わったときは、その DNG を「保存待ち」に残し、次に撮った写真の保存がうまくいった後にギャラリーへ追加します。
+            保存待ちの件数は 設定 &gt; 保存 で見られます。保存待ちがいっぱいのときは古い DNG を押し出さず、撮る前に知らせます。</p>
+          <p class="muted">一度もギャラリーへ追加しようとしていない DNG は、7日を過ぎても消しません。一度追加を試して失敗したものと、保存待ちがいっぱいで移せなかったものは、7日で消えることがあります。
+            書き終わる前にアプリが終わった DNG は残りません。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#set-save">操作説明「保存」タブ</a></p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="cat-save" class="alt">
+  <div class="inner">
+    <p class="label">03</p>
+    <h2>写真と保存</h2>
+    <div class="rule"></div>
+
+    <div class="faq-list">
+      <details id="q-save-location">
+        <summary>撮った写真はどこに保存されますか？</summary>
+        <div class="a">
+          <p>端末の <code>Pictures/AKU CAM</code> フォルダに入ります。ほかのギャラリーアプリやGoogleフォトからも、
+            そのまま開けます。動画は <code>Movies/AKU CAM</code> です。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#save">操作説明「撮った写真はどこに入るか」</a></p>
+        </div>
+      </details>
+
+      <details id="q-inapp-gallery-missing">
+        <summary>アプリの中の写真一覧に、前に撮った写真が出てきません</summary>
+        <div class="a">
+          <p>アプリ内のビューアに並ぶのは、いま入っているこのアプリで撮った写真だけです。
+            アプリを削除して入れ直すと、それより前に撮った写真はここには出なくなります。
+            写真そのものは端末に残っているので、端末のギャラリーやGoogleフォトから見てください。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#viewer">操作説明「撮った写真を見る」</a></p>
+        </div>
+      </details>
+
+      <details id="q-location">
+        <summary>位置情報は記録されますか？</summary>
+        <div class="a">
+          <p>設定 &gt; 保存 &gt; 位置情報を写真に記録 をONにしたときだけです。記録先は写真のEXIFの中だけで、
+            アプリから外部に送ることはありません。OFFのままなら位置情報はいっさい扱いません。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#set-save">操作説明「保存」タブ</a></p>
+        </div>
+      </details>
+
+      <details id="q-orig-save">
+        <summary>「元画像も保存」とは何ですか？</summary>
+        <div class="a">
+          <p>ルックや合成をかける前のJPEGを、同じ名前に <code>_orig</code> を付けて一緒に保存する機能です。
+            あとで自分で仕上げ直したい人向けで、写真ビューアの「オリジナルと比較する」で見比べられます。容量はほぼ倍になります。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#set-save">操作説明「保存」タブ</a></p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="cat-settings">
+  <div class="inner">
+    <p class="label">04</p>
+    <h2>設定</h2>
+    <div class="rule"></div>
+
+    <div class="faq-list">
+      <details id="q-watermark-off">
+        <summary>透かしをONにしたのに、写真に出てきません</summary>
+        <div class="a">
+          <p>設定 &gt; 保存 の「透かし」が親スイッチで、これがONになっていないと、下にある
+            「透かしの帯を写真の中に重ねる」などの項目はすべて効きません。まず「透かし」をONにしてから、
+            帯の位置や色を調整してください。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#set-save">操作説明「保存」タブ</a></p>
+        </div>
+      </details>
+
+      <details id="q-english-ui">
+        <summary>アプリが英語表示になってしまいました</summary>
+        <div class="a">
+          <p>設定 &gt; 表示 &gt; 言語 / Language で「日本語」を選び直してください。
+            切り替えると画面が作り直されますが、撮影の設定はそのまま残ります。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#set-view">操作説明「表示」タブ</a></p>
+        </div>
+      </details>
+
+      <details id="q-reset-settings">
+        <summary>いろいろ設定を変えすぎて、元に戻したくなりました</summary>
+        <div class="a">
+          <p>すべてを一度に初期化するボタンはありません。カメラまわりの重い設定だけなら、
+            設定 &gt; 開発 &gt; カメラを既定設定で起動（セーフモード）で戻せます。
+            試す前に 設定 &gt; 設定 &gt; 設定をエクスポート で控えを取っておくと、あとで同じ状態に戻せます。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#set-setup">操作説明「設定」タブ</a></p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="cat-trouble" class="alt">
+  <div class="inner">
+    <p class="label">05</p>
+    <h2>困ったとき</h2>
+    <div class="rule"></div>
+
+    <div class="faq-list">
+      <details id="q-black">
+        <summary>撮影画面が真っ黒になります</summary>
+        <div class="a">
+          <p>設定 &gt; 開発 にある「プレビュー効果を使わない」と「プレビューを別方式で描く」を、
+            どちらか一方だけONにして症状が消えるか試してください。直ったほうが原因の手がかりになります。</p>
+          <p>原因を切り分けられたら、両方OFFに戻したうえで、そのときの診断レポートを添えて連絡してもらえると調査しやすいです。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#set-dev">操作説明「開発」タブ</a></p>
+        </div>
+      </details>
+
+      <details id="q-camera-wont-open">
+        <summary>「カメラを開始できません」と出て、カメラが開きません</summary>
+        <div class="a">
+          <p>その画面に出る「セーフモードで起動」を押してください。重い設定をいったん切って、カメラをつなぎ直します。
+            設定画面からなら 設定 &gt; 開発 &gt; カメラを既定設定で起動（セーフモード）でも同じことができます。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#trouble">操作説明「うまくいかないとき」</a></p>
+        </div>
+      </details>
+
+      <details id="q-crash-not-saved">
+        <summary>アプリが落ちた・写真が保存されませんでした</summary>
+        <div class="a">
+          <p>設定 &gt; 開発 &gt; 診断レポート から、そのときの状況を書き出せます。写真そのものや位置情報は含まれません。
+            落ちた直後に出したものがいちばん参考になります。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#trouble">操作説明「うまくいかないとき」</a></p>
+        </div>
+      </details>
+
+      <details id="q-diag-report">
+        <summary>診断レポートはどうやって出しますか？</summary>
+        <div class="a">
+          <p>設定 &gt; 開発 &gt; 診断レポート を開くと、そのときの状況を文章にまとめてくれます。
+            「コピー」「共有」「ファイルに保存」から送れます。中身は送る前にそのまま読めるので、確認してから送ってください。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#set-dev">操作説明「開発」タブ</a></p>
+        </div>
+      </details>
+
+      <details id="q-contact">
+        <summary>不具合の連絡先はどこですか？</summary>
+        <div class="a">
+          <p>アプリの 設定 &gt; アプリ &gt; メールで連絡する から送ると、バージョンと端末名が自動で入ります。
+            メールなら <a href="mailto:sakego.syasai@gmail.com">sakego.syasai@gmail.com</a>、
+            X（旧Twitter）は <a href="https://x.com/aku_niconico" target="_blank" rel="noopener">@aku_niconico</a> です。
+            「何をしたら起きたか」を一言添えてもらえると助かります。</p>
+          <p class="faq-jump muted">→ <a href="guide.html#set-app">操作説明「アプリ」タブ</a></p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>AK CAMERA — よくある質問</div>
+  <div class="rule"></div>
+  <div><a href="index.html">アプリ紹介</a> ／ <a href="guide.html">操作説明</a> ／ <a href="privacy.html">プライバシーポリシー</a> ／ <a href="licenses.html">ライセンスと免責事項</a> ／ <a href="../">プロフィールページ</a></div>
+  <div style="margin-top:.45rem"><a href="https://x.com/aku_niconico" target="_blank" rel="noopener">X ＠aku_niconico</a> ／ <a href="https://ko-fi.com/akuniconico" target="_blank" rel="noopener">Ko-fi で支援する</a></div>
+</footer>
+
+<script>
+// #q-xxxx で開いたとき、対応する <details> を確実に開いてから見えるようにする
+// （ブラウザの details 自動オープンに頼らない。guide.html からの faq.html#q-black 等）
+(function () {
+  function openTarget() {
+    var id = location.hash.slice(1);
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (el && el.tagName === 'DETAILS' && !el.open) {
+      el.open = true;
+      el.scrollIntoView({ block: 'start' });
+    }
+  }
+  openTarget();
+  window.addEventListener('hashchange', openTarget);
+  window.addEventListener('load', openTarget);
+  window.addEventListener('pageshow', openTarget);
+})();
+</script>
+
+</body>
+</html>
