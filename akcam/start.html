@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>はじめかた — AK CAMERA | Aku</title>
+<meta name="description" content="AK CAMERA を入れてから最初の1枚を撮るまで。まず試したい3つの操作と、やりたいこと別の設定の場所。">
+<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.steps { counter-reset: st; list-style: none; padding: 0; margin: 1.4rem 0 0; }
+.steps > li { counter-increment: st; position: relative; padding: 0 0 1.4rem 3rem; }
+.steps > li::before { content: counter(st); position: absolute; left: 0; top: 0; width: 2rem; height: 2rem; border-radius: 50%;
+  background: var(--navy); color: var(--white); font-family: 'DM Mono', monospace; display: flex; align-items: center; justify-content: center; }
+.steps h3 { margin: 0 0 .4rem; }
+.howto { width: 100%; border-collapse: collapse; margin-top: 1.2rem; font-size: .9rem; }
+.howto th, .howto td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--gray-mid); vertical-align: top; }
+.howto th { width: 38%; font-weight: 500; }
+.cards { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 1.2rem; }
+.card { display: block; padding: 1rem 1.1rem; border: 1px solid var(--gray-mid); border-radius: 4px; text-decoration: none; color: var(--text); background: #fff; }
+.card:hover { border-color: var(--accent); }
+.card small { color: var(--gray-dark); }
+@media (max-width: 560px) { .howto th { width: auto; } .howto th, .howto td { display: block; border: 0; padding: .2rem 0; } .howto tr { display: block; border-bottom: 1px solid var(--gray-mid); padding: .5rem 0; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">← AK CAMERA</a>
+  <ul class="nav-links">
+    <li><a href="gallery.html">作例</a></li>
+    <li><a href="guide.html">操作説明</a></li>
+    <li><a href="faq.html">よくある質問</a></li>
+  </ul>
+</nav>
+
+<section>
+  <div class="inner">
+    <p class="label">Start</p>
+    <h1 style="font-size:1.9rem">はじめかた</h1>
+    <div class="rule"></div>
+    <p>
+      入れてから最初の1枚を撮るまでと、まず試してほしい操作だけをまとめました。
+      設定の意味を1つずつ知りたいときは <a href="guide.html">操作説明</a> を見てください。
+    </p>
+
+    <ol class="steps">
+      <li>
+        <h3>入れる</h3>
+        <p>Google Play から入れます。Android 11 以降の端末で動きます。無料で、広告もありません。</p>
+        <div class="btnrow" style="margin-top:.6rem">
+          <a class="btn btn-accent" href="https://play.google.com/store/apps/details?id=com.akuniconico.akcam" target="_blank" rel="noopener">Google Play で見る</a>
+        </div>
+      </li>
+      <li>
+        <h3>開いて、カメラを許可する</h3>
+        <p>
+          はじめて開くと、カメラを使ってよいかを聞かれます。許可すると撮影画面が出ます。
+          撮影場所の記録は初期値で OFF です（設定 &gt; 保存 で ON にしたときだけ、位置情報の許可を聞かれます）。
+          最初に短い案内が出るので、利き手を選んで進めます。
+        </p>
+      </li>
+      <li>
+        <h3>シャッターを押す</h3>
+        <p>
+          何も設定しなくても、シャッターを押すだけで写真になります。
+          暗いところでは数枚を続けて撮って重ねるので、保存されるまでそのまま構えていてください。
+          写真は端末の「Pictures/AKU CAM」フォルダに入り、Google フォトなどからも見られます。
+        </p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="inner">
+    <h2>まず試してほしい3つ</h2>
+    <div class="rule"></div>
+    <ol class="steps">
+      <li>
+        <h3>撮りたいものをタップする</h3>
+        <p>タップしたところへピントと明るさを合わせます。長押しすると、その状態で止まります（構図を変えてから撮りたいとき）。</p>
+      </li>
+      <li>
+        <h3>プレビューを左右になぞって、ルックを変える</h3>
+        <p>21種類の色の傾向から選べます。選んだ瞬間に画面の色が変わるので、撮る前に決められます。料理なら「フード」、空や緑なら「VIVID+」から試すと違いが分かりやすいです。</p>
+      </li>
+      <li>
+        <h3>撮った写真を開いて、拡大してみる</h3>
+        <p>シャッターの左の小さな写真をタップすると、アプリの中で見られます。ピンチで拡大すると、細かいところの残り方が分かります。</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <h2>やりたいこと別</h2>
+    <div class="rule"></div>
+    <table class="howto">
+      <tr><th>背景をぼかしたい</th><td>設定 &gt; ボケ。強さを上げると、奥行きを推定して背景だけぼかします。<a href="guide.html#set-bokeh">くわしく</a></td></tr>
+      <tr><th>もっと明るく / 暗く撮りたい</th><td>下の帯の「露出」を開いて、露出補正を ＋ か − へ。<a href="guide.html#shoot">くわしく</a></td></tr>
+      <tr><th>色をもっと強く / 弱くしたい</th><td>ルックの一覧の上にある「ルックの効き」で調整します。プロ表示では彩度も変えられます。<a href="guide.html#look">くわしく</a></td></tr>
+      <tr><th>暗いところや夜景をきれいに</th><td>そのまま撮れば自動で重ねます。撮ったあと保存されるまで構えたままにしてください。<a href="guide.html#recipes">場面別のおすすめ</a></td></tr>
+      <tr><th>写真に端末名や日付を入れたい</th><td>設定 &gt; 保存 の「透かし」（初期値は OFF）。署名の文字も変えられます。<a href="guide.html#set-save">くわしく</a></td></tr>
+      <tr><th>ボタンを減らして簡単にしたい</th><td>表示モードを「かんたん」に。シャッター速度や ISO まで触りたいときは「プロ」。<a href="guide.html#mode">くわしく</a></td></tr>
+      <tr><th>あとで自分で現像したい</th><td>設定 &gt; 保存 で RAW（DNG）も一緒に保存できます（対応している端末だけ）。<a href="guide.html#set-save">くわしく</a></td></tr>
+      <tr><th>設定を控えておきたい</th><td>設定 &gt; 設定 の「設定をエクスポート」で控えを取れます。あとで同じ設定に戻せます。<a href="guide.html#trouble">うまくいかないとき</a></td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="inner">
+    <h2>困ったとき</h2>
+    <div class="rule"></div>
+    <p>
+      まず <a href="faq.html">よくある質問</a> を見てください。
+      直らないときは、アプリの <strong>設定 &gt; 開発 &gt; 診断レポート</strong> を作って、
+      X の <a href="https://x.com/aku_niconico" target="_blank" rel="noopener">＠aku_niconico</a> か Discord へ送ってもらえると、原因を調べられます。
+      診断レポートには写真・位置情報・アカウントは入りません。
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <h2>作った人の記事</h2>
+    <div class="rule"></div>
+    <p class="muted">AK CAMERA をどう作ってきたかを Zenn に書いています。</p>
+    <div class="cards">
+      <a class="card" href="https://zenn.dev/aku_niconico/articles/0102b36f9c72e2" target="_blank" rel="noopener">
+        <strong>AIの点数評価でモチベを保ってカメラアプリをリリースした話</strong><br><small>Zenn ・ 2026-10-30</small>
+      </a>
+      <a class="card" href="https://zenn.dev/aku_niconico/articles/edf67e92bd86db" target="_blank" rel="noopener">
+        <strong>AIと50日でカメラアプリを作って、クローズドテストまで来た話</strong><br><small>Zenn ・ 2026-09-13</small>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>AK CAMERA</div>
+  <div class="rule"></div>
+  <div><a href="index.html">トップ</a> ／ <a href="gallery.html">作例</a> ／ <a href="guide.html">操作説明</a> ／ <a href="https://x.com/aku_niconico" target="_blank" rel="noopener">X ＠aku_niconico</a></div>
+</footer>
+
+</body>
+</html>

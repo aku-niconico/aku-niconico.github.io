@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>作例 — AK CAMERA | Aku</title>
+<meta name="description" content="AK CAMERA で撮って、そのまま保存した写真の作例。料理・風景・車・夜。ルックと合成の枚数つき。">
+<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.catnav { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.2rem; }
+.catnav a { font-size:.82rem; padding:.3rem .8rem; border:1px solid var(--gray-mid); border-radius:999px; text-decoration:none; color:var(--navy); }
+.catnav a:hover { border-color:var(--accent); }
+.zoom img { cursor:zoom-in; }
+#lb { position:fixed; inset:0; background:rgba(10,14,24,.92); display:none; align-items:center; justify-content:center; z-index:100; cursor:zoom-out; padding:16px; }
+#lb.on { display:flex; }
+#lb img { max-width:100%; max-height:100%; border-radius:3px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">← AK CAMERA</a>
+  <ul class="nav-links">
+    <li><a href="start.html">はじめかた</a></li>
+    <li><a href="guide.html">操作説明</a></li>
+    <li><a href="faq.html">よくある質問</a></li>
+  </ul>
+</nav>
+
+<section>
+  <div class="inner">
+    <p class="label">Gallery</p>
+    <h1 style="font-size:1.9rem">作例</h1>
+    <div class="rule"></div>
+    <p>
+      AK CAMERA で撮って、そのまま保存された写真です。縮小した以外は手を加えていません。
+      写真の下には、撮ったときの記録（ルック・合成の枚数・ISO）を写真の中から読んで載せています。
+      端末はどれも Galaxy S25 Ultra です。
+      作った本人は料理以外でもよく「フード」で撮っていて、ここに並べた23枚のうち13枚がそうです。
+    </p>
+    <p class="muted">写真をタップすると大きく表示します。位置情報などの撮影データは、このページの画像からは消してあります。</p>
+    <div class="catnav"><a href="#food">料理</a> <a href="#scene">風景・街</a> <a href="#car">車・乗りもの</a> <a href="#night">夜</a> <a href="#other">そのほか</a></div>
+  </div>
+</section>
+
+<section id="food">
+  <div class="inner">
+    <h2>料理</h2>
+    <div class="rule"></div>
+    <p class="muted">ルック「フード」で撮ったものを中心に並べています。</p>
+    <div class="gallery" style="margin-top:1.4rem">
+      <figure><a href="img/gallery/food_011.jpg" class="zoom"><img src="img/gallery/food_011_t.jpg" alt="焼き餃子" loading="lazy" width="640" height="535"></a><figcaption><strong>フード</strong> / 4枚合成 / ISO 68</figcaption></figure>
+      <figure><a href="img/gallery/food_015.jpg" class="zoom"><img src="img/gallery/food_015_t.jpg" alt="うどんと天ぷら" loading="lazy" width="640" height="535"></a><figcaption><strong>フード</strong> / 4枚合成 / ISO 113</figcaption></figure>
+      <figure><a href="img/gallery/food_023.jpg" class="zoom"><img src="img/gallery/food_023_t.jpg" alt="とんかつとサラダ" loading="lazy" width="640" height="480"></a><figcaption><strong>フード</strong> / 8枚合成 / 2.0倍 / ISO 168</figcaption></figure>
+      <figure><a href="img/gallery/food_072.jpg" class="zoom"><img src="img/gallery/food_072_t.jpg" alt="まぜそば" loading="lazy" width="640" height="480"></a><figcaption><strong>フード</strong> / 4枚合成 / ISO 330</figcaption></figure>
+      <figure><a href="img/gallery/food_074.jpg" class="zoom"><img src="img/gallery/food_074_t.jpg" alt="とんこつラーメン" loading="lazy" width="640" height="480"></a><figcaption><strong>フード</strong> / 8枚合成 / ISO 379</figcaption></figure>
+      <figure><a href="img/gallery/food_078.jpg" class="zoom"><img src="img/gallery/food_078_t.jpg" alt="寿司" loading="lazy" width="640" height="480"></a><figcaption><strong>フード</strong> / 4枚合成 / ISO 281</figcaption></figure>
+      <figure><a href="img/gallery/food_084.jpg" class="zoom"><img src="img/gallery/food_084_t.jpg" alt="きしめん" loading="lazy" width="640" height="480"></a><figcaption><strong>フード</strong> / 8枚合成 / ISO 71</figcaption></figure>
+      <figure><a href="img/gallery/food_071.jpg" class="zoom"><img src="img/gallery/food_071_t.jpg" alt="生ビール" loading="lazy" width="640" height="480"></a><figcaption><strong>フード</strong> / 8枚合成 / ISO 340</figcaption></figure>
+    </div>
+  </div>
+</section>
+<section id="scene" class="alt">
+  <div class="inner">
+    <h2>風景・街</h2>
+    <div class="rule"></div>
+    <p class="muted">空の青と、影の中の細部。</p>
+    <div class="gallery" style="margin-top:1.4rem">
+      <figure><a href="img/gallery/scene_063.jpg" class="zoom"><img src="img/gallery/scene_063_t.jpg" alt="朝の街並みと青空" loading="lazy" width="640" height="480"></a><figcaption><strong>VIVID+</strong> / 8枚合成 / ISO 81</figcaption></figure>
+      <figure><a href="img/gallery/scene_014.jpg" class="zoom"><img src="img/gallery/scene_014_t.jpg" alt="夏の空と木立" loading="lazy" width="640" height="535"></a><figcaption><strong>スタンダード</strong> / 8枚合成 / ISO 59</figcaption></figure>
+      <figure><a href="img/gallery/scene_070.jpg" class="zoom"><img src="img/gallery/scene_070_t.jpg" alt="夕暮れの空と高架" loading="lazy" width="640" height="480"></a><figcaption><strong>VIVID+</strong> / 8枚合成 / ISO 281</figcaption></figure>
+      <figure><a href="img/gallery/scene_089.jpg" class="zoom"><img src="img/gallery/scene_089_t.jpg" alt="夕方の川面" loading="lazy" width="640" height="480"></a><figcaption><strong>VIVID+</strong> / 単写 / ISO 79</figcaption></figure>
+      <figure><a href="img/gallery/scene_088.jpg" class="zoom"><img src="img/gallery/scene_088_t.jpg" alt="山と街" loading="lazy" width="640" height="480"></a><figcaption><strong>VIVID+</strong> / 単写 / ISO 79</figcaption></figure>
+      <figure><a href="img/gallery/scene_013.jpg" class="zoom"><img src="img/gallery/scene_013_t.jpg" alt="駅の線路" loading="lazy" width="640" height="535"></a><figcaption><strong>フード</strong> / 4枚合成 / ISO 12</figcaption></figure>
+    </div>
+  </div>
+</section>
+<section id="car">
+  <div class="inner">
+    <h2>車・乗りもの</h2>
+    <div class="rule"></div>
+    <p class="muted">ボディの映り込みと、夕方の光。</p>
+    <div class="gallery" style="margin-top:1.4rem">
+      <figure><a href="img/gallery/car_010.jpg" class="zoom"><img src="img/gallery/car_010_t.jpg" alt="夕空と白い車" loading="lazy" width="640" height="535"></a><figcaption><strong>スタンダード</strong> / 4枚合成 / ISO 1627</figcaption></figure>
+      <figure><a href="img/gallery/car_020.jpg" class="zoom"><img src="img/gallery/car_020_t.jpg" alt="夕暮れの店先と白い車" loading="lazy" width="640" height="480"></a><figcaption><strong>SCENERY</strong> / 単写 / ISO 334</figcaption></figure>
+      <figure><a href="img/gallery/car_047.jpg" class="zoom"><img src="img/gallery/car_047_t.jpg" alt="ホームに停まる特急" loading="lazy" width="480" height="640"></a><figcaption><strong>フード</strong> / 単写 / ISO 23</figcaption></figure>
+    </div>
+  </div>
+</section>
+<section id="night" class="alt">
+  <div class="inner">
+    <h2>夜</h2>
+    <div class="rule"></div>
+    <p class="muted">街灯や看板の明かりだけで撮った写真です。</p>
+    <div class="gallery" style="margin-top:1.4rem">
+      <figure><a href="img/gallery/night_000.jpg" class="zoom"><img src="img/gallery/night_000_t.jpg" alt="夜の駅前" loading="lazy" width="640" height="535"></a><figcaption><strong>TEAL</strong> / 単写 / ISO 285</figcaption></figure>
+      <figure><a href="img/gallery/night_050.jpg" class="zoom"><img src="img/gallery/night_050_t.jpg" alt="夜の商店街のアーチ" loading="lazy" width="640" height="480"></a><figcaption><strong>フード</strong> / 4枚合成 / ISO 373</figcaption></figure>
+      <figure><a href="img/gallery/night_051.jpg" class="zoom"><img src="img/gallery/night_051_t.jpg" alt="雨上がりの夜の交差点" loading="lazy" width="640" height="480"></a><figcaption><strong>フード</strong> / 4枚合成 / ISO 1241</figcaption></figure>
+    </div>
+  </div>
+</section>
+<section id="other">
+  <div class="inner">
+    <h2>そのほか</h2>
+    <div class="rule"></div>
+    <p class="muted">ズームや深度ボケを使った写真です。</p>
+    <div class="gallery" style="margin-top:1.4rem">
+      <figure><a href="img/gallery/other_019.jpg" class="zoom"><img src="img/gallery/other_019_t.jpg" alt="フラミンゴ（4.3倍ズーム）" loading="lazy" width="640" height="480"></a><figcaption><strong>SCENERY</strong> / 単写 / 4.3倍 / ISO 415</figcaption></figure>
+      <figure><a href="img/gallery/other_007.jpg" class="zoom"><img src="img/gallery/other_007_t.jpg" alt="ウミガメの壁画" loading="lazy" width="640" height="535"></a><figcaption><strong>フード</strong> / 8枚合成 / ISO 12</figcaption></figure>
+      <figure><a href="img/gallery/other_005.jpg" class="zoom"><img src="img/gallery/other_005_t.jpg" alt="グラスと、ぼけた背景" loading="lazy" width="640" height="535"></a><figcaption><strong>VIVID+</strong> / 単写 / 深度ボケ 30 / ISO 50</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="inner">
+    <h2>作例を募集しています</h2>
+    <div class="rule"></div>
+    <p>
+      AK CAMERA で撮った写真を X で見かけると、とてもうれしいです。ぬいぐるみや戦利品の写真も大歓迎です。
+      載せてもよい写真があれば <a href="https://x.com/aku_niconico" target="_blank" rel="noopener">＠aku_niconico</a> までお知らせください。
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div>AK CAMERA</div>
+  <div class="rule"></div>
+  <div><a href="index.html">トップ</a> ／ <a href="start.html">はじめかた</a> ／ <a href="guide.html">操作説明</a> ／ <a href="https://x.com/aku_niconico" target="_blank" rel="noopener">X ＠aku_niconico</a></div>
+</footer>
+
+<div id="lb"><img alt=""></div>
+<script>
+(function () {
+  var lb = document.getElementById('lb'), im = lb.querySelector('img');
+  document.querySelectorAll('a.zoom').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault(); im.src = a.getAttribute('href');
+      im.alt = a.querySelector('img').alt; lb.classList.add('on');
+    });
+  });
+  lb.addEventListener('click', function () { lb.classList.remove('on'); im.removeAttribute('src'); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.click(); });
+})();
+</script>
+</body>
+</html>
