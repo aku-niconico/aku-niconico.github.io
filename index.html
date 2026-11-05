@@ -346,9 +346,11 @@
       .reveal { opacity: 1; transform: none; transition: none; }
     }
   </style>
+  <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
 
+<div class="pgbar" aria-hidden="true"></div>
 <nav>
   <a class="nav-logo" href="#top">Aku</a>
   <ul class="nav-links">
@@ -363,14 +365,20 @@
 </nav>
 
 <!-- HERO -->
-<header class="hero" id="top">
+<header class="hero hx" id="top">
+  <div class="hx-bg" aria-hidden="true">
+    <i style="background-image:url('akcam/img/fx/hero2.jpg')"></i>
+    <i style="background-image:url('akcam/img/fx/hero1.jpg')"></i>
+    <i style="background-image:url('akcam/img/fx/hero3.jpg')"></i>
+  </div>
   <div class="hero-inner">
     <p class="hero-label">Creator's Page</p>
     <h1 class="hero-name">Aku</h1>
     <p class="hero-handle">@aku_niconico</p>
+    <p class="roles" aria-hidden="true"><span>動画をつくる</span><span>アプリをつくる</span><span>カメラをつくる</span><span>本をつくる</span></p>
     <p class="hero-desc">
       ニコニコ動画に動画を投稿したり、AIを活用して自分好みのアプリやサービスを個人で作っています。
-      Android用カメラアプリ <strong style="color:var(--accent-light);font-weight:500">AK CAMERA</strong> をリリース予定です。
+      Android用カメラアプリ <strong style="color:var(--accent-light);font-weight:500">AK CAMERA</strong> を Google Play で公開しています。
       読んだ本はブクログ、日々のことはXとブログ、同人誌はBOOTHで公開しています。
     </p>
     <div class="chips">
@@ -382,7 +390,15 @@
       <a class="chip gold" href="https://ko-fi.com/akuniconico" target="_blank" rel="noopener">Ko-fi で支援する</a>
     </div>
   </div>
+  <div class="scue" aria-hidden="true">SCROLL</div>
 </header>
+
+<div class="nums">
+  <div><b data-n="4">4</b><span>Webサービス</span></div>
+  <div><b data-n="1">1</b><span>Androidアプリ</span></div>
+  <div><b data-n="10">10</b><span>動画の代表作</span></div>
+  <div><b data-n="7">7</b><span>BOOTH の作品</span></div>
+</div>
 
 <!-- WORKS -->
 <section id="works">
@@ -834,5 +850,6 @@
       document.getElementById('blog-list').innerHTML = '<p class="hint">記事の取得に失敗しました。</p>';
     });
 </script>
+<script src="portfolio.js"></script>
 </body>
 </html>
