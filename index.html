@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aku — Creator's Page</title>
-  <meta name="description" content="Aku（@aku_niconico）の制作ページ。Androidカメラアプリ AK CAMERA、MyNews、ニコニコ週間ランキング、CircuitDrive、AINews の個人開発と、ニコニコ動画への投稿・ブログ・同人誌をまとめています。">
+  <meta name="description" content="Aku（@aku_niconico）の制作ページ。Androidカメラアプリ AK CAMERA、MyNews、ニコランク、CircuitDrive、AINews の個人開発と、ニコニコ動画への投稿・ブログ・同人誌をまとめています。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -460,26 +460,26 @@
           <img src="img/works/mynews.jpg" alt="MyNews の画面" loading="lazy">
         </a>
         <div class="work-body">
-          <p class="work-name">MyNews <span class="work-ver">v7</span> <span class="pill">Live</span></p>
-          <p class="work-sub">パーソナルニュースダイジェスト</p>
+          <p class="work-name">MyNews <span class="pill">Live</span></p>
+          <p class="work-sub">パーソナルニュース紙面</p>
           <p class="work-desc">
-            毎朝6:00 JSTに自動更新される個人向けのニュースまとめ。世界・日本・茨城・IT・AI・自動車の6カテゴリを
-            AIが収集・要約し、いらない話題は自動で外します。
+            毎朝5〜9時ごろに自動で更新する、新聞の紙面のような個人向けのニュースまとめです。
+            世界・日本・茨城・IT・AI・自動車の話題を集めて、AI が要約します。
           </p>
           <details class="more">
             <summary>もっと見る</summary>
             <ul class="feat">
-              <li>Gemini AI が 5W1H・新規性・影響・展望を自動生成</li>
-              <li>重要度×新規性フィルタで低品質・プロモ記事を除外</li>
-              <li>発信元ミュート（最大10,000件）</li>
-              <li>天気・服装提案を Open-Meteo API で毎日更新</li>
-              <li>PWA対応・ダーク/ライト切替</li>
-              <li>v7: 503対応でバックアップキーへ自動切替／Geminiモデルを動的選択</li>
+              <li>2026年11月に紙面デザインへ刷新</li>
+              <li>Gemini が新規性・影響・展望を整理</li>
+              <li>週末版「今週の総括」と、続いている話題を解説するコラム面</li>
+              <li>重要度の表示と記事ごとの解説、発信元のミュート</li>
+              <li>天気と服装・持ち物の提案</li>
+              <li>ホーム画面に追加でき、毎朝の更新をプッシュ通知で受け取れる</li>
             </ul>
             <div class="stack">
-              <span class="tech">Python</span><span class="tech">Gemini 2.5 Flash</span>
-              <span class="tech">NewsAPI</span><span class="tech">GitHub Actions</span>
-              <span class="tech">Firebase Hosting</span><span class="tech">Open-Meteo</span>
+              <span class="tech">Python</span><span class="tech">Gemini</span><span class="tech">Yahoo!ニュース</span>
+              <span class="tech">Google News RSS</span><span class="tech">NewsAPI</span><span class="tech">GitHub Actions</span>
+              <span class="tech">Firebase Hosting</span>
             </div>
           </details>
           <div class="btnrow"><a class="btn" href="https://mynews-7bf80.web.app" target="_blank" rel="noopener">開く →</a></div>
@@ -488,28 +488,28 @@
 
       <div class="work">
         <a class="work-shot" href="https://nicoranking-7dbf8.web.app" target="_blank" rel="noopener">
-          <img src="img/works/nicoranking.jpg" alt="ニコニコ週間ランキングの画面" loading="lazy">
+          <img src="img/works/nicoranking.jpg" alt="ニコランクの画面" loading="lazy">
         </a>
         <div class="work-body">
-          <p class="work-name">ニコニコ週間ランキング <span class="work-ver">v9</span> <span class="pill">Live</span></p>
-          <p class="work-sub">独自スコアの動画ランキング＋投稿祭告知</p>
+          <p class="work-name">ニコランク <span class="pill">Live</span></p>
+          <p class="work-sub">AI が選ぶニコニコ動画の週間ランキング</p>
           <p class="work-desc">
-            再生数だけに頼らない独自のスコアで、埋もれた良い動画を拾い上げます。
-            月〜金は曜日ごとにタグを更新し、土曜0:00に全タグを集計。
+            ニコニコ動画の7つのタグから動画を集め、再生の状況や視聴者の反応、タグとの関連度を AI が分析して上位10件を紹介します。
+            投稿祭・企画の告知もまとめて見られます。
           </p>
           <details class="more">
             <summary>もっと見る</summary>
             <ul class="feat">
-              <li>7タグ対応（自転車・料理・技術部・旅行・車載・VOCALOID・ソフトウェアトーク）</li>
-              <li>曜日分散更新でAPI負荷を分散、タグ別の鮮度を色で表示</li>
-              <li>プッシュ通知（FCM）をタグ別・投稿祭別にON/OFF <span class="yet">※未実装</span></li>
-              <li>投稿祭告知を毎日自動収集して開催状況で色分け</li>
-              <li>HOT・注目・初投稿・完結バッジ／投稿者ミュート（最大1,000人）</li>
+              <li>対象は自転車・料理・ニコニコ技術部・旅行・車載動画・VOCALOID・ソフトウェアトークの7タグ</li>
+              <li>月〜金の毎朝6:00に1タグずつ更新し、土曜0:00に全タグを集計</li>
+              <li>2026年11月にデザインを刷新</li>
+              <li>投稿祭の告知を毎日集めて、開催中・開催間近・開催予定に整理</li>
+              <li>HOT・注目・初投稿・完結のバッジ／投稿者ミュート（最大1,000人）</li>
+              <li>ホーム画面に追加でき、週間集計が終わるとプッシュ通知でお知らせ</li>
             </ul>
             <div class="stack">
-              <span class="tech">Python</span><span class="tech">Gemini 2.5 Flash</span>
-              <span class="tech">ニコニコAPI v2</span><span class="tech">FCM</span>
-              <span class="tech">GitHub Actions</span><span class="tech">Firebase Hosting</span>
+              <span class="tech">Python</span><span class="tech">Gemini Flash</span><span class="tech">ニコニコAPI v2</span>
+              <span class="tech">FCM</span><span class="tech">GitHub Actions</span><span class="tech">Firebase Hosting</span>
             </div>
           </details>
           <div class="btnrow"><a class="btn" href="https://nicoranking-7dbf8.web.app" target="_blank" rel="noopener">開く →</a></div>
@@ -521,27 +521,25 @@
           <img src="img/works/circuitdrive.jpg" alt="CircuitDrive の画面" loading="lazy">
         </a>
         <div class="work-body">
-          <p class="work-name">CircuitDrive <span class="work-ver">v6.1</span> <span class="pill">Live</span></p>
-          <p class="work-sub">ADAS / EV 論文トラッカー</p>
+          <p class="work-name">CircuitDrive <span class="work-ver">v7.0</span> <span class="pill">Live</span></p>
+          <p class="work-sub">ADAS・ECU開発者のための論文トラッカー</p>
           <p class="work-desc">
-            arXiv から自動運転・車載電気設計まわりの論文を集めて、Gemini AI が電気設計エンジニアの目線で
-            並べ替えます。毎週土曜6:00 JSTに更新。
+            arXiv の新着論文から、量産 ADAS ECU の開発に関わるものを毎日選びます。
+            要点と、ECU 開発者が確認すべき事項をまとめて、毎朝6:00ごろに更新します。
           </p>
           <details class="more">
             <summary>もっと見る</summary>
             <ul class="feat">
-              <li>cs.AR / eess.SP / eess.SY から取得し電気設計視点でフィルタ</li>
-              <li>要約・新規性・応用先・経済影響・専門家コメントをAIが生成</li>
-              <li>週間／月間／年間の3層タブ（月間は週次データを積んで月末に完成）</li>
-              <li>センサAFE・SoC・電源管理・通信・機能安全の5カテゴリ</li>
-              <li>日本・欧州・中韓メーカー別の経済インパクト分析</li>
-              <li>PWA対応・ダーク/ライトモード切替</li>
-              <li>プッシュ通知（FCM） <span class="yet">※未実装</span></li>
+              <li>cs.AR / eess.SP / eess.SY に加え、AUTOSAR・ISO 26262・SOTIF・車載レーダなどの語で横断検索</li>
+              <li>ECU・E/Eアーキテクチャ・機能安全・ADAS機能・車載ネットワーク・検証を重く見て採点</li>
+              <li>Gemini が重要度を1〜5で付け、車載に転用できない論文は除外</li>
+              <li>今週・今月・今年の3段で蓄積（今年は重要度4以上を最大100本）</li>
+              <li>領域での絞り込みとミュート</li>
+              <li>新着があった日だけプッシュ通知</li>
             </ul>
             <div class="stack">
-              <span class="tech">Python</span><span class="tech">Gemini 2.5 Flash</span>
-              <span class="tech">arXiv API</span><span class="tech">FCM</span>
-              <span class="tech">GitHub Actions</span><span class="tech">Firebase Hosting</span>
+              <span class="tech">Python</span><span class="tech">Gemini Flash</span><span class="tech">arXiv API</span>
+              <span class="tech">FCM</span><span class="tech">GitHub Actions</span><span class="tech">Firebase Hosting</span>
             </div>
           </details>
           <div class="btnrow"><a class="btn" href="https://circuitdrive-29344.web.app" target="_blank" rel="noopener">開く →</a></div>
@@ -554,24 +552,24 @@
         </a>
         <div class="work-body">
           <p class="work-name">AINews <span class="pill">Live</span></p>
-          <p class="work-sub">AI技術ホットトピック</p>
+          <p class="work-sub">毎朝のAI情報</p>
           <p class="work-desc">
-            OpenAI・Google・Anthropic などの発表と、Zenn / Qiita / 企業ブログ / YouTube の話題を集めます。
-            記事ごとに「何が新しいか」と「次に何をすればいいか」まで AI が書き出します。
+            AI 企業の発表、技術記事、論文、ローカルLLMの動きを毎朝集めて、日本語で要約します。
+            記事ごとに「新しい点」と「やること」まで AI が書き出します。
           </p>
           <details class="more">
             <summary>もっと見る</summary>
             <ul class="feat">
-              <li>今日 / ホット / 今週 / 今月 / 今年 の5タブ＋ベンダー比較タブ</li>
-              <li>AI別フィルタ（OpenAI・Google・Anthropic・Meta・Microsoft・AWS・DeepSeek・OSS・学術）</li>
-              <li>話題別フィルタ（LLM・エージェント・RAG・MCP・ローカルLLM・コード生成 ほか）</li>
-              <li>記事ごとに「新技術」と「アクション（次にやること）」をAIが生成</li>
-              <li>HOTバッジ・出典表示・発信元ミュート・ダーク/ライト切替</li>
-              <li>プッシュ通知（FCM） <span class="yet">※未実装</span></li>
+              <li>Claude・Gemini・GPT・Copilot・ローカルLLM などの AI 別、Claude Code・Codex・Cursor・Antigravity などのツール別に絞り込み</li>
+              <li>今日・注目・今週・今月・今年のタブ。ストックは週1回棚卸しして、今も役に立つ記事を残す</li>
+              <li>モデル比較のページ（ベンチマークと3ヶ月予測）</li>
+              <li>ノウハウのページ（AIとツールごとのコツを、出典と確認日つきで）</li>
+              <li>興味のないソースを隠せる</li>
+              <li>毎朝の更新をプッシュ通知で受け取れる</li>
             </ul>
             <div class="stack">
-              <span class="tech">Python</span><span class="tech">Gemini</span>
-              <span class="tech">GitHub Actions</span><span class="tech">Firebase Hosting</span>
+              <span class="tech">Python</span><span class="tech">Gemini</span><span class="tech">GitHub Actions</span>
+              <span class="tech">Firebase Hosting</span>
             </div>
           </details>
           <div class="btnrow"><a class="btn" href="https://ainews-f1bc7.web.app/" target="_blank" rel="noopener">開く →</a></div>
@@ -580,10 +578,6 @@
 
     </div>
 
-    <p class="note-yet">
-      ※ 各Webサービスの<strong>プッシュ通知はまだ未実装</strong>です。仕組みは入れてありますが有効化していないので、
-      いまのところ通知は届きません。
-    </p>
   </div>
 </section>
 
@@ -677,8 +671,8 @@
         <p>
           ここ最近は個人開発のほうに時間を使っていて、AI との対話で設計と実装を詰めながら、
           ひとりで運用まで回しています。毎朝のニュースをまとめる <strong>MyNews</strong>、
-          埋もれた動画を拾う <strong>ニコニコ週間ランキング</strong>、
-          車載電気設計まわりの論文を追う <strong>CircuitDrive</strong>、
+          埋もれた動画を拾う <strong>ニコランク</strong>、
+          ADAS・ECU の論文を追う <strong>CircuitDrive</strong>、
           AI の動きを毎日まとめる <strong>AINews</strong>、
           そして Android 用カメラアプリ <strong>AK CAMERA</strong>。
           どれも「自分がほしかったのに無かったもの」です。
