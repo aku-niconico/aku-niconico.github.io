@@ -14,7 +14,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 
 body {
   background: var(--white);
@@ -25,7 +25,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img { max-width: 100%; display: block; }
+/* height:auto が無いと、width/height 属性の高さのまま横だけ縮んで写真がつぶれる */
+img { max-width: 100%; height: auto; display: block; }
 a { color: var(--navy-mid); }
 
 /* ── NAV ── */
@@ -46,6 +47,7 @@ nav {
 .nav-links a {
   font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
   color: var(--gray-dark); text-decoration: none; transition: color .2s;
+  white-space: nowrap;
 }
 .nav-links a:hover, .nav-links a.on { color: var(--navy); }
 
@@ -181,4 +183,37 @@ blockquote {
   font-size: .8rem;
   line-height: 1.8;
   word-break: break-word;
+}
+
+/* ── スマホ・タブレット ──
+   ナビは1段に入らないので、ロゴの下へ横にスクロールする段を作る */
+@media (max-width: 860px) {
+  html { scroll-padding-top: 84px; }
+  nav { display: block; height: auto; padding: 0; }
+  .nav-logo { display: block; padding: .5rem 1rem 0; }
+  .nav-links {
+    gap: .15rem; padding: 0 2rem 0 .5rem;
+    overflow-x: auto; scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2rem), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 2rem), transparent);
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links li { flex: none; }
+  .nav-links a { display: block; padding: .45rem .5rem; font-size: .8rem; letter-spacing: .04em; }
+}
+
+@media (max-width: 560px) {
+  section { padding: 2.6rem 1rem; }
+  .hero { padding: 3.2rem 1rem 3rem; }
+  footer { padding: 2.2rem 1rem; }
+  .gallery { gap: 1.5rem; }
+  /* 縦長の画面写真を3枚積むと画面3つ分の長さになるので、横へ送る形にする */
+  .shots {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 72%;
+    gap: .9rem; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: .4rem;
+  }
+  .shots figure { scroll-snap-align: start; }
+  .rule { margin: .8rem 0 1.3rem; }
+  th { white-space: normal; }
+  td { overflow-wrap: anywhere; }
 }

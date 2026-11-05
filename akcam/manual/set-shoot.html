@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>設定：撮影 — AK CAMERA 説明書</title>
+<meta name="description" content="AK CAMERA 説明書「設定：撮影」。">
+<link rel="icon" type="image/png" href="../img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../manual.css">
+</head>
+<body class="man" data-page="set-shoot" data-base="../">
+<main class="man-main">
+<h1>設定：撮影</h1>
+<figure class="shot side-r"><img src="../img/manual/set_shoot.jpg" alt="設定の「撮影」タブ" loading="lazy"><figcaption>設定の「撮影」タブ</figcaption></figure>
+    <p class="muted">記録する写真の大きさ、ピント、明るさの決まりごと。</p>
+
+    <details open>
+      <summary>写真の形と画質</summary>
+      <div class="a">
+        <dl class="set">
+          <dt>アスペクト比<span class="init">初期値 4:3</span></dt>
+          <dd>写真の縦横の比率です。
+            <span class="opt">4:3（標準） / 16:9 / 1:1（スクエア） / シネスコ 2.39:1 / X 1枚投稿（16:9） / X 2〜3枚投稿（8:9） / X 4枚投稿（16:9）</span>
+            X の項目は、X（旧Twitter）に載せる枚数に合わせた比率です。透かしを「写真の下に帯を足す」形で入れると、選んだ比率より縦長になります（<a href="set-save.html">保存</a>）。</dd>
+          <dt>画質<span class="init">初期値 自動</span></dt>
+          <dd>画素数と JPEG の品質です。数字が大きいほど細かく残り、ファイルも大きくなります。
+            <span class="opt">自動 / 低（3MP・70%） / 標準（8MP・85%） / 高（12MP・92%） / 特高（12MP・95%） / 最高（12MP・100%） / 最大解像度（実験的・処理が重い）</span>
+            迷ったら「自動」のままで大丈夫です。</dd>
+          <dt>画質：最大解像度（実験的）</dt>
+          <dd>センサーが持つ最大の画素数で撮ります。<strong>Android 12 以上</strong>で、端末とレンズが対応しているときだけ使えます（Android 11 では選択肢に出ません）。
+            処理が重いぶん、次の制限があります。
+            <ul class="plain">
+              <li>露出は端末にまかせます。M（マニュアル）や「合焦したときだけ撮る」を選んでいると、その1枚は通常の画質で撮ります（画面にそう出ます）</li>
+              <li>暗いときに自動で重ねる合成は働きません</li>
+              <li>ピーキングと RAW(DNG) は使えません。フラッシュも方式によっては OFF に戻ります</li>
+              <li>対応していないレンズに切り替えたときは、通常の画質で撮ります</li>
+            </ul>
+          </dd>
+          <dt>シャッターの優先度<span class="init">初期値 速度優先</span></dt>
+          <dd>押した瞬間と写る瞬間のずれをどう扱うかです。
+            <span class="opt">速度優先（押した瞬間を撮る・推奨） / 低遅延 / 画質優先（多枚合成・ラグあり）</span>
+            速度優先に対応していない端末では、自動で「低遅延」になります。
+            一部の端末では速度優先のときに写真全体が緑になることがあり、アプリが見つけると撮り直します。何度も続くときは「低遅延」にしてください。</dd>
+          <dt>端末の画像処理（拡大時の描写）<span class="init">初期値 標準</span></dt>
+          <dd>端末がかけるノイズ低減と輪郭強調の強さです。
+            <span class="opt">素の描写（ノイズ増・上級者） / 標準（推奨） / なめらか</span>
+            <strong>素の描写</strong>は端末の処理を切って、アプリ側で控えめにシャープを掛けます。拡大したときに細部が塗り絵のようになりにくい代わりに、ざらつきは増えます。
+            <strong>なめらか</strong>は端末の処理を丁寧なほうで掛けます。</dd>
+        </dl>
+      </div>
+    </details>
+
+    <details>
+      <summary>露出（明るさの決め方）</summary>
+      <div class="a">
+        <dl class="set">
+          <dt>露出モード<span class="init">初期値 S</span></dt>
+          <dd><span class="opt">A（おまかせ・推奨） / S（シャッター速度優先） / M（マニュアル） / P（おまかせ・ISO上限が効く）</span>
+            それぞれの意味は <a href="sheets.html">05</a> を見てください。端末が手動の露出に対応していないときは A で動きます。</dd>
+          <dt>露出補正<span class="init">初期値 ±0.0</span></dt>
+          <dd>−3.0〜+3.0 EV。撮影画面の露出補正と同じ値です。</dd>
+          <dt>M：シャッター速度 / M：ISO / M：フォーカス</dt>
+          <dd>M を選んだときに使う値です（初期値は 1/125・ISO 100・AF）。端末が対応していない範囲は、撮影画面へ戻ったときに端末の範囲へ収めます。</dd>
+          <dt>逆光・暗い被写体を自動で持ち上げる<span class="init">初期値 ON</span></dt>
+          <dd>露出が A のときだけ効きます。画面の中央とピント位置を重く見て、主役が背景より暗いときに明るさを補います（最大 +1.3段）。白飛びが広いときは逆に抑えます。OFF にすると端末まかせに戻ります。</dd>
+        </dl>
+        <p style="margin-top:1rem"><strong>暗くなったときの順番（P と S のとき）</strong></p>
+        <p>
+          暗くなるにつれて、まずシャッター速度を「最低シャッター速度」に置いたまま ISO を「低ノイズ優先ISO」まで上げます。
+          次にシャッター速度を「上限」まで遅くして粘り、それでも足りなければ ISO を「ISO上限」まで上げます。
+          下の4つはこの順番の区切りを決める項目で、A（おまかせ）のときは効きません。
+        </p>
+        <dl class="set">
+          <dt>SS優先で確保する最低シャッター速度<span class="init">初期値 1/125</span></dt>
+          <dd><span class="opt">1/60 / 1/125（推奨） / 1/250 / 1/500 / 1/1000</span>
+            速くするほどブレに強くなり、そのぶん ISO が上がってざらつきやすくなります。子どもやペットなら 1/250〜1/500 が目安です。</dd>
+          <dt>暗所で伸ばしてよいシャッター速度の上限（単写）<span class="init">初期値 1/60</span></dt>
+          <dd><span class="opt">1/125（ブレに最も強い） / 1/60（推奨） / 1/30 / 1/15（三脚向け）</span>
+            合成しないときに、どこまで遅くしてよいか。遅くするほどざらつきは減り、手ブレや被写体ブレは出やすくなります。</dd>
+          <dt>同・多枚合成のとき<span class="init">初期値 1/30</span></dt>
+          <dd><span class="opt">1/125 / 1/60 / 1/30（推奨） / 1/15（暗所に最も強い・三脚向け）</span>
+            合成するときは位置合わせでブレを吸収できるので、単写より遅くまで許せます。三脚なしの 1/15 は、動くものがブレることがあります。</dd>
+          <dt>ISO上限（ノイズ許容）<span class="init">初期値 ISO 3200</span></dt>
+          <dd><span class="opt">ISO 400 / 800 / 1600 / 3200（推奨） / 6400 / 制限しない</span>
+            下げるとざらつきは減りますが、とても暗い場面では写真も暗くなります。</dd>
+          <dt>低ノイズ優先ISO<span class="init">初期値 ISO 400</span></dt>
+          <dd><span class="opt">ISO 100 / 200 / 400（推奨） / 800 / 1600</span>
+            ここを超える前に、シャッター速度を遅くして粘ります。</dd>
+        </dl>
+      </div>
+    </details>
+
+    <details>
+      <summary>ピント</summary>
+      <div class="a">
+        <dl class="set">
+          <dt>AF動作<span class="init">初期値 AFC</span></dt>
+          <dd><span class="opt">AFC（動きものに追従・推奨） / AFS（合焦したら固定）</span>
+            動くものは AFC。止まっているものをじっくり撮るなら AFS でも。</dd>
+          <dt>AFエリアの大きさ<span class="init">初期値 1点</span></dt>
+          <dd><span class="opt">1点（スポット） / 小さめの枠 / 少し大きめの枠 / もう少し大きめの枠</span>
+            タップした場所のどれくらいの範囲でピントを探すか。小さいものを狙うなら1点、模様の少ないものは枠を大きくすると合いやすくなります。</dd>
+          <dt>AFが合わないときの撮影<span class="init">初期値 合焦を待たずに撮る</span></dt>
+          <dd><span class="opt">合焦を待たずに撮る（従来どおり・推奨） / 合焦したときだけ撮る</span>
+            「合焦したときだけ撮る」にすると、ピントが決まらなかった回は撮影を中止します。無地の壁や暗すぎる被写体では、待たずに撮るほうが使いやすいです。</dd>
+          <dt>撮影後にAFロックを解除するまで<span class="init">初期値 3秒</span></dt>
+          <dd><span class="opt">解除しない（ロックしたまま） / 1秒 / 2秒 / 3秒 / 5秒 / 10秒 / 30秒</span>
+            同じ場所で何枚も撮るなら長めに。</dd>
+        </dl>
+      </div>
+    </details>
+
+    <details>
+      <summary>合成・HDR・フラッシュ・そのほか</summary>
+      <div class="a">
+        <dl class="set">
+          <dt>多枚合成スタック<span class="init">初期値 自動</span></dt>
+          <dd><span class="opt">自動（暗いときだけ・推奨） / 使わない / 常に ×4 / 常に ×8</span>
+            撮影補助の「合成」と同じ値です。枚数が多いほどざらつきは減り、保存までの時間は長くなります。</dd>
+          <dt>HDR<span class="init">初期値 OFF</span></dt>
+          <dd>撮影補助の HDR と同じ値です。</dd>
+          <dt>セルフタイマー<span class="init">初期値 OFF</span></dt>
+          <dd>OFF / 3秒 / 5秒 / 10秒。</dd>
+          <dt>フラッシュ<span class="init">初期値 OFF</span></dt>
+          <dd><span class="opt">OFF / 自動 / 強制発光 / 弱フィル / 常時点灯</span>
+            端末・前面カメラ・最大解像度で使えない方式は、撮影画面へ戻ったときに OFF へ戻ります。</dd>
+          <dt>弱フィルの光量<span class="init">初期値 最小</span></dt>
+          <dd><span class="opt">最小 / 25% / 50% / 75% / 最大</span>
+            フラッシュを「弱」にしたときの明るさ。光量の調整に対応していない端末では、最小のまま点きます。</dd>
+          <dt>音量ボタン<span class="init">初期値 使わない</span></dt>
+          <dd><span class="opt">使わない（音量を変える） / シャッター（動画では録画の開始と停止） / ズーム（↑で寄る・↓で引く）</span></dd>
+          <dt>使用レンズの戻し先</dt>
+          <dd>「既定の背面へ戻す」を選ぶと、いつもの背面カメラに戻ります。ほかのレンズへは撮影画面のレンズボタンから切り替えます。</dd>
+          <dt>手ブレ補正（OIS／動画EIS）<span class="init">初期値 ON</span></dt>
+          <dd>端末の手ブレ補正を使います。三脚に固定するとき以外は ON のままで。</dd>
+          <dt>ナイトモード（実験的）<span class="init">初期値 OFF</span></dt>
+          <dd>端末が持つ夜景用の撮り方を使います。対応している端末だけで、切り替えは次にカメラを起動したときに効きます。
+            動くものは水彩画のようににじむので、葉や草の細かさを残したいときは OFF のままにしてください。</dd>
+        </dl>
+      </div>
+    </details>
+
+    
+</main>
+<script src="../manual.js"></script>
+</body>
+</html>
